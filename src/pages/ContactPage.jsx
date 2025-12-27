@@ -15,23 +15,23 @@ const ContactPage = ({hashLinkId}) => {
           
           <div className="space-y-6 pt-8">
             <a 
-              href="mailto:your.email@example.com" 
+              href="tytiong2@gmail.com" 
               className="block text-xl font-light hover:text-base-content/70 transition-colors duration-300"
             >
-              your.email@example.com
+              tytiong2@gmail.com
             </a>
             
             <div className="flex justify-center gap-6 pt-8">
               <a 
-                href="https://github.com" 
+                href="https://github.com/tzeyi" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="btn btn-ghost rounded-full px-6 font-light"
+                className="btn btn-ghost rounded-full px-6 font-light text-base-100 bg-base-content"
               >
                 GitHub
               </a>
               <a 
-                href="https://linkedin.com" 
+                href="https://www.linkedin.com/in/tze-yi-tiong/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="btn btn-ghost rounded-full px-6 font-light"
@@ -42,8 +42,8 @@ const ContactPage = ({hashLinkId}) => {
           </div>
           
           <div className="pt-12">
-            <div className="h-px w-24 bg-base-content/10 mx-auto"></div>
-            <p className="text-sm font-light text-base-content/40 mt-6">
+            <div className="h-px w-24 bg-base-content/20 mx-auto"></div>
+            <p className="text-sm font-light text-base-content/60 mt-6">
               Response time: Usually within 24 hours
             </p>
           </div>

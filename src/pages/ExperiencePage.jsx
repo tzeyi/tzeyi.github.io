@@ -201,7 +201,7 @@ const ExperiencePage = ({hashLinkId}) => {
     : experiences.filter(exp => exp.type.includes(filter));
       // exp.type === filter);
 
-  const techColors = ['badge-primary', 'badge-secondary', 'badge-accent', 'badge-info', 'badge-success', 'badge-warning', 'badge-neutral', 'badge-error', ];
+  const techColors = ['badge-primary', 'badge-secondary', 'badge-accent', 'badge-info', 'badge-success', 'badge-warning', 'badge-neutral', 'badge-error'];
 
   return (
     <div id={hashLinkId} className="min-h-screen py-20">
