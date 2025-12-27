@@ -308,16 +308,7 @@ const ExperiencePage = ({hashLinkId}) => {
               </div>
             ))}
           </div>
-
-          {/* If empty*/}
-          {/* {filteredExperiences.length === 0 && (
-            <div className="text-center py-20">
-              <div className="text-base-content/20 mb-4">
-                <Briefcase size={64} className="mx-auto" />
-              </div>
-              <p className="text-base-content/40 text-lg">No experiences found in this category</p>
-            </div>
-          )} */}
+          
         </div>
       </div>
 
