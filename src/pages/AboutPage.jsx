@@ -115,7 +115,7 @@ const AboutPage = ({hashLinkId}) => {
         </div>
       </section>
     </div>
-  )
+  );
 }
 
 export default AboutPage;
