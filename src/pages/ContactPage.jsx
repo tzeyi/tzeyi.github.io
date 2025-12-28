@@ -4,7 +4,7 @@ const ContactPage = ({hashLinkId}) => {
       <div className="container mx-auto px-6 py-20">
         <div className="max-w-2xl mx-auto text-center space-y-12">
           <div>
-            <div className="h-px w-12 bg-base-content/20 mx-auto mb-6"></div>
+            <div className="h-px w-56 bg-gradient-to-r from-transparent via-base-content/60 to-transparent mx-auto mb-6"></div>
             <h1 className="text-4xl md:text-5xl font-light tracking-tight">Let's Connect</h1>
           </div>
           
@@ -42,7 +42,7 @@ const ContactPage = ({hashLinkId}) => {
           </div>
           
           <div className="pt-12">
-            <div className="h-px w-24 bg-base-content/20 mx-auto"></div>
+            <div className="h-px w-24 bg-base-content/30 mx-auto"></div>
             <p className="text-sm font-light text-base-content/60 mt-6">
               Response time: Usually within 24 hours
             </p>

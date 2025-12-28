@@ -217,12 +217,12 @@ const ExperiencePage = ({hashLinkId}) => {
           </div>
           
           {/* Filter Tabs */}
-          <div className="tabs tabs-boxed justify-center mb-12 bg-base-200 inline-flex mx-auto w-full">
+          <div className="tabs tabs-border justify-center mb-12 bg-base-200 inline-flex mx-auto w-full">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setFilter(cat.id)}
-                className={`tab flex-1 ${filter === cat.id ? 'tab-active' : ''}`}
+                className={`tab flex-1 ${filter === cat.id ? 'tab-active font-medium' : ''} `}
               >
                 {cat.label}
               </button>

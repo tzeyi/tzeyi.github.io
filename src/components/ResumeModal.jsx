@@ -1,7 +1,7 @@
 const ResumeModal = ({ resumeModalId }) => {
     return (
         <dialog id={resumeModalId} className="modal">
-            <div className="modal-box w-8/12 max-w-4xl h-[84vh] p-0">
+            <div className="modal-box w-10/12 max-w-5xl h-[86vh] p-0">
 
                 <iframe 
                     src="/TzeYiTiong_Resume.pdf" 

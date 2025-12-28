@@ -33,7 +33,7 @@ const AboutPage = ({hashLinkId}) => {
             
             {/* Description*/}
             <p className="mt-8 text-lg text-base-content font-light leading-relaxed max-w-lg">
-              With experience spanning across full stack development, technical sales, research and leadership,
+              With experiences spanning across software engineering, sales, research and leadership,
               I am currently seeking entry-level roles in software engineering or forward deployed engineering.
               Scroll down to see what I've been working on over the past few years.
             </p>

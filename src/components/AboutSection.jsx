@@ -1,5 +1,5 @@
-import {useState} from 'react';
-import { Code2, Database, Wrench, Palette, Server, GraduationCap, Calendar, Award } from 'lucide-react';
+import { useState } from 'react';
+import { Calendar, Award } from 'lucide-react';
 
 const AboutSection = () => {
   const schools = [
@@ -10,12 +10,14 @@ const AboutSection = () => {
       graduation: "December 2025",
       gpa: "3.696",
       classes: [
-        { name: 'Data Structures & Algorithms', tech: 'C++' },
-        { name: 'Web Development', tech: 'React.js, Node.js' },
-        { name: 'Database Systems', tech: 'SQL, MongoDB' },
-        { name: 'Computer Architecture', tech: 'Assembly, Verilog' },
-        { name: 'Operating Systems', tech: 'C, Linux' },
-        { name: 'Software Engineering', tech: 'Agile, Git' }
+        { name: "Data Structures & Algorithms", tech: "C++, GDB Debugger, Unit/Regression Testing" },
+        { name: "Computer Organization", tech: "C, Processor Architecture, Assembly, Caches" },
+        { name: "Operating Systems", tech: "C++, Multithreading, Paging, File Systems" },
+        { name: "Web Systems", tech: "React, Flask, SQLite, Sessions, TCP/UDP, Distributed Compute" },
+        { name: "Database Systems", tech: "SQL, Java (Oracle JDBC), ER Modeling, Query Optimization, ACID" },
+        { name: "Cyber Security", tech: "C++, JavaScript, Cryptography, Wireshark, Web Exploits" },
+        { name: "Data Analysis", tech: "R, Visualization, Hypothesis Testing, Linear Regression" },
+        { name: "User-Centered Design", tech: "React, Firebase, Agile, UI/UX, Accessibility Design" }
       ]
     },
     {
@@ -25,77 +27,75 @@ const AboutSection = () => {
       graduation: "August 2023",
       gpa: "3.98",
       classes: [
-        { name: 'Calculus I & II', tech: null },
-        { name: 'Physics', tech: null },
-        { name: 'Chemistry', tech: null },
-        { name: 'English Composition', tech: null },
-        { name: 'Statistics', tech: 'R, Excel' }
-      ],
+        { name: "Calculus I, II & III", tech: "MATLAB" },
+        { name: "Linear Algebra", tech: null },
+        { name: "Object-Oriented Programming", tech: "Java" },
+        { name: "Physics I & II", tech: null }
+      ]
     }
   ];
 
   const techStack = [
     {
       category: 'Languages',
-      icon: Code2,
-      color: 'text-primary',
       technologies: [
-        { name: 'JavaScript', icon: '⚡', proficiency: 95 },
-        { name: 'Python', icon: '🐍', proficiency: 90 },
-        { name: 'C++', icon: '⚙️', proficiency: 85 },
-        { name: 'SQL', icon: '📊', proficiency: 88 },
-        { name: 'Java', icon: '☕', proficiency: 80 },
-        { name: 'C', icon: '🔧', proficiency: 82 }
+        { name: 'Python', icon: '/TechStack/Python.png'},
+        { name: 'C / C++', icon: '/TechStack/C++.png'},
+        { name: 'JavaScript', icon: '/TechStack/JavaScript.png'}, 
+        { name: 'Swift', icon: '/TechStack/Swift.png'},
+        { name: 'SQL', icon: '/TechStack/SQL.webp'},
+        { name: 'Java', icon: '/TechStack/Java.png'},
       ]
     },
     {
       category: 'Frontend',
-      icon: Palette,
-      color: 'text-secondary',
       technologies: [
-        { name: 'React', icon: '⚛️', proficiency: 95 },
-        { name: 'Next.js', icon: '▲', proficiency: 90 },
-        { name: 'Tailwind CSS', icon: '🎨', proficiency: 92 },
-        { name: 'HTML/CSS', icon: '🌐', proficiency: 98 }
+        { name: 'HTML / CSS', icon: '/TechStack/HTML.png'}, 
+        { name: 'React', icon: '/TechStack/React.png' },
+        { name: 'Vue', icon: '/TechStack/Vue.png' },
+        { name: 'Tailwind', icon: '/TechStack/Tailwind.png' }
       ]
     },
     {
       category: 'Backend',
-      icon: Server,
-      color: 'text-accent',
       technologies: [
-        { name: 'Node.js', icon: '🟢', proficiency: 90 },
-        { name: 'Express', icon: '🚂', proficiency: 88 },
-        { name: 'Flask', icon: '🧪', proficiency: 85 },
-        { name: 'Django', icon: '🎸', proficiency: 80 }
+        { name: 'Django', icon: '/TechStack/Django.svg' },
+        { name: 'Flask', icon: 'TechStack/Flask.png' },
+        { name: 'Node / Express', icon: 'TechStack/Node.png' },
+        { name: 'Firebase', icon: 'TechStack/Firebase.png' },
       ]
     },
     {
       category: 'Database',
-      icon: Database,
-      color: 'text-info',
       technologies: [
-        { name: 'MongoDB', icon: '🍃', proficiency: 90 },
-        { name: 'PostgreSQL', icon: '🐘', proficiency: 85 },
-        { name: 'MySQL', icon: '🐬', proficiency: 82 },
-        { name: 'Redis', icon: '🔴', proficiency: 78 }
+        { name: 'PostgreSQL', icon: '/TechStack/PostgreSQL.svg' },
+        { name: 'SQLite', icon: '/TechStack/SQLite.jpeg' },
+        { name: 'MongoDB', icon: '/TechStack/MongoDB.png' },
+        { name: 'Elastic Search', icon: '/TechStack/ElasticSearch.png' },
+        { name: 'AWS S3', icon: '/TechStack/S3.png' }
+      ]
+    },
+    {
+      category: 'Deployment',
+      technologies: [
+        { name: 'AWS', icon: '/TechStack/AWS.png' },
+        { name: 'Docker', icon: '/TechStack/Docker.webp' },
+        { name: 'OpenShift', icon: 'TechStack/OpenShift.png'},
+        { name: 'RabbitMQ', icon: '/TechStack/RabbitMQ.svg'},
+        { name: 'NGINX', icon: '/TechStack/NGINX.png' }
       ]
     },
     {
       category: 'Tools',
-      icon: Wrench,
-      color: 'text-warning',
       technologies: [
-        { name: 'Git', icon: '🔀', proficiency: 95 },
-        { name: 'Docker', icon: '🐳', proficiency: 85 },
-        { name: 'AWS', icon: '☁️', proficiency: 80 },
-        { name: 'Linux', icon: '🐧', proficiency: 88 },
-        { name: 'Figma', icon: '✨', proficiency: 75 }
+        { name: 'Git', icon: '/TechStack/Git.svg' }, 
+        { name: 'Shell Script', icon: '/TechStack/ShellScript.png'},
+        { name: 'Jira', icon: '/TechStack/Jira.svg'}
       ]
     }
   ];
 
-  const [hoveredCourse, setHoveredCourse] = useState(null)
+  const [hoveredTech, setHoveredTech] = useState(null);
 
   return (
     <div className="min-h-screen">
@@ -112,7 +112,7 @@ const AboutSection = () => {
           <div className="space-y-6">
             {schools.map((school, index) => (
               <div key={index} className="group">
-                <div className="bg-base-100 border border-base-300/50 hover:border-base-content/20 transition-all duration-500 rounded-lg overflow-hidden hover:shadow-xl">
+                <div className="overflow-visible bg-base-100 border border-base-content/20 hover:border-base-content/40 transition-all duration-500 rounded-lg overflow-hidden hover:shadow-xl">
                   <div className="p-6 md:p-8">
                     {/* School Header */}
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-4 mb-4 md:mb-6">
@@ -136,7 +136,7 @@ const AboutSection = () => {
                     </div>
 
                     {/* Coursework Label */}
-                    <div className="text-xs uppercase tracking-wider text-base-content/40 mb-2 md:mb-3 font-light">
+                    <div className="text-xs uppercase tracking-wider text-base-content/60 mb-2 md:mb-3 font-light">
                       Relevant Coursework
                     </div>
 
@@ -145,20 +145,12 @@ const AboutSection = () => {
                       {school.classes.map((course, courseIndex) => (
                         <div 
                           key={courseIndex}
-                          onMouseEnter={() => setHoveredCourse(course.name)}
-                          onMouseLeave={() => setHoveredCourse(null)}
-                          className="relative"
+                          className="tooltip overflow-visible" data-tip={course.tech ? `${course.tech}` : ''}
                         >
-                          <div className="relative overflow-hidden min-w-[140px] md:min-w-[160px] px-3 md:px-4 py-2 md:py-2.5 border border-base-300 hover:border-base-content/50 rounded-lg text-xs md:text-sm text-base-content cursor-pointer transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
-                            <p className={`transition-opacity duration-300 ${hoveredCourse === course.name && course.tech ? 'opacity-0' : 'opacity-100'}`}>
+                          <div className="min-w-[140px] md:min-w-[160px] px-3 md:px-4 py-2 md:py-2.5 border border-base-content/20 hover:border-base-content/50 rounded-lg text-xs md:text-sm text-base-content cursor-pointer transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
+                            <p className={`transition-opacity duration-300`}>
                               {course.name}
                             </p>
-                            {course.tech && (
-                              <p className={`absolute top-0 left-0 w-full h-full flex items-center justify-center px-2 text-[10px] md:text-xs font-medium transition-opacity duration-300 
-                                          ${hoveredCourse === course.name ? 'opacity-100' : 'opacity-0'}`}>
-                                {course.tech}
-                              </p>
-                            )}
                           </div>
                         </div>
                       ))}
@@ -182,30 +174,46 @@ const AboutSection = () => {
                 return (
                   <div 
                     key={stack.category} 
-                    className="card bg-base-100 border border-base-300/50 hover:border-base-content/20 shadow-sm hover:shadow-xl transition-all duration-500"
+                    className="bg-base-100 border border-base-content/10 hover:border-base-content/20 rounded-lg shadow-sm hover:shadow-xl transition-all duration-500"
                   >
-                    <div className="card-body p-5 md:p-6">
+                    <div className="p-6 md:p-8">
                       {/* Category Header */}
-                      <div className="mb-5 md:mb-6">
-                        <h3 className="text-xl md:text-2xl font-light tracking-wide mb-3 md:mb-4 uppercase text-base-content/80">{stack.category}</h3>
-                        <div className="h-px bg-gradient-to-r from-base-content/20 via-base-content/5 to-transparent"></div>
+                      <div className="mb-6">
+                        <h3 className="text-lg md:text-xl font-light tracking-wider text-base-content/70 mb-3">
+                          {stack.category}
+                        </h3>
+                        <div className="h-px bg-gradient-to-r from-base-content/40 via-base-content/30 to-transparent"></div>
                       </div>
 
                       {/* Technologies Grid */}
-                      <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3">
+                      <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
                         {stack.technologies.map((tech, index) => (
-                          <div key={index}>
-                            <div className="flex flex-col items-center gap-1.5 md:gap-2 px-2 md:px-3 py-1.5 md:py-2 border border-base-300/50 hover:border-base-content/50 rounded-lg transition-all duration-300 hover:shadow-md cursor-pointer group/tech w-full">
-                              <div className="flex items-center gap-1.5 md:gap-2 w-full">
-                                <div className="flex items-center justify-center w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 rounded-lg bg-base-200/80 text-sm md:text-base lg:text-lg group-hover/tech:scale-110 transition-transform duration-300">
-                                  {tech.icon}
-                                </div>
-                                <span className="text-[11px] md:text-xs lg:text-sm flex-1">{tech.name}</span>
+                          <div 
+                            key={index}
+                            onMouseEnter={() => setHoveredTech(`${stack.category}-${index}`)}
+                            onMouseLeave={() => setHoveredTech(null)}
+                            className="group/tech"
+                          >
+                            <div className="flex items-center gap-3 p-3 border border-base-content/20 hover:border-base-content/50 rounded-lg transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 cursor-pointer bg-base-100">
+                              {/* Icon */}
+                              <div className="flex-shrink-0 w-8 h-9 rounded-lg overflow-hidden bg-base-200/50 flex items-center justify-center group-hover/tech:scale-110 transition-transform duration-300">
+                                <img 
+                                  className="w-full h-full rounded-xl object-contain" 
+                                  src={tech.icon} 
+                                  alt={tech.name}
+                                />
                               </div>
                               
-                              {/* Underline transition effect */}
-                              <div className="h-px w-0 bg-base-content/30 group-hover/tech:w-full transition-all duration-500"></div>
+                              {/* Name */}
+                              <span className="text-xs md:text-sm font-light text-base-content/80 group-hover/tech:text-base-content transition-colors duration-300">
+                                {tech.name}
+                              </span>
                             </div>
+                            
+                            {/* Bottom accent line */}
+                            <div className={`h-px mt-1 bg-gradient-to-r from-base-content/30 via-base-content/20 to-transparent transition-all duration-500 ${
+                              hoveredTech === `${stack.category}-${index}` ? 'w-full' : 'w-0'
+                            }`}></div>
                           </div>
                         ))}
                       </div>
