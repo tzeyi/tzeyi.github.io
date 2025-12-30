@@ -41,6 +41,7 @@ const AboutPage = ({hashLinkId}) => {
             {/* Linsk */}
             <div className="mt-12 flex space-x-4">
               <HashLink 
+                smooth
                 to="/#project" 
                 className="group relative px-8 py-3"
               >
@@ -50,6 +51,7 @@ const AboutPage = ({hashLinkId}) => {
               </HashLink>
               
               <HashLink 
+                smooth
                 to="/#contact" 
                 className="group px-8 py-3 text-base-content hover:text-base-content transition-colors duration-300"
               >
