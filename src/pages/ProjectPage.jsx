@@ -272,12 +272,12 @@ const ProjectPage = ({hashLinkId}) => {
     <div id={hashLinkId} className="min-h-screen py-20">
       <div className="container mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <div className="h-px w-56 bg-gradient-to-r from-transparent via-base-content/30 to-transparent mx-auto mb-6"></div>
-          <h1 className="text-5xl md:text-6xl font-light tracking-tight mb-4">
+          <h1 className="text-3xl md:text-5xl font-light tracking-tight mb-4">
             Projects
           </h1>
-          <p className="text-base-content/60 font-light text-lg mb-6">My best and most enjoyable works over the years</p>
+          <p className="text-base-content/60 font-light text-md mb-6">My best and most enjoyable works over the years</p>
           
           {/* Card / List View Toggle */}
           <div className="inline-flex gap-0 border border-base-300 rounded-lg overflow-hidden">

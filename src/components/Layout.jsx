@@ -4,12 +4,14 @@ import ExperiencePage from '../pages/ExperiencePage';
 import ContactPage from '../pages/ContactPage';
 import ResumeModal from './ResumeModal';
 import ProjectPage from '../pages/ProjectPage';
-import { Github, Linkedin } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { Github, Linkedin, MousePointerClick, X } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
 
 
 const Layout = () => {
   const [currentHash, setCurrentHash] = useState('#about');
+  const [showExperienceHint, setShowExperienceHint] = useState(false);
+  const hasClosedHintRef = useRef(false);
 
   const navItems = [
     { path: '/#about', label: 'About', hash: '#about' },
@@ -37,6 +39,15 @@ const Layout = () => {
           setCurrentHash(hash);
           // Update URL if we enter the element is in the viewport
           window.history.replaceState(null, '', hash);
+
+          // Case: User in experience section, show hint (only if they haven't closed it)
+          if (entry.target.id === "experience" && !hasClosedHintRef.current) {
+            setShowExperienceHint(true);
+          }
+          // Case: User not in experience section, hide hint
+          else {
+            setShowExperienceHint(false);
+          }
         }
       })
     }
@@ -53,15 +64,22 @@ const Layout = () => {
     });
 
     // Cleanup
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+    };
   }, []);
+
+  const handleCloseHint = () => {
+    setShowExperienceHint(false);
+    hasClosedHintRef.current = true; // Never show again this session
+  };
 
   return (
     <>
       <div className="min-h-screen bg-base-100 text-base-content">
         {/* 1. Navigation */}
-        <div className="navbar fixed top-0 z-50 backdrop-blur-sm bg-base-100/80 border-b border-base-300/30">
-          <div className="navbar-center w-full px-4">
+        <div className="navbar fixed top-0 z-50 backdrop-blur-sm bg-base-100/80 border-b border-base-300/30 p-0">
+          <div className="navbar-center w-full">
             <ul className="menu menu-horizontal gap-2 flex-nowrap overflow-x-auto overflow-y-hidden justify-between w-full max-w-7xl mx-auto">
               
               {/* Left side - Navigation items */}
@@ -121,7 +139,32 @@ const Layout = () => {
           {/* Display resume PDF for user to download + view */}
           <ResumeModal resumeModalId="resumeModal"/>
         </div>
-        
+
+        {/* Experience Click Card Alert */}
+        {showExperienceHint && (
+          <div className="fixed top-24 left-1/2 transform -translate-x-1/2 z-50 animate-fadeIn w-full max-w-lg px-4">
+            <div className="bg-base-content/80 text-base-100 rounded-lg shadow-xl p-4 flex items-center gap-3">
+              <div className="flex-shrink-0">
+                  <MousePointerClick className="w-6 h-6 stroke-[2]" />
+              </div>
+              
+              <div className="flex-1 min-w-0">
+                <p className="leading-relaxed">
+                  Click any experience card for more details
+                </p>
+              </div>
+              
+              <button 
+                className="flex-shrink-0 p-1.5 rounded-lg transition-colors"
+                onClick={handleCloseHint}
+                aria-label="Close hint"
+              >
+                <X className="w-5 h-5 text-base-100 hover:scale-135 transition-transform duration-200 stroke-[2]" />
+              </button>
+            </div>
+          </div>
+        )} 
+
         {/* 2. Main content */}
         <main className="pt-16">
           <AboutPage hashLinkId="about"/>
