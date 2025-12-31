@@ -20,7 +20,8 @@ const AboutSection = () => {
         { name: "Database Systems", tech: "SQL, Java (Oracle JDBC), ER Modeling, Query Optimization, ACID" },
         { name: "Cyber Security", tech: "C++, JavaScript, Cryptography, Wireshark, Web Exploits (CSRF, XSS, SQLi, Shellcode)" },
         { name: "User-Centered Design", tech: "React, Firebase, Agile, UI/UX, Accessibility Design" }, 
-        { name: "Data Analysis", tech: "R, Visualization, Hypothesis Testing, Linear Regression" }
+        { name: "Data Analysis", tech: "R, Visualization, Hypothesis Testing, Linear Regression" },
+        { name: "Computer Pragmatic", tech: "Shell Script, Customize Bash Shell, Regular Expression" }, 
       ]
     },
     {
@@ -107,7 +108,7 @@ const AboutSection = () => {
           {/* Education Header */}
           <div className="text-center mb-8">
             <div className="h-px w-56 bg-gradient-to-r from-transparent via-base-content/30 to-transparent mx-auto mb-6"></div>
-            <h2 className="text-3xl md:text-4xl font-light tracking-tight mb-2">Education</h2>
+            <h2 className="text-3xl md:text-5xl font-light tracking-tight mb-2">Education</h2>
             <p className="text-sm text-base-content/60 font-light">My academic journey and coursework</p>
           </div>
 
@@ -168,7 +169,7 @@ const AboutSection = () => {
           <div className="pt-8">
             <div className="text-center mb-10">
               <div className="h-px w-56 bg-gradient-to-r from-transparent via-base-content/30 to-transparent mx-auto mb-6"></div>
-              <h2 className="text-3xl md:text-4xl font-light tracking-tight mb-2">Tech Stack</h2>
+              <h2 className="text-3xl md:text-5xl font-light tracking-tight mb-2">Tech Stack</h2>
               <p className="text-sm text-base-content/60 font-light">Tools and technologies I work with</p>
             </div>
             

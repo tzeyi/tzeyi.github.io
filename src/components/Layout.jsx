@@ -28,7 +28,8 @@ const Layout = () => {
 
     const observerOptions = {
       root: null, // Means entire browser viewport
-      rootMargin: '-50% 0px -50% 0px', // Trigger when section is in the middle of viewport
+      // threshold: 0.5, // When 70% of the element is in viewport
+      rootMargin: '-30% 0px -70% 0px', // Trigger when section is in the middle of viewport
       threshold: 0
     };
 
@@ -78,9 +79,9 @@ const Layout = () => {
     <>
       <div className="min-h-screen bg-base-100 text-base-content">
         {/* 1. Navigation */}
-        <div className="navbar fixed top-0 z-50 backdrop-blur-sm bg-base-100/80 border-b border-base-300/30 p-0">
+        <div className="navbar fixed top-0 z-50 backdrop-blur-sm bg-base-100/80 border-b border-base-300/30">
           <div className="navbar-center w-full">
-            <ul className="menu menu-horizontal gap-2 flex-nowrap overflow-x-auto overflow-y-hidden justify-between w-full max-w-7xl mx-auto">
+            <ul className="menu menu-horizontal gap-2 flex-nowrap overflow-x-auto overflow-y-hidden justify-between w-full max-w-7xl mx-auto p-0">
               
               {/* Left side - Navigation items */}
               <div className="flex items-center gap-1">
@@ -117,7 +118,7 @@ const Layout = () => {
                   href="https://www.linkedin.com/in/tze-yi-tiong/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 pr-6 text-base-content/60 hover:text-base-content transition-colors duration-300"
+                  className="pr-6 text-base-content/60 hover:text-base-content transition-colors duration-300"
                   aria-label="LinkedIn"
                 >
                   <Linkedin size={25} strokeWidth={1.7} />

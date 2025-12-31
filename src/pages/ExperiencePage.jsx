@@ -339,7 +339,7 @@ const ExperiencePage = ({hashLinkId}) => {
   return (
     <div id={hashLinkId} className="min-h-screen py-20">
       <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto px-4">
           {/* Header */}
           <div className="text-center mb-10">
             <div className="h-px w-56 bg-gradient-to-r from-transparent via-base-content/30 to-transparent mx-auto mb-6"></div>

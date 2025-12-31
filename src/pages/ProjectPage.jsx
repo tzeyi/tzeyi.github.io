@@ -76,13 +76,17 @@ const ProjectListView = ({ project }) => {
 
           {/* Links */}
           <div className="mb-5">
-            <h3 className="text-xs uppercase tracking-wider text-base-content/50 mb-3 font-bold">
-              Links
-            </h3>
+            {project.github && project.demo && (
+                <h3 className="text-xs uppercase tracking-wider text-base-content/50 mb-3 font-bold">
+                  Links
+                </h3>
+            )}
             <div className="flex gap-3">
               {project.github && (
                 <a 
                   href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn btn-sm btn-outline gap-2 flex-1"
                 >
                   <Github size={18} />
@@ -92,6 +96,8 @@ const ProjectListView = ({ project }) => {
               {project.demo && (
                 <a 
                   href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn btn-sm btn-outline gap-2 flex-1"
                 >
                   <ExternalLink size={18} />
@@ -137,17 +143,16 @@ const ProjectPage = ({hashLinkId}) => {
     {
       title: 'Network File Server',
       bulletPoints: [
-        "Built a multithreaded network file server in C++ that supports concurrent client read and write requests",
-        "Implemented a hierarchical file system with fine-grained, upgradable reader–writer locks to ensure atomicity",
-        "Achieved 95% CPU utilization under load with minimal lock contention"
+        "Built a multithreaded network file server in C++ supporting concurrent client read, write, create, and delete requests using shared pointer to manage mutexes on demand, page table entries",
+        "Implemented a hierarchical file system (e.g., /home/file) with upgradable reader–writer locks and fine-grained (hand-over-hand) locking to ensure atomicity and improve performance",
       ],
       gallery: [
-        '/Project/NetworkFileServer.png',
-        '/Project/NetworkFileServer.png'
+        '/Project/NetworkFileServer/1.png',
+        '/Project/NetworkFileServer/2.png'
       ],
-      techStack: ['C++', 'Network Sockets', 'Linux System Calls'],
-      github: '#',
-      demo: '#',
+      techStack: ['C++', 'Linux', 'Sockets Programming'],
+      github: null,
+      demo: null,
       cardContent: (
         <ProjectCardContent
           contents={[
@@ -170,17 +175,17 @@ const ProjectPage = ({hashLinkId}) => {
     {
       title: 'Frodo',
       bulletPoints: [
-        "Centralized resource dashboard with ticketing system, discussion forum, and map view",
-        "Firebase-powered real-time synchronization with secure role-based access control",
-        "Designed with transparency in mind for disaster relief coordination"
+        `Nowadays many ERPs privatize user data. Frodo provides a public, shared ERP for NGOs and small communities, promoting collaboration and transparency.`,
+        `It features a centralized dashboard with ticketing systems, discussion forums, map view, role-based access, and status updates.`,
+        `Built with Firebase for Google authentication and Firestore for real-time NoSQL storage.`
       ],
       gallery: [
-        '/Project/Frodo.png',
-        '/Project/Frodo.png'
+        '/Project/Frodo/1.png',
+        '/Project/Frodo/2.png'
       ],
-      techStack: ['React', 'Firebase', 'Tailwind', 'DaisyUI', 'Figma'],
-      github: '#',
-      demo: '#',
+      techStack: ['React', 'Firebase', 'Tailwind', 'DaisyUI', 'Google Maps API', 'Figma'],
+      github: 'https://github.com/tzeyi/Frodo',
+      demo: 'https://www.youtube.com/watch?v=AD5UHdGuB8A',
       cardContent: (
         <ProjectCardContent
           contents={[
@@ -201,17 +206,17 @@ const ProjectPage = ({hashLinkId}) => {
       cardBorderColor: 'bg-gradient-to-r from-yellow-400 to-yellow-700'
     },
     {
-      title: 'OS Kernel: Thread and Pager Library',
+      title: 'OS Thread & Pager Library',
       bulletPoints: [
-        "Implemented a thread library and CPU scheduler with synchronization primitives (mutex, condition variables)",
-        "Built a demand-paged virtual memory system with page fault handling and TLB management",
-        "Optimized page replacement algorithm reducing page faults by 40%"
+        "Implemented a thread library and CPU scheduler with synchronization primitives (mutexes, condition variables) using Linux's setcontext, swapcontext as well as shared pointer to manage thread lifetime resources",
+        "Used disabled interrupts and spinlocks to ensure mutual exclusion in multi-process, multi-threaded programs, suspending the CPU and context switching as needed to prevent busy waiting.",
+        "Built a pager library supporting file-backed and swap-backed files, managing page tables for virtual address translation with techniques like clock-queue eviction and copy-on-write to delay redundant writes."
       ],
       gallery: [
-        '/Project/OSKernel.png'
+        '/Project/OSKernel/1.png', '/Project/OSKernel/2.jpg', '/Project/OSKernel/3.png', '/Project/OSKernel/4.png'
       ],
-      techStack: ['C++', 'Linux', 'System Programming'],
-      github: '#',
+      techStack: ['C++', 'Linux'],
+      github: null,
       demo: null,
       cardContent: (
         <ProjectCardContent
@@ -235,16 +240,16 @@ const ProjectPage = ({hashLinkId}) => {
     {
       title: 'MapReduce Search Engine',
       bulletPoints: [
-        "Built a MapReduce framework for distributed text processing and indexing across worker nodes",
-        "Implemented PageRank and TF-IDF scoring for search relevance",
-        "Achieved linear scalability up to 8 worker nodes with sub-second query latency"
+        "Built a local MapReduce framework using multi-process and multi-threaded servers to simulate a distributed system with manager and worker nodes, TCP/UDP communication, and heartbeat-based fault tolerance",
+        "Designed the MapReduce framework to accept input files and executable map and reduce jobs, efficiently processing large datasets into an output directory",
+        "Implemented a search engine on top of the framework that computes TF-IDF embeddings over 10,000+ Wikipedia pages, using three index servers that shard documents by document ID (e.g., docID % 3) to distribute query load, with a frontend search server routing requests accordingly",
       ],
       gallery: [
-        '/Project/MapReduce.png'
+        '/Project/MapReduce/1.png', '/Project/MapReduce/2.png', '/Project/MapReduce/3.png', '/Project/MapReduce/4.png'
       ],
-      techStack: ['C++', 'MapReduce', 'Distributed Systems'],
-      github: '#',
-      demo: '#',
+      techStack: ['Python', 'Flask', 'SQLite', 'React', 'Network Protocols', 'AWS EFS, EC2, ', 'Cypress', 'Pytest'],
+      github: null,
+      demo: null,
       cardContent: (
         <ProjectCardContent
           contents={[
@@ -263,7 +268,195 @@ const ProjectPage = ({hashLinkId}) => {
       ),
       cardImage: '/Project/MapReduce.png',
       cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
-    }
+    },
+    {
+      title: 'VSee: VC & Startup Matchmaker',
+      bulletPoints: [
+        "A web application that helps connecting Venture Capital with potential startups through a revolutionary AI persona matching mechanism",
+        "The application builts an AI persona for each of the users (VC/startup) based on fed-in data, and have the AI persona converse and simulate interview/pitching session to identify match and generate a more detailed analysis report",
+        "Benefits of the Application: Higher compatibility matching between VC and startup, More efficient match-making"
+      ],
+      gallery: [
+        '/Project/MapReduce/1.png'
+      ],
+      techStack: ['React', 'TailwindCSS', 'DaisyUI', 'Flask', 'Gemini 1.5 Flash', 'SQLite', 'Prompt Engineering'],
+      github: 'https://github.com/tzeyi/Imagine-Hack24',
+      demo: '/Project/VSee/VSaw.pdf',
+      cardContent: (
+        <ProjectCardContent
+          contents={[
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
+              title: "Distributed MapReduce Framework",
+              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
+            },
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
+              title: "Search Ranking Algorithms",
+              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
+            }
+          ]}
+        />
+      ),
+      cardImage: '/Project/MapReduce.png',
+      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
+    },
+    {
+      title: 'SQL Simulator',
+      bulletPoints: [
+        "Developed a SQL simulator in C++ supporting core commands (CREATE, REMOVE, INSERT, SELECT, WHERE, DELETE, JOIN, GENERATE INDEX) that reads queries from a text file and prints query results to the terminal",
+        "Designed the system with clear abstractions, using classes and hash maps to manage databases, structs to represent tables, hash map–based indexes for categorical data, and red-black tree indexes for numerical data",
+      ],
+      gallery: [
+        '/Project/MapReduce/1.png'
+      ],
+      techStack: ['React', 'TailwindCSS', 'DaisyUI', 'Flask', 'Gemini 1.5 Flash', 'SQLite', 'Prompt Engineering'],
+      github: null,
+      demo: null,
+      cardContent: (
+        <ProjectCardContent
+          contents={[
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
+              title: "Distributed MapReduce Framework",
+              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
+            },
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
+              title: "Search Ranking Algorithms",
+              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
+            }
+          ]}
+        />
+      ),
+      cardImage: '/Project/MapReduce.png',
+      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
+    },
+    {
+      title: 'GPT From Scratch',
+      bulletPoints: [
+        "Built a GPT-2 model from scratch to deepen understanding of transformer architectures, covering multi head attention, BPE tokenization, and next word prediction; fine-tuned pre-trained GPT-2 weights for binary classification on spam emails",
+        "A big motivation for this project is to deepen my knowledge for my research work in creating embeddings for a Mixture of Expert model in the ISC Lab, and also when creating prototypes for a RAG chatbot deployment at IBM"
+      ],
+      gallery: [
+        '/Project/MapReduce/1.png'
+      ],
+      techStack: ['PyTorch'],
+      github: 'https://github.com/tzeyi/GPT-From-Scratch',
+      demo: null,
+      cardContent: (
+        <ProjectCardContent
+          contents={[
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
+              title: "Distributed MapReduce Framework",
+              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
+            },
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
+              title: "Search Ranking Algorithms",
+              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
+            }
+          ]}
+        />
+      ),
+      cardImage: '/Project/MapReduce.png',
+      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
+    },
+    {
+      title: 'RoboChef: Recipe Recommender',
+      bulletPoints: [
+        "A web application that receives an image (as an URL) of any food, then identifies the food and its ingredient, and finally compile a list of recipes that shares the same ingredients as the food in the image given",
+        "Benefits of the Application: Identify any image and provide recipes instantly, provide multiple recipe options, help students decide meals easily, fast & easy"
+      ],
+      gallery: [
+        '/Project/MapReduce/1.png'
+      ],
+      techStack: ['HTML', 'JavaScript', 'CSS', 'Clarifai Computer Vision API', 'Edamam Recipe API'],
+      github: 'https://github.com/ycpoon/RoboChef',
+      demo: null,
+      cardContent: (
+        <ProjectCardContent
+          contents={[
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
+              title: "Distributed MapReduce Framework",
+              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
+            },
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
+              title: "Search Ranking Algorithms",
+              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
+            }
+          ]}
+        />
+      ),
+      cardImage: '/Project/MapReduce.png',
+      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
+    },
+    {
+      title: 'Assembler & Linker',
+      bulletPoints: [
+        "Built an assembler in C that converts LC2K assembly code (e.g., lw, sw, add, jalr) into binary machine code following the LC2K 32-bit instruction format",
+        "Implemented a linker that combines object files and libraries by resolving text, data, symbol table, and relocation sections into a single executable",
+        "Enabled modular program development by supporting separate compilation, allowing reusable libraries to be linked without recompiling or reassembling unchanged code",
+      ],
+      gallery: [
+        '/Project/MapReduce/1.png'
+      ],
+      techStack: ['C'],
+      github: null,
+      demo: null,
+      cardContent: (
+        <ProjectCardContent
+          contents={[
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
+              title: "Distributed MapReduce Framework",
+              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
+            },
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
+              title: "Search Ranking Algorithms",
+              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
+            }
+          ]}
+        />
+      ),
+      cardImage: '/Project/MapReduce.png',
+      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
+    },
+    {
+      title: '5-Stage Pipeline Processor & Cache Simulator',
+      bulletPoints: [
+        "Implemented an LC2K 5-stage pipeline processor simulator in C, featuring data forwarding to resolve read-after-write (RAW) hazards and branch prediction using a predict-not-taken policy with speculation and squashing to handle control hazards",
+        "Built a configurable cache simulator supporting a write-back policy, user-defined block size, and a parameterized number of sets to determine associativity (direct-mapped, set-associative, and fully associative), with an LRU replacement policy",
+      ],
+      gallery: [
+        '/Project/MapReduce/1.png'
+      ],
+      techStack: ['C'],
+      github: null,
+      demo: null,
+      cardContent: (
+        <ProjectCardContent
+          contents={[
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
+              title: "Distributed MapReduce Framework",
+              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
+            },
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
+              title: "Search Ranking Algorithms",
+              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
+            }
+          ]}
+        />
+      ),
+      cardImage: '/Project/MapReduce.png',
+      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
+    },
   ];
 
 
@@ -279,7 +472,7 @@ const ProjectPage = ({hashLinkId}) => {
           </h1>
           <p className="text-base-content/60 font-light text-md mb-6">My best and most enjoyable works over the years</p>
           
-          {/* Card / List View Toggle */}
+          {/* Card / List View Toggle Button */}
           <div className="inline-flex gap-0 border border-base-300 rounded-lg overflow-hidden">
             <button 
               onClick={() => setViewMode('card')}
@@ -313,20 +506,20 @@ const ProjectPage = ({hashLinkId}) => {
         {viewMode === 'card' ? (
           <>
             {/* Carousel with 3D hover cards */}
-            <div className="flex justify-center mx-8">
-              <div className="carousel bg-base-200 rounded-box max-w-full space-x-4 p-4">
+            <div className="flex justify-center mx-10">
+              <div className="carousel bg-base-300 rounded-box max-w-full space-x-3 p-2">
                 {projects.map((project, index) => (
                   <div key={index} id={`slide${index + 1}`} className="carousel-item cursor-pointer" onClick={() => setSelectedProject(index)}>
                     <div className="hover-3d">
                       <div className={`relative p-2 ${project.cardBorderColor} rounded-xl`}>
                         <div 
-                          className="card w-76 rounded-2xl bg-neutral-content"
+                          className="card w-70 rounded-2xl bg-neutral-content"
                         >
                           <figure className="text-xl">
                             <img 
                               src={project.cardImage}
                               alt={project.title}
-                              className="rounded-lg w-full h-106 object-cover"
+                              className="rounded-lg w-full h-95 object-cover"
                             />
                             <h1
                               className="font-bold pl-3 py-1 absolute top-0 left-0 text-black"
@@ -396,7 +589,7 @@ const ProjectPage = ({hashLinkId}) => {
           </>
         ) : (
           /* List View - Professional Grid Layout */
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl px-14 mx-auto">
             {projects.map((project, index) => (
               <ProjectListView key={index} project={project} />
             ))}
