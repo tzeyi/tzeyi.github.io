@@ -39,7 +39,7 @@ const EducationSection = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-base-100 place-content-center sticky">
+    <div className="min-h-screen bg-base-100">
       <div className="container mx-auto px-6 py-16">
         <div className="max-w-5xl mx-auto space-y-12">
           {/* Education Header */}
