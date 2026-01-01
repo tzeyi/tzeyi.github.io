@@ -42,7 +42,7 @@ const ExperiencePage = ({hashLinkId}) => {
         ],
         [
           `Rapid prototyping an Audio Spectrogram Transformer model`,
-          `To accelerate experimentation with the Audio Spectrogram Transformer, I applied transfer learning to the final feed-forward layers and increased the patch size to reduce training time. For early evaluation of daily bathroom activities (e.g., toilet flushing), I reduced the output to five classes and trained the model on a truncated ESC-50 dataset.`
+          `To accelerate experimentation with the Audio Spectrogram Transformer, I applied transfer learning by freezing all layers except the final feed forward layer (fine tune head layer) and increased the patch size to reduce training time. For early evaluation of daily bathroom activities (e.g., toilet flushing), I reduced the output to five classes and trained the model on a truncated ESC-50 dataset.`
         ]
       ]
       ,

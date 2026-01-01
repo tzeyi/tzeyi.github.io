@@ -50,7 +50,6 @@ const ProjectListView = ({ project }) => {
               Description
             </h3>
             <ul className="space-y-2">
-              {console.log(project.bulletPoints)}
               {project.bulletPoints.map((point, i) => (
                 <li key={i} className="text-sm text-base-content/80 leading-relaxed flex gap-2">
                   <span className="text-primary font-bold mt-0.5">•</span>
@@ -436,6 +435,100 @@ const ProjectPage = ({hashLinkId}) => {
         '/Project/MapReduce/1.png'
       ],
       techStack: ['C'],
+      github: null,
+      demo: null,
+      cardContent: (
+        <ProjectCardContent
+          contents={[
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
+              title: "Distributed MapReduce Framework",
+              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
+            },
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
+              title: "Search Ranking Algorithms",
+              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
+            }
+          ]}
+        />
+      ),
+      cardImage: '/Project/MapReduce.png',
+      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
+    },
+    {
+      title: 'Doggo Classifier',
+      bulletPoints: [
+        "Addressed limited training data for binary dog breed classification (Golden Retriever vs. Border Collie) by employing transfer learning from a larger 10-class dog breed dataset",
+        "Designed and trained custom CNN and Vision Transformer (ViT) architectures from scratch as source models, referencing the original ViT research paper, then evaluated their transferability to the low-data binary classification task",
+        "Achieved 0.8224 AUROC through CNN-based transfer learning by freezing the first layer to retain universal features, applying VGG-inspired progressive filter expansion, and augmenting data with crops, rotations, and color jitter, outperforming the ViT approach"
+      ],
+      gallery: [
+        '/Project/Doggo/1.png', '/Project/Doggo/2.png'
+      ],
+      techStack: ['PyTorch'],
+      github: null,
+      demo: null,
+      cardContent: (
+        <ProjectCardContent
+          contents={[
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
+              title: "Distributed MapReduce Framework",
+              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
+            },
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
+              title: "Search Ranking Algorithms",
+              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
+            }
+          ]}
+        />
+      ),
+      cardImage: '/Project/MapReduce.png',
+      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
+    },
+    {
+      title: 'Fakebook Schema and Queries',
+      bulletPoints: [
+        "Designed a relational database schema for a Facebook-like social network, creating an ER diagram modeling core features (users, messaging, photo albums, events) and implementing full SQL scripts for table creation, data insertion, and cleanup operations",
+        "Developed a Java application with Oracle JDBC integration to execute complex SQL queries for social network analysis, including mutual friend matchmaking and sibling detection using joins, nested subqueries, and aggregate functions with optimized data structure storage"
+      ],
+      gallery: [
+        '/Project/Doggo/1.png', '/Project/Doggo/2.png'
+      ],
+      techStack: ['PyTorch'],
+      github: null,
+      demo: null,
+      cardContent: (
+        <ProjectCardContent
+          contents={[
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
+              title: "Distributed MapReduce Framework",
+              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
+            },
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
+              title: "Search Ranking Algorithms",
+              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
+            }
+          ]}
+        />
+      ),
+      cardImage: '/Project/MapReduce.png',
+      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
+    },
+    {
+      title: 'Digital Forensic Simulation',
+      bulletPoints: [
+        "Conducted dead analysis on data artifacts from suspect's device by running John the Ripper password cracker, steganalysis to find hidden image data and wireshark to find leads in web activity",
+        "Conducted live analysis by reanacting suspect's webs activity using leads from dead analysis, using web attacks like XSS, SQLi and ShellCode injection to compile a report on whether suspect is guilty"
+      ],
+      gallery: [
+        '/Project/Forensic/1.pdf', '/Project/Forensic/2.png'
+      ],
+      techStack: ['PyTorch'],
       github: null,
       demo: null,
       cardContent: (
