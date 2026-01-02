@@ -21,161 +21,168 @@ const Layout = () => {
   ];
 
   useEffect(() => {
-    //  Intersection Observer: https://www.geeksforgeeks.org/javascript/introduction-to-intersection-observer/
-    if (location.hash) {
-      setCurrentHash(location.hash);
-    }
+    if (location.hash) setCurrentHash(location.hash);
 
-    const observerOptions = {
-      root: null, // Means entire browser viewport
-      // threshold: 0.5, // When 70% of the element is in viewport
-      rootMargin: '-30% 0px -70% 0px', // Trigger when section is in the middle of viewport
-      threshold: 0
-    };
-
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const hash = `#${entry.target.id}`;
-          setCurrentHash(hash);
-          // Update URL if we enter the element is in the viewport
-          window.history.replaceState(null, '', hash);
-
-          // Case: User in experience section, show hint (only if they haven't closed it)
-          if (entry.target.id === "experience" && !hasClosedHintRef.current) {
-            setShowExperienceHint(true);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const hash = `#${entry.target.id}`;
+            setCurrentHash(hash);
+            window.history.replaceState(null, '', hash);
+            
+            setShowExperienceHint(entry.target.id === "experience" && !hasClosedHintRef.current);
           }
-          // Case: User not in experience section, hide hint
-          else {
-            setShowExperienceHint(false);
-          }
-        }
-      })
-    }
+        });
+      },
+      { rootMargin: '-30% 0px -70% 0px', threshold: 0 }
+    );
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    // Observe all sections (hashes)
-    const sectionIds = ['about', 'experience', 'project', 'contact'];
-    sectionIds.forEach((id) => {
+    ['about', 'experience', 'project', 'contact'].forEach((id) => {
       const element = document.getElementById(id);
-      if (element) {
-        observer.observe(element);
-      }
+      if (element) observer.observe(element);
     });
 
-    // Cleanup
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
 
   const handleCloseHint = () => {
     setShowExperienceHint(false);
-    hasClosedHintRef.current = true; // Never show again this session
+    hasClosedHintRef.current = true;
   };
 
   return (
-    <>
-      <div className="min-h-screen bg-base-100 text-base-content">
-        {/* 1. Navigation */}
-        <div className="navbar fixed top-0 z-50 backdrop-blur-sm bg-base-100/80 border-b border-base-300/30">
-          <div className="navbar-center w-full">
-            <ul className="menu menu-horizontal gap-2 flex-nowrap overflow-x-auto overflow-y-hidden justify-between w-full max-w-7xl mx-auto p-0">
-              
-              {/* Left side - Navigation items */}
-              <div className="flex items-center gap-1">
-                {navItems.map((item) => (
-                  <li key={item.hash} className="flex-shrink-0"> 
-                    <HashLink 
-                      smooth 
-                      to={item.path}
-                      className={`font-light tracking-wide hover:bg-transparent transition-all duration-300 text-sm  sm:text-base px-2 sm:px-4 whitespace-nowrap relative ${
-                        currentHash === item.hash
-                          ? 'text-base-content after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-full after:h-px after:bg-gradient-to-r after:from-transparent after:via-base-content/80 after:to-transparent'
-                          : 'text-base-content/60 hover:text-base-content'
-                      }`}
-                    >
-                      {item.label} 
-                    </HashLink>
-                  </li>
-                ))}
-
-                {/* Resume popup modal */}
-                <li className="flex-shrink-0">
-                  <button 
-                    onClick={() => document.getElementById('resumeModal').showModal()}
-                    className="font-light tracking-wide hover:bg-transparent transition-all duration-300 text-sm sm:text-base px-2 sm:px-4 whitespace-nowrap relative text-base-content/60 hover:text-base-content"
-                  >
-                    Resume 
-                  </button>
+    <div className="min-h-screen bg-base-100 text-base-content">
+      {/* Navigation */}
+      <div className="navbar fixed top-0 z-50 backdrop-blur-md bg-base-100/90 border-b border-base-content/5 px-4 lg:px-8">
+        
+        <div className="navbar-start">
+          {/* Mobile Hamburger */}
+          <div className="dropdown md:hidden">
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+              </svg>
+            </div>
+            <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow-lg border border-base-content/10">
+              {navItems.map((item) => (
+                <li key={item.hash}>
+                  <HashLink smooth to={item.path} className={`font-light ${currentHash === item.hash ? 'text-base-content' : 'text-base-content/60'}`}>
+                    {item.label}
+                  </HashLink>
                 </li>
-              </div>
-
-              {/* Right side - Social links */}
-              <div className="flex items-center gap-3">
-                <a
-                  href="https://www.linkedin.com/in/tze-yi-tiong/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="pr-6 text-base-content/60 hover:text-base-content transition-colors duration-300"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin size={25} strokeWidth={1.7} />
+              ))}
+              <li>
+                <button onClick={() => document.getElementById('resumeModal').showModal()} className="font-light text-base-content/60">
+                  Resume
+                </button>
+              </li>
+              <div className="divider my-1" />
+              <li>
+                <a href="https://www.linkedin.com/in/tze-yi-tiong/" target="_blank" rel="noopener noreferrer" className="font-light text-base-content/60">
+                  LinkedIn
                 </a>
-
-                <a
-                  href="https://github.com/tzeyi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 text-base-content/60 hover:text-base-content transition-colors duration-300"
-                  aria-label="GitHub"
-                >
-                  <Github size={25} strokeWidth={1.7} />
+              </li>
+              <li>
+                <a href="https://github.com/tzeyi" target="_blank" rel="noopener noreferrer" className="font-light text-base-content/60">
+                  GitHub
                 </a>
-              </div>
+              </li>
             </ul>
           </div>
           
-          {/* Display resume PDF for user to download + view */}
-          <ResumeModal resumeModalId="resumeModal"/>
+          {/* Desktop Navigation */}
+          <ul className="menu menu-horizontal px-0 hidden md:flex gap-1">
+            {navItems.map((item) => (
+              <li key={item.hash}>
+                <HashLink
+                  smooth
+                  to={item.path}
+                  className={`font-light text-xs lg:text-sm px-2 lg:px-3 hover:bg-transparent transition-colors ${
+                    currentHash === item.hash
+                      ? 'text-base-content relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-base-content/40'
+                      : 'text-base-content/50 hover:text-base-content/80'
+                  }`}
+                >
+                  {item.label}
+                </HashLink>
+              </li>
+            ))}
+            <li>
+              <button
+                onClick={() => document.getElementById('resumeModal').showModal()}
+                className="font-light text-xs lg:text-sm px-2 lg:px-3 hover:bg-transparent transition-colors text-base-content/50 hover:text-base-content/80"
+              >
+                Resume
+              </button>
+            </li>
+          </ul>
         </div>
 
-        {/* Experience Click Card Alert */}
-        {showExperienceHint && (
-          <div className="fixed top-24 left-1/2 transform -translate-x-1/2 z-50 animate-fadeIn w-full max-w-lg px-4">
-            <div className="bg-base-content/80 text-base-100 rounded-lg shadow-xl p-4 flex items-center gap-3">
-              <div className="flex-shrink-0">
-                  <MousePointerClick className="w-6 h-6 stroke-[2]" />
-              </div>
-              
-              <div className="flex-1 min-w-0">
-                <p className="leading-relaxed">
-                  Click any experience card for more details
-                </p>
-              </div>
-              
-              <button 
-                className="flex-shrink-0 p-1.5 rounded-lg transition-colors"
-                onClick={handleCloseHint}
-                aria-label="Close hint"
-              >
-                <X className="w-5 h-5 text-base-100 hover:scale-135 transition-transform duration-200 stroke-[2]" />
-              </button>
+        {/* Right Side */}
+        <div className="navbar-end gap-1">
+          {/* Theme Dropdown */}
+          <div className="dropdown dropdown-end">
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-sm text-xs font-light text-base-content/50">
+              <span className="hidden sm:inline">Theme</span>
+              <svg width="12px" height="12px" className="h-3 w-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
+                <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z" />
+              </svg>
             </div>
+            <ul tabIndex={0} className="dropdown-content bg-base-100 rounded-box z-[1] w-40 p-2 shadow-lg border border-base-content/10 mt-2">
+              {[
+                { display: 'Light', value: 'light' },
+                { display: 'Dark', value: 'dark' },
+                { display: 'Coffee', value: 'caramellatte' },
+                { display: 'Rain', value: 'nord' }
+              ].map((theme) => (
+                <li key={theme.value}>
+                  <input
+                    type="radio"
+                    name="theme-dropdown"
+                    className="theme-controller btn btn-sm btn-block btn-ghost justify-start font-light text-xs capitalize"
+                    aria-label={theme.display}
+                    value={theme.value}
+                  />
+                </li>
+              ))}
+            </ul>
           </div>
-        )} 
 
-        {/* 2. Main content */}
-        <main className="pt-16">
-          <AboutPage hashLinkId="about"/>
-          <ExperiencePage hashLinkId="experience"/>
-          <ProjectPage hashLinkId="project"/>
-          <ContactPage hashLinkId="contact"/>
-        </main>
-      </div> 
-    </>
-  )
-}
+          {/* Social Links */}
+          <a href="https://www.linkedin.com/in/tze-yi-tiong/" target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-sm btn-circle hidden md:flex text-base-content/50 hover:text-base-content/80" aria-label="LinkedIn">
+            <Linkedin size={18} strokeWidth={1.5} />
+          </a>
+          <a href="https://github.com/tzeyi" target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-sm btn-circle hidden md:flex text-base-content/50 hover:text-base-content/80" aria-label="GitHub">
+            <Github size={18} strokeWidth={1.5} />
+          </a>
+        </div>
+
+        <ResumeModal resumeModalId="resumeModal" />
+      </div>
+
+      {/* Experience Hint */}
+      {showExperienceHint && (
+        <div className="fixed top-20 left-1/2 -translate-x-1/2 z-40 w-full max-w-md px-4">
+          <div className="bg-base-content/90 backdrop-blur-sm text-base-100 rounded-lg shadow-xl p-4 flex items-center gap-3">
+            <MousePointerClick className="w-5 h-5 flex-shrink-0" />
+            <p className="text-sm font-light flex-1">Click any experience card for more details</p>
+            <button className="btn btn-ghost btn-xs btn-circle" onClick={handleCloseHint} aria-label="Close">
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Main Content */}
+      <main className="pt-16">
+        <AboutPage hashLinkId="about" />
+        <ExperiencePage hashLinkId="experience" />
+        <ProjectPage hashLinkId="project" />
+        <ContactPage hashLinkId="contact" />
+      </main>
+    </div>
+  );
+};
 
 export default Layout;

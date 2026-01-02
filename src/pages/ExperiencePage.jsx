@@ -443,16 +443,16 @@ const ExperiencePage = ({hashLinkId}) => {
                     
         </div>
       </div>
-
+      
       {/* Popup modal section */}
       {selectedExp && (
         <div 
           className="modal modal-open"
-          onClick={() => setSelectedExp(null)}
+          onMouseDown={() => setSelectedExp(null)}
         >
           <div 
-            className="modal-box max-w-4xl max-h-[90vh] overflow-y-auto p-0"
-            onClick={(e) => e.stopPropagation()}
+            className="modal-box max-w-4xl w-11/12 max-h-[90vh] overflow-y-auto p-0"
+            onMouseDown={(e) => e.stopPropagation()}
           >
             {/* Close button */}
             <button 
@@ -629,6 +629,7 @@ const ExperiencePage = ({hashLinkId}) => {
                 </>
               )}
             </div>
+
           </div>
         </div>
       )}
