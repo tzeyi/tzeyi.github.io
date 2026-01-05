@@ -34,7 +34,7 @@ const HeroSection = () => {
             {/* Title */}
             <h1 className="text-base-content text-4xl md:text-6xl xl:text-7xl font-light leading-[0.95] tracking-tight">
               <span className="block">Hi, I'm</span>
-              <span className="block mt-3 font-serif italic">Tze Yi</span>
+              <span className="block mt-3 font-serif italic">Tze Yi (Ty)</span>
             </h1>
 
             {/* Description */}
@@ -47,12 +47,12 @@ const HeroSection = () => {
             <div className="h-px w-20 bg-base-content/20"></div>
           </div>
 
-          {/* Photo */}
+          {/* Right Photo */}
           <div className="relative flex items-center justify-center">
             <div className="relative w-74 h-74 md:w-92 md:h-92 xl:w-114 xl:h-114">
               
               <div className="w-full h-full rounded-full overflow-hidden border border-base-content/10 shadow-lg">
-                <img src="me.jpg" alt="Tze Yi" className="w-full h-full object-cover" />
+                <img src="me2.jpg" alt="Tze Yi" className="w-full h-full object-cover" />
               </div>
 
               {/* Decorative elements */}
@@ -244,10 +244,10 @@ const InterestSection = () => {
 
               <div className="flex justify-end">
                 <HashLink smooth to="/#contact" className="group inline-block">
-                  <div className="relative px-5 md:px-7 py-2.5 md:py-3 overflow-hidden">
+                  <div className="relative px-3 md:px-5 py-2 md:py-2 overflow-hidden">
                     <div className="absolute inset-0 border border-base-content/30 rounded-full" />
                     <div className="absolute inset-0 bg-base-content rounded-full scale-0 group-hover:scale-100 transition-transform duration-500" />
-                    <span className="relative text-[0.65rem] md:text-xs tracking-[0.2em] uppercase text-base-content group-hover:text-base-100 transition-colors duration-500">
+                    <span className="relative text-[0.5rem] md:text-xs tracking-[0.2em] uppercase text-base-content group-hover:text-base-100 transition-colors duration-500">
                       Say Hello
                     </span>
                   </div>

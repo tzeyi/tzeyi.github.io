@@ -36,16 +36,16 @@ const ProjectCardContent = ({ contents }) => {
 const ProjectListView = ({ project }) => {
   return (
     <article 
-        className="bg-base-100 border-2 border-base-300 rounded-lg overflow-hidden hover:border-base-content/30 hover:shadow-lg transition-all flex flex-col"
+        className="bg-base-100 border-2 border-base-content/30 rounded-lg overflow-hidden hover:border-base-content/70 hover:shadow-lg transition-all flex flex-col"
       >
         <div className="p-6 flex-1 flex flex-col">
           {/* Title */}
-          <h2 className="text-xl font-semibold mb-4 pb-3 border-b-2 border-base-300">
+          <h2 className="text-xl font-semibold mb-4 pb-3 border-b-2 border-base-content/30">
             {project.title}
           </h2>
 
           {/* Description */}
-          <div className="mb-5 flex-1">
+          <div className="mb-4 flex-1">
             <h3 className="text-xs uppercase tracking-wider text-base-content/50 mb-3 font-bold">
               Description
             </h3>
@@ -60,13 +60,13 @@ const ProjectListView = ({ project }) => {
           </div>
 
           {/* Tech Stack */}
-          <div className="mb-5">
+          <div className="mb-4">
             <h3 className="text-xs uppercase tracking-wider text-base-content/50 mb-3 font-bold">
               Tech Stack
             </h3>
             <div className="flex flex-wrap gap-2">
               {project.techStack.map((tech, i) => (
-                <span key={i} className="badge badge-neutral badge-outline text-xs">
+                <span key={i} className="badge badge-primary badge-outline text-xs">
                   {tech}
                 </span>
               ))}
@@ -74,7 +74,7 @@ const ProjectListView = ({ project }) => {
           </div>
 
           {/* Links */}
-          <div className="mb-5">
+          <div className="mb-4">
             {project.github && project.demo && (
                 <h3 className="text-xs uppercase tracking-wider text-base-content/50 mb-3 font-bold">
                   Links
@@ -112,11 +112,11 @@ const ProjectListView = ({ project }) => {
               <h3 className="text-xs uppercase tracking-wider text-base-content/50 mb-3 font-bold">
                 Gallery
               </h3>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-2">
                 {project.gallery.map((img, i) => (
                   <div 
                     key={i}
-                    className="rounded-lg overflow-hidden border-2 border-base-300 hover:border-primary transition-colors"
+                    className="flex-shrink-0 w-48 rounded-lg overflow-hidden border-2 border-base-300 hover:border-primary transition-colors"
                   >
                     <img 
                       src={img}
@@ -149,7 +149,7 @@ const ProjectPage = ({hashLinkId}) => {
         '/Project/NetworkFileServer/1.png',
         '/Project/NetworkFileServer/2.png'
       ],
-      techStack: ['C++', 'Linux', 'Sockets Programming'],
+      techStack: ['C++', 'Linux', 'Sockets'],
       github: null,
       demo: null,
       cardContent: (
@@ -172,17 +172,18 @@ const ProjectPage = ({hashLinkId}) => {
       cardBorderColor: 'bg-gradient-to-r from-gray-300 to-gray-400'
     },
     {
-      title: 'Frodo',
+      title: 'Frodo, Next-Gen ERP',
       bulletPoints: [
-        `Nowadays many ERPs privatize user data. Frodo provides a public, shared ERP for NGOs and small communities, promoting collaboration and transparency.`,
+        `Nowadays many ERPs privatize user data. Frodo provides a public, shared ERP for NGOs and small communities, encouraging collaboration and transparency.`,
         `It features a centralized dashboard with ticketing systems, discussion forums, map view, role-based access, and status updates.`,
         `Built with Firebase for Google authentication and Firestore for real-time NoSQL storage.`
       ],
       gallery: [
         '/Project/Frodo/1.png',
-        '/Project/Frodo/2.png'
+        '/Project/Frodo/2.png',
+        '/Project/Frodo/3.png',
       ],
-      techStack: ['React', 'Firebase', 'Tailwind', 'DaisyUI', 'Google Maps API', 'Figma'],
+      techStack: ['React', 'Firebase', 'Tailwind', 'DaisyUI'],
       github: 'https://github.com/tzeyi/Frodo',
       demo: 'https://www.youtube.com/watch?v=AD5UHdGuB8A',
       cardContent: (
@@ -194,7 +195,7 @@ const ProjectPage = ({hashLinkId}) => {
               description: "includes a centralized resource dashboard, ticketing system, discussion forum, map view, role-based access (admins and volunteers), and status updates."
             },
             {
-              icons: [{src: '/TechStack/firebase.webp', alt: 'Firebase'}],
+              icons: [{src: '/TechStack/Firebase.png', alt: 'Firebase'}],
               title: "Real time status updates and secure role based access",
               description: "includes a centralized resource dashboard, ticketing system, discussion forum, map view, role-based access (admins and volunteers), and status updates"
             }
@@ -207,9 +208,9 @@ const ProjectPage = ({hashLinkId}) => {
     {
       title: 'OS Thread & Pager Library',
       bulletPoints: [
-        "Implemented a thread library and CPU scheduler with synchronization primitives (mutexes, condition variables) using Linux's setcontext, swapcontext as well as shared pointer to manage thread lifetime resources",
-        "Used disabled interrupts and spinlocks to ensure mutual exclusion in multi-process, multi-threaded programs, suspending the CPU and context switching as needed to prevent busy waiting.",
-        "Built a pager library supporting file-backed and swap-backed files, managing page tables for virtual address translation with techniques like clock-queue eviction and copy-on-write to delay redundant writes."
+        "Built a thread library and CPU scheduler with synchronization primitives (mutexes, condition variables) using Linux's swapcontext and shared pointer to manage thread lifetime",
+        "Used disabled interrupts, spinlocks to ensure mutual exclusion and CPU suspension, context switch to prevent busy waiting",
+        "Built a pager library supporting file and swap-backed files, managing page tables for virtual address translation via page-faults, clock-queue eviction, copy-on-write"
       ],
       gallery: [
         '/Project/OSKernel/1.png', '/Project/OSKernel/2.jpg', '/Project/OSKernel/3.png', '/Project/OSKernel/4.png'
@@ -239,14 +240,14 @@ const ProjectPage = ({hashLinkId}) => {
     {
       title: 'MapReduce Search Engine',
       bulletPoints: [
-        "Built a local MapReduce framework using multi-process and multi-threaded servers to simulate a distributed system with manager and worker nodes, TCP/UDP communication, and heartbeat-based fault tolerance",
-        "Designed the MapReduce framework to accept input files and executable map and reduce jobs, efficiently processing large datasets into an output directory",
-        "Implemented a search engine on top of the framework that computes TF-IDF embeddings over 10,000+ Wikipedia pages, using three index servers that shard documents by document ID (e.g., docID % 3) to distribute query load, with a frontend search server routing requests accordingly",
+        "Built distributed MapReduce framework in Python with TCP, UDP protocols for job distribution and UDP heartbeat monitoring for worker fault tolerance, scoring and ranking 10,000+ Wikipedia documents using TF-IDF",
+        "Efficiently processes large datasets by accepting input files and user-defined executable map and reduce programs",
+        "Developed React search engine with Flask backend deployed on AWS EC2, implementing load balancing across 3 servers using modulo-based request distribution"
       ],
       gallery: [
         '/Project/MapReduce/1.png', '/Project/MapReduce/2.png', '/Project/MapReduce/3.png', '/Project/MapReduce/4.png'
       ],
-      techStack: ['Python', 'Flask', 'SQLite', 'React', 'Network Protocols', 'AWS EFS, EC2, ', 'Cypress', 'Pytest'],
+      techStack: ['Python', 'Flask', 'SQLite', 'React', 'Sockets', 'AWS EFS, EC2'],
       github: null,
       demo: null,
       cardContent: (
@@ -271,14 +272,13 @@ const ProjectPage = ({hashLinkId}) => {
     {
       title: 'VSee: VC & Startup Matchmaker',
       bulletPoints: [
-        "A web application that helps connecting Venture Capital with potential startups through a revolutionary AI persona matching mechanism",
+        "A web application that helps connecting Venture Capital with potential startups through a GenAI persona matching mechanism",
         "The application builts an AI persona for each of the users (VC/startup) based on fed-in data, and have the AI persona converse and simulate interview/pitching session to identify match and generate a more detailed analysis report",
-        "Benefits of the Application: Higher compatibility matching between VC and startup, More efficient match-making"
       ],
       gallery: [
-        '/Project/MapReduce/1.png'
+        '/Project/VSee/1.png', '/Project/VSee/2.png'
       ],
-      techStack: ['React', 'TailwindCSS', 'DaisyUI', 'Flask', 'Gemini 1.5 Flash', 'SQLite', 'Prompt Engineering'],
+      techStack: ['React', 'TailwindCSS', 'Flask', 'Gemini LLM', 'SQLite', 'Prompt Engineering'],
       github: 'https://github.com/tzeyi/Imagine-Hack24',
       demo: '/Project/VSee/VSaw.pdf',
       cardContent: (
@@ -297,7 +297,7 @@ const ProjectPage = ({hashLinkId}) => {
           ]}
         />
       ),
-      cardImage: '/Project/MapReduce.png',
+      cardImage: null,
       cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
     },
     {
@@ -606,7 +606,7 @@ const ProjectPage = ({hashLinkId}) => {
                     <div className="hover-3d">
                       <div className={`relative p-2 ${project.cardBorderColor} rounded-xl`}>
                         <div 
-                          className="card w-70 rounded-2xl bg-neutral-content"
+                          className="card w-70 rounded-2xl"
                         >
                           <figure className="text-xl">
                             <img 
@@ -629,7 +629,7 @@ const ProjectPage = ({hashLinkId}) => {
                             </h1>
                           </figure>
 
-                          <div className="absolute bottom-0 card-body m-2 p-2 bg-base-200/80 rounded-lg">
+                          <div className="absolute bottom-0 card-body m-2 p-2 bg-white/70 rounded-lg">
                             <div className="text-md leading-tight">{project.cardContent}</div>
                           </div>
                         </div>

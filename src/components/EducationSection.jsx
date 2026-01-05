@@ -17,7 +17,7 @@ const EducationSection = () => {
         { name: "Web Systems", tech: "React, Flask, SQLite, Sessions, Network Protocols, Distributed Compute" },
         { name: "Database Systems", tech: "SQL, Java (Oracle JDBC), ER Modeling, Query Optimization, ACID" },
         { name: "Cyber Security", tech: "C++, JavaScript, Cryptography, Wireshark, Web Exploits (CSRF, XSS, SQLi, Shellcode)" },
-        { name: "User-Centered Design", tech: "React, Firebase, Agile, UI/UX, Accessibility Design" }, 
+        { name: "Human-Centered Design", tech: "React, Firebase, Agile, UI/UX, Accessibility Design" }, 
         { name: "Data Analysis", tech: "R, Visualization, Hypothesis Testing, Linear Regression" },
         { name: "Computer Pragmatics", tech: "Shell Script, Customize Bash Shell, Regular Expression" }, 
       ]

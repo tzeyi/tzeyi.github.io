@@ -108,7 +108,7 @@ const ExperiencePage = ({hashLinkId}) => {
       ],
       images: ['blank.jpg', 'Experience/UMTRI/1.png', 'Experience/UMTRI/2.png', 'Experience/UMTRI/3.png', 'Experience/UMTRI/4.png', 'Experience/UMTRI/5.png'],
       logo: '/Logo/UMTRI.png',
-      tags: ['Vue.js', 'Chart.js', 'Google Maps API', 'VS Code Chrome Debugger']
+      tags: ['JavaScript', 'Vue', 'Chart.js', 'Google Maps API', 'VS Code Chrome Debugger']
     },
     {
       title: 'Software Engineer Intern',
@@ -262,29 +262,33 @@ const ExperiencePage = ({hashLinkId}) => {
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto px-4">
           {/* Header */}
-          <div className="text-center mb-10">
+          <div className="text-center mb-7">
             <div className="h-px w-56 bg-gradient-to-r from-transparent via-base-content/30 to-transparent mx-auto mb-6"></div>
-            <h1 className="text-3xl md:text-5xl font-light tracking-tight mb-4">
+            <h1 className="text-3xl md:text-5xl font-light tracking-tight mb-3">
               Experience
             </h1>
             <p className="text-base-content/60 font-light text-md">My professional and learning journey</p>
           </div>
           
           {/* Filter Tabs */}
-          <div className="tabs tabs-border justify-center mb-10 bg-base-200 inline-flex mx-auto w-full">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setFilter(cat.id)}
-                className={`tab flex-1 ${filter === cat.id ? 'tab-active font-medium' : ''} `}
-              >
-                {cat.label}
-              </button>
-            ))}
+          <div className="relative w-full mb-8">
+            <div className="w-full overflow-x-auto scrollbar-hide">
+              <div className="tabs tabs-border bg-base-200 flex w-max min-w-full">
+                {categories.map((cat) => (
+                  <button
+                    key={cat.id}
+                    onClick={() => setFilter(cat.id)}
+                    className={`tab whitespace-nowrap text-sm sm:text-base px-6 sm:flex-1 ${filter === cat.id ? 'tab-active font-medium' : ''}`}
+                  >
+                    {cat.label}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
 
           
-          {/* Cards Grid - 2 per row */}
+          {/* Cards Grid - 1, 2, 3 per row */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredExperiences.map((exp, index) => (
               <div 
@@ -295,22 +299,23 @@ const ExperiencePage = ({hashLinkId}) => {
 
                 {/* Card's front side w the content */}
                 <div className="absolute inset-0 transition-opacity duration-500 group-hover:opacity-0">
+                  {/* Clickable indicator - top right corner */}
+                  <div className="absolute top-6 right-6 text-base-content/60">
+                    <ExternalLink size={18} strokeWidth={1.5} />
+                  </div>
+
                   <div className="card-body p-5 h-full flex flex-col">
                     {/* Logo and Period */}
-                    <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center justify-between mb-1">
                       <div className="avatar">
-                        <div className="w-16 h-10 rounded-lg">
+                        <div className="w-19 h-11 rounded-lg">
                           <img src={exp.logo} alt={`${exp.company} logo`} className="object-cover" />
                         </div>
-                      </div>
-                      <div className="badge badge-outline badge-sm gap-1">
-                        <Calendar size={11} />
-                        {exp.period}
                       </div>
                     </div>
 
                     {/* Title and Company */}
-                    <div className="mb-2">
+                    <div className="mb-3">
                       <h2 className="text-xl font-semibold mb-1 leading-tight">{exp.title}</h2>
                       <div className="flex items-center gap-2 text-base text-base-content/70">
                         <Briefcase size={16} />
@@ -318,12 +323,6 @@ const ExperiencePage = ({hashLinkId}) => {
                       </div>
                     </div>
 
-                    {/* Location */}
-                    <div className="flex items-center gap-2 text-sm text-base-content/60 mb-2">
-                      <MapPin size={13} />
-                      <span>{exp.location}</span>
-                    </div>
-                    
                     {/* Description */}
                     <ul className="text-xs text-base-content/70 leading-relaxed mb-3 pl-4 list-disc overflow-hidden">
                       {exp.description.map((content, index) => (
@@ -363,7 +362,7 @@ const ExperiencePage = ({hashLinkId}) => {
           </div>
                     
         </div>
-      </div>  
+      </div>
 
       {/* Popup modal section */}
       {selectedExp && (
@@ -410,10 +409,10 @@ const ExperiencePage = ({hashLinkId}) => {
                         <Calendar size={11} />
                         <span className="text-[10px] sm:text-xs">{selectedExp.period}</span>
                       </div>
-                      <div className="badge badge-sm badge-ghost flex items-center gap-1 text-base-content/70">
+                      {/* <div className="badge badge-sm badge-ghost flex items-center gap-1 text-base-content/70">
                         <MapPin size={11} />
                         <span className="text-[10px] sm:text-xs">{selectedExp.location}</span>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
