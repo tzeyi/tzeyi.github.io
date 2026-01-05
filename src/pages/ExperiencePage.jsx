@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Briefcase, Calendar, MapPin, ExternalLink, X } from 'lucide-react';
+
 
 const ExperiencePage = ({hashLinkId}) => {
   const [selectedExp, setSelectedExp] = useState(null);
@@ -7,117 +8,82 @@ const ExperiencePage = ({hashLinkId}) => {
 
   const experiences = [
     {
-      title: 'HCI Research Assistant',
+      title: 'Software Engineer (Research)',
       company: 'Interactive Sensing & Computing Lab',
       location: 'Ann Arbor, MI',
       period: 'Aug 2024 - Dec 2025',
       type: ['Fullstack', 'Data / AI'],
       description: [
-        `Programmed an Orange Pi sensor to process (detect onset, clean and store) 96 kHz audio using multiprocessing, memory mapping, librosa, and NumPy to reduce latency by 60%`,
-        `Integrated Open AI's Whisper for audio transcription and implemented Wi-Fi provisioning logic to pair IoT devices with an iOS app`,
-        `Developed a SwiftUI data annotation app with Apple Push Notifications to receive real-time sensor data, backed by a Django and PostgreSQL backend with token-based authentication and authorization for security, hosted on-premise with HTTPS and Docker`,
-        `Preprocessed sensor and app data and fine-tuned an Audio Spectrogram Transformer to generate embeddings for a multimodal Mixture of Experts model using transfer learning for event recognition on inaudible frequencies`,
-        `Building on my mentor Dr. Yasha Iravantchi’s research in privacy-preserving daily activity recognition, this project extends beyond the lab to deployment in a university hospital, facilitating Multiple Sclerosis and Alzheimer’s research by safeguarding patient's privacy`
+        `Designed privacy-preserving audio sensing system for autoimmune disease (Multiple Sclerosis) research, achieving 75% activity classification accuracy by fine-tuning Hugging Face AST model with PyTorch`,
+        `Built real-time Python/NumPy audio processing pipeline with multiprocessing on Orange Pi hardware for 96kHz streams`,
+        `Developed full-stack annotation app with SwiftUI, Django, and PostgreSQL to label audio data for ML training, leveraging WiFi provisioning and token authentication for multi-sensor device pairing`,
+        `Building on my mentor Dr. Yasha Iravantchi’s PrivacyMic work, this project aims to use learned representations from inaudible audio as inputs for a privacy-preserving, multi-modal Mixture-of-Experts model spanning all 5 senses in hospital setting`
       ],
       challenges: [
         [
-          `Avoiding lost audio chunks while maintaining low latency`,
-          `After completing the iOS app, we discovered the legacy sensor code was dropping audio chunks due to OS sleep, timer resets, and inaccurate sampling. I reworked the system on a 4-core Orange Pi by pinning each process to a dedicated CPU core and assigning the highest nice priority to prevent sporadic thread shutdowns. Using Audacity spectrograms, I fine-tuned microphone latency, dither, and callback parameters, ultimately identifying 96 kHz as the most stable sampling rate.`
+          `Preventing dropped audio chunks, while maintaining low latency`,
+          `Early testing revealed silent failures on legacy system caused by OS sleep, timer drift, and sampling jitter. I rebuilt the pipeline on a 4-core Orange Pi, pinning processes to dedicated cores and tuning priorities and microphone parameters until 96 kHz proved consistently stable`
         ],
         [
-          `HIPAA-compliant storage for patient data`,
-          `To keep infrastructure costs low while using existing university resources, I deployed the Django backend on an on-premise university HIPAA-compliant server using Docker. User data and audio labels are stored securely on the server, with detected audio files saved to the university Dropbox as blob storage.`
+          `Designing for HIPAA-compliant storage, while saving cost`,
+          `To balance cost and compliance, I containerized the Django backend on a university HIPAA-compliant server, storing patient metadata securely on-prem while using university Dropbox as blob storage for detected audio segments`
         ],
         [
-          `Background noise degrading onset detection`,
-          `During lab testing, I observed performance degradation near fans and other equipment. With guidance from my mentor, I added a bandpass filter and subtracted pre-recorded background FFTs from the raw audio prior to onset detection, significantly improving reliability.`
-        ],
-        [
-          `Apple Push Notifications in SwiftUI`,
-          `Local testing was challenging since the iOS simulator does not support Apple Push Notifications. To address this, I released multiple TestFlight builds and coordinated with university staff to manage licenses and the Apple Developer account.`
-        ],
-        [
-          `Simplifying sensor–app pairing process`,
-          `Hard-coding device IDs and manually configuring Wi-Fi proved too cumbersome during testing. I implemented Wi-Fi provisioning, allowing users to seamlessly pair multiple sensors and connect them to the network without logging into the Orange Pi.`
+          `Making onset detection robust to noisy lab environments`,
+          `Fans and nearby equipment introduced noise that broke early onset detection. By adding bandpass filtering and subtracting pre-recorded background FFTs, I significantly improved reliability in varying conditions`
         ],
         [
           `Rapid prototyping an Audio Spectrogram Transformer model`,
-          `To accelerate experimentation with the Audio Spectrogram Transformer, I applied transfer learning by freezing all layers except the final feed forward layer (fine tune head layer) and increased the patch size to reduce training time. For early evaluation of daily bathroom activities (e.g., toilet flushing), I reduced the output to five classes and trained the model on a truncated ESC-50 dataset.`
+          `To overcome limited audio data, I applied transfer learning and Hugging Face AST data augmentation, reducing output to five classes for early evaluation of daily bathroom/kitchen activities and accelerating experimentation`
         ]
       ]
       ,
       links: [
         ['Lab Website', 'https://theisclab.com/'],
-        ['Original Research Paper', 'https://theisclab.com/projects/PrivacyMic/PrivacyMic.html'],
+        ['PrivacyMic Paper', 'https://theisclab.com/projects/PrivacyMic/PrivacyMic.html'],
         ['Audio Spectrogram Transformer', 'https://arxiv.org/abs/2104.01778'],
-        ['Faster Whisper Model', 'https://github.com/moonshine-ai/useful-transformers'],
-        ['Apple Push Notifications Limitation', 'https://medium.com/@jpmtech/your-complete-guide-to-push-notifications-in-swiftui-8a13f5588662']
       ],
       images: [
         'blank.jpg', 'Experience/ISCLab/1.png', 'Experience/ISCLab/2.png', 'Experience/ISCLab/3.png', 'Experience/ISCLab/4.png', 'Experience/ISCLab/5.png', 'Experience/ISCLab/6.png', 'Experience/ISCLab/7.png', 'Experience/ISCLab/8.mp4', 'Experience/ISCLab/9.mp4'
       ],
-      imageCaptions: [
-        'Limited edition stickers of our lab & professor!',
-        'Our Mic board and Orange PI sensor',
-        'Poster for UMich College of Engineering research symposium',
-        'High-level architecture diagram of our project, shared with labm ates and mentors',
-      ],
       logo: '/Logo/ISC.png',
-      tags: ['IoT', 'Swift', 'Django', 'Machine Learning', 'Hugging Face', 'PostgreSQL', 'Docker']
+      tags: ['Python', 'Django', 'Machine Learning', 'PostgreSQL', 'Docker']
     },
     {
-      title: 'Solutions Engineer Intern',
+      title: 'Solutions Architect Intern',
       company: 'IBM',
       location: 'Selangor, Malaysia',
       period: 'May 2025 - Aug 2025',
       type: ['People Skills', 'Data / AI', 'Infrastructure'],
       description: [
-        `Assisted my mentor by creating architectural diagrams for clients, setting up sandbox environments for IBM Maximo & IBM Cloud Pak for Data, and preparing documentation for business partners to configure the system`,
-        `Built and presented an IBM Maximo PoC demo to energy companies, showcasing anomaly detection and asset life prediction with automated model selection (e.g., Random Forest, Gaussian Mixture Models), addressing customization and industry-standard questions`,
-        `Trained business partners (implementers) on IBM Maximo's 5-node OpenShift deployment, supporting a six-figure enterprise deal`,
-        `Resolved 3 IBM Maximo installation and ML training issues blocking global sales demos by debugging Kubernetes pods, OpenShift configurations, and scikit-learn code, restoring functionality within three weeks`,
-        `Created documentation and prototypes in LangGraph and Elasticsearch during the deployment of a RAG chatbot serving 2.5+ million potential users, incorporating insights from colleagues, client consultations, and assurance tests to support future deployments`
+        `Led deployment of IBM Maximo's AI-powered asset maintenance platform on OpenShift for energy client, delivering PoC demo and workshops addressing client questions on model accuracy and industry standards`,
+        `Co-led enablement sessions training 7 business partners on Maximo deployment strategies in OpenShift, creating training materials for technical workshops`,
+        `Resolved critical OpenShift installation failures by debugging system logs and YAML configurations in collaboration with IBM's global engineering team, directly preventing loss of a $95K/year renewal contract`,
+        `Researched and prototyped LangGraph-based RAG chatbot (Python, WatsonX, Elasticsearch) with explicit state management for healthcare client, demonstrating improved multi-turn conversation accuracy over production LangChain system`
       ],
       challenges: [
         [
-          `Building a customizable demo environment from scratch`,
-          `IBM TechZone provides pre-configured, scripted environments, but the client needed a fully customizable setup to demonstrate the latest asset life scoring and predictive maintenance capabilities. I provisioned a blank 5-node OpenShift cluster and installed Maximo using Docker and Ansible, preparing slide decks and documentation to showcase successful installation steps, new features, and customization options.`
+          `Building a customizable demo from scratch when off-the-shelf wasn't enough`,
+          `IBM TechZone's pre-built Maximo environments were outdated and locked down—but our client needed the latest features with full customization. I taught myself OpenShift provisioning and Ansible automation to build a 5-node cluster from the ground up, giving the team complete control over client demos and eliminating dependency on rigid TechZone templates.`
         ],
         [
-          `First upgrade in the nation`,
-          `Maximo 7.6 runs on WebSphere, while newer versions are fully containerized on OpenShift. With few prior examples to follow, I studied official documentation, completed product certification, and learned Kubernetes to support the upgrade. Given Maximo’s distributed architecture and its many version-dependent components (e.g., Kafka with deprecated ZooKeeper and Red Hat Marketplace operators), I helped resolve dependency issues and supported training for business partners and implementers.`
+          `Supporting first upgrade journey in the nation`,
+          `Our client's upgrade from Maximo 7.6 (WebSphere) to containerized OpenShift was one of the first in the nation—meaning almost no documentation or playbooks existed. I earned IBM product certification in two weeks, crash-coursed Kubernetes, and spent days debugging dependency conflicts between Kafka, deprecated ZooKeeper, and Red Hat Marketplace. Each fix required deep dives into architecture docs, pods log and versioning compatibility testing in sandboxed environments.`
         ],
         [
-          `Client seeking plug-and-play notebook without additional training`,
-          `During initial discussions, the client requested ready-to-use models with minimal setup, but Maximo’s Electrical Distribution notebooks were missing after installation. I traced the issue to a configuration mismatch between IBM Cloud Pak for Data and IBM Maximo caused by Red Hat Marketplace deprecations, and worked with senior engineers to resolve it, enabling the models to run successfully ahead of my presentation.`
+          `Debugging a critical issue across three continents`,
+          `2 weeks before a major client presentation, critical pre-built asset health models failed to appear post-installation. I traced the issue through logs to a configuration mismatch between Maximo and IBM Cloud Pak for Data caused by Red Hat Marketplace deprecations. Working across time zones, I coordinated with engineers and sellers in Australia, the US, and India to troubleshoot with product engineers. The biggest challenge was that Malaysia had no local product engineers with access to the codebase, requiring late-night calls across vastly different time zones to implement necessary fixes.`
         ],
-        [
-          `Time zone challenges and finding the right expert`,
-          `With no local Maximo specialists in Malaysia, I proactively reached out to engineers across Australia, the US, and India via Slack and Outlook. I shared findings, flagged bugs affecting other teams, and implemented temporary fixes by adjusting YAML parameters under guidance from a senior engineer.`
-        ],
-        [
-          `Gaps in chatbot deployment experience`,
-          `While prototyping a healthcare chatbot using LangChain for RAG, performance was limited. I integrated LangGraph to enable memory and clarifying questions, forming a hybrid solution. This led me to study LLM architectures, model selection, and hyperparameters, strengthening my understanding of production-ready deployments.`
-        ],
-        [
-          `Communicating technical ideas to non-technical audiences`,
-          `After deep technical work, I noticed I was over-explaining details that didn't matter to my audience. I learned to focus on what mattered by aligning with sales decks and keeping concise notes. I also found that stepping away—reading, watching a show, or playing pickup basketball—helped me reset and communicate more clearly.`
-        ]
       ],
       links: [
-        ['IBM Maximo CLI installation guide (includes dependencies & catalog versions)', 'https://ibm-mas.github.io/cli/guides/install/'],
-        ['IBM Maximo Electrical Distribution notebooks (plug-and-play)', 'https://www.ibm.com/docs/en/mhmpmh-and-p-u/cd?topic=models-maximo-health-default-notebooks-asset-class-notebooks'],
-        ['IBM Maximo Health & Predict demo', 'https://www.youtube.com/watch?v=0FSF7jGtFg0'],
-        ['IBM Watsonx.ai used for RAG chatbot and Maximo asset prediction capabilities', 'https://www.ibm.com/docs/en/watsonx/saas?topic=models-build-model-in-jupyter-notebook'],
+        ['Maximo CLI installation', 'https://ibm-mas.github.io/cli/guides/install/'],
+        ['Electrical Distribution Models (What I fixed)', 'https://www.ibm.com/docs/en/mhmpmh-and-p-u/cd?topic=models-maximo-health-default-notebooks-asset-class-notebooks'],
+        ['Watsonx stack for RAG', 'https://dataplatform.cloud.ibm.com/docs/content/wsj/analyze-data/fm-rag.html?context=wx'],
+        ['Kafka Deprecation', 'https://www.ibm.com/mysupport/s/defect/aCIgJ0000000pddWAA/dt439002?language=en_US']
       ],
       images: ['blank.jpg', 'Experience/IBM/1.png', 'Experience/IBM/2.png', 'Experience/IBM/3.png', 'Experience/IBM/4.svg'],
-      imageCaptions: [
-        'Last day at office with lunch buddies',
-        'Group photo of the event planning team that I joined, helping out with booths and logistics',
-        'Watsonx Orchestrate Challenge event, demonstrating IBM agentic AI capabilities'
-      ],
       logo: '/Logo/IBM.svg',
-      tags: ['Client Engangement', 'Partner Enablement', 'ERP', 'OpenShift', 'RAG', 'LLMs', 'ElasticSearch']
+      tags: ['Client Delivery', 'OpenShift', 'Python', 'Retrieval Augment Generation (RAG)', 'LLMs']
     },
     {
       title: 'Front End Developer',
@@ -126,34 +92,23 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'Dec 2024 - Mar 2025',
       type: 'Fullstack',
       description: [
-        `Enhanced query tool for 500,000+ vehicle crash records by building dashboards with Chart.js and Google Maps API, reusable
-        Vue.js components that reduced codebase by ~100 lines, and integrating new PHP backend services`,
-
-        `Modernized a legacy website for the Michigan Office of Highway Safety by conducting QA testing and fixing responsive, state
-        management and design consistency bugs using Chrome DevTools to ensure proper display across all screen sizes`
+        `Migrated legacy jQuery query tool to modern Vue.js/Vuetify architecture, improving UI design and code maintainability`,
+        `Built interactive dashboards using Chart.js and Google Maps API to visualize 500K+ crash records for Michigan highway
+        safety researchers, integrating legacy PHP backend services`
       ],
       challenges: [
         [
-          `Debugging state bugs`,
-          `The query tool had many filter combinations, which led to state bugs where JavaScript data wasn't updating despite button clicks, and edge cases where error messages didn't display when they should. Learning to use VSCode's Chrome debugger with breakpoints and console logs helped me systematically debug these issues.`
-        ],
-        [
-          `Understanding the codebase quickly`,
-          `My 3-month contract focused on migrating from a legacy frontend to a new Vue and Vuetify implementation, which meant working with existing PHP backend code. By learning PHP basics and leveraging my existing MVC knowledge from Node.js, I got up to speed after the initial 2-week learning phase. Understanding both frontend and backend proved useful—I could trace bugs to their root cause in the REST API rather than just the frontend, making debugging much more efficient.`
+          `Understanding the codebase quickly`, 
+          `With a 3-month deadline to deliver to the Michigan Office of Highway Safety, I had to learn the existing codebase (PHP backend, Vue frontend) quickly. Leveraging transferable knowledge of MVC from Express.js and component architecture from React, I got up to speed after an initial 2-week learning phase. Understanding the backend proved useful, enabling me to efficiently trace root cause in API endpoints`
         ]
       ],
       links: [
-        ['Michigan Traffic Crash Facts (MTCF) overview', 'https://www.umtri.umich.edu/facilities-capabilities/data-analytics/'],
+        ['MTCF Overview', 'https://www.umtri.umich.edu/facilities-capabilities/data-analytics/'],
         ['MTCF Query Tool', 'https://www.michigantrafficcrashfacts.org/data/querytool/#q1;0;2024;;'],
       ],
-      images: ['blank.jpg', 'Experience/UMTRI/1.png', 'Experience/UMTRI/2.png', 'Experience/UMTRI/3.png', 'Experience/UMTRI/4.png'],
-      imageCaptions: [
-        'My workstation at the transportation research institute',
-        'County Map visualization, one of the UIs I helped built. Used D3.js and legacy website as reference',
-        'My personal documentation on quality assurance tests and bug fixes'
-      ],
+      images: ['blank.jpg', 'Experience/UMTRI/1.png', 'Experience/UMTRI/2.png', 'Experience/UMTRI/3.png', 'Experience/UMTRI/4.png', 'Experience/UMTRI/5.png'],
       logo: '/Logo/UMTRI.png',
-      tags: ['Vue.js', 'Google Maps API', 'Chart.js', 'Chrome DebugTool']
+      tags: ['Vue.js', 'Chart.js', 'Google Maps API', 'VS Code Chrome Debugger']
     },
     {
       title: 'Software Engineer Intern',
@@ -162,44 +117,28 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'May 2024 - Aug 2024',
       type: ['Fullstack', 'Data / AI', 'Infrastructure'],
       description: [
-         `Built a Django pipeline to parse data, pull API sources and calculate portfolio carbon emissions, utilizing AWS S3 and logging
-        for data persistence; communicated its architecture to clients, helping sales team close deal with a multi billion dollar company`,
-
-        `Reduced enterprises’ API fetch time by 50% with AWS SNS and Lambda for asynchronous retrieval, and created a financial
-        report MVP in AWS QuickSight after decoupling its background generation with RabbitMQ task queue`,
-        
-        `Designed database models with multi-foreign key relations to manage 5,000+ records, and optimized queries to eliminate N+1
-        query problems, reducing load times across multiple pages by ~300ms in production`,
-        
-        `Deployed GitHub Actions to automate test cases and wrote AWS CloudFormation templates to provision cloud resources`
+        `Built carbon emissions calculator for portfolio, supporting sales team on technical document that closed investment firm deal`,
+        `Developed Python/Pandas data pipeline to fetch and clean data from Bloomberg API, Excel input files and PCAF-accredited datasets, optimized with AWS Lambda and SNS for 50% faster async retrieval`,
+        `Designed PostgreSQL schema for 5 asset classes and resolved N+1 query issues, reducing page load by 300ms in production`,
+        `Implemented Django REST API with RabbitMQ task queue for async carbon calculations and QuickSight report generation`
       ],
       challenges: [
         [
-          `CI/CD automated tests failing`,
-          `While submitting a pull request, I noticed my regression tests failing. I traced the issue to an outdated Python version on the GitHub Actions runner, which did not match our dev and prod environments. Since the runner was hosted on AWS Lightsail and could not be reconfigured, I documented the cost–benefit analysis and proposed migrating it to EC2 to allow version updates. The proposal was later accepted and implemented.`
+          `Fixing the system, not just the symptom`,
+          `When CI/CD tests failed during a pull request, I traced the issue to a Python version mismatch between local, production, and the GitHub Actions runner. Because the runner on AWS Lightsail couldn’t be updated, I documented the trade-offs and proposed migrating to EC2 to regain environment parity. The proposal was later approved and implemented.`
         ],
         [
-          `Learning to pick up new knowledge quickly`,
-          `Working in a startup with only three senior engineers, I learned to ask the right questions and acquire new concepts independently. For example, while fixing a ticket that required simulating a ModSecurity firewall using Docker and NGINX, I had no prior experience with these tools. I learned to clearly document my findings and failed attempts at a digestible level, which made it easier for others to help unblock me.`
-        ],
-        [
-          `Expanding beyond software engineering`,
-          `Startups require employees to be multifaceted. When a feature my team built was purchased by a client, I volunteered to support the business development team by creating technical architecture diagrams and data specification documents. This experience gave me perspective on the 80/20 rule—how tasks like researching carbon accounting standards or organizing Excel data could meaningfully contribute to a major deal—and motivated me to invest more in soft skills and industry knowledge.`
+          `20/80 rule`,
+          `In a startup, code without business impact doesn’t create a product. I volunteered to help the sales team translate system architecture into clear data specifications, reducing client ambiguity. This experience reinforced the value of pairing technical depth with communication, relationships and industry knowledge`
         ]
       ],
       links: [
-        ['Pantas website', 'https://pantas.com/pcaf-financed-emission'],
-        ['Financed Emission Quick Read', 'https://www.eco-business.com/news/as-scope-3-reporting-deadline-looms-malaysian-smes-under-pressure-to-provide-sustainability-disclosures/'],
-        ['Official National Sustainabiity Reporting Framework (references scope 3 emissiosn)', 'https://www.investmalaysia.gov.my/media/swqntak1/national-sustainability-reporting-framework.pdf'],
+        ['Pantas', 'https://pantas.com/pcaf-financed-emission'],
+        ['Portfolio (Scope 3) Emissions', 'https://www.eco-business.com/news/as-scope-3-reporting-deadline-looms-malaysian-smes-under-pressure-to-provide-sustainability-disclosures/'],
       ],
       images: ['blank.jpg', 'Experience/Pantas/1.png', 'Experience/Pantas/2.png', 'Experience/Pantas/3.png', 'Experience/Pantas/4.png'],
-      imageCaptions: [
-        'My workstation at the transportation research institute',
-        'County Map visualization, one of the UIs I helped built. Used D3.js and legacy website as reference',
-        'My personal documentation on quality assurance tests and bug fixes'
-      ],
       logo: '/Logo/Pantas.png',
-      tags: ['Django', 'AWS', 'Database Design', 'RabbitMQ', 'Data Pipeline', 'Data Specification', 'Bloomberg API', 'DevOps Automation']
+      tags: ['Python', 'Django', 'AWS', 'PostgreSQL', 'RabbitMQ', 'Data Pipeline', 'DevOps']
     },
     {
       title: 'IT Consultant',
@@ -213,18 +152,13 @@ const ExperiencePage = ({hashLinkId}) => {
       challenges: [
         [
           `Customer service stems from making the customer feel heard`,
-          `After interacting with faculty members—from professors and deans to librarians—I realized that effective support isn’t just about technical fixes like reboots or running backups. What truly matters is making the customer feel heard. Sharing small talk and engaging with their stories, whether about migrating from Japan or navigating the 2008 financial crisis, made every interaction meaningful and memorable.`
+          `Working with faculty, from deans, professors to librarians, taught me that effective support isn’t just about technical fixes. Whether the solution is simple or complex, taking time to listen, engage, and reassure makes all the difference. Contrary to popular belief, small talk matters!`
         ]
       ],
-      links: [['TeamDynamix, IT support & PPM tool', 'https://its.umich.edu/enterprise/crm-ticketing/teamdynamix']],
+      links: [['TeamDynamix (Ticketing Tool I Used)', 'https://its.umich.edu/enterprise/crm-ticketing/teamdynamix']],
       images: ['blank.jpg', 'Experience/ITS/1.png', 'Experience/ITS/2.png', 'Experience/ITS/3.png', 'Experience/ITS/4.png'],
-      imageCaptions: [
-        'My workstation at the transportation research institute',
-        'County Map visualization, one of the UIs I helped built. Used D3.js and legacy website as reference',
-        'My personal documentation on quality assurance tests and bug fixes'
-      ],
       logo: '/Logo/ITS.png',
-      tags: ['Hardware & Software Troubleshoot', 'Communication', 'Asset Audit', 'Patience :)']
+      tags: ['Customer Service', 'Communication', 'Patience :)']
     },
     {
       title: 'Project Lead',
@@ -233,28 +167,23 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'Jun 2024 - Apr 2025',
       type: ['Fullstack', 'People Skills'],
       description: [
-        `Led the development of an interview preparation app with a built-in recommendation system by setting up CI/CD workflows, designing Figma wireframes collaboratively and reviewing Github pull requests`,
-        `Also hosted weekly Hacknights to teach Swift, Git and REST APIs`
+        `Led development of an interview prep app with a built-in recommendation system by setting up CI/CD workflows, designing Figma wireframes collaboratively, and reviewing merge requests`,
+        `Organized the team into design, frontend, and backend groups, and hosted weekly Hacknights to teach Swift, Git, and REST APIs`
       ],
       challenges: [
         [
           `Finding the right pace for everyone`,
-          `During this project, I faced the challenge of teaching and creating material that was approachable for beginners yet engaging for more experienced students. Our team included both freshmen and juniors, so I needed to strike a balance. Feedback showed some wanted a faster-paced environment, while others needed fundamentals. For the next semester, I created a detailed onboarding document and beginner-friendly project, while letting experienced students jump straight into hands-on work.`
+          `During this project, I faced the challenge of teaching and creating material that was approachable for beginners yet engaging for more experienced students. Feedback showed some wanted a faster-paced environment, while others looked for fundamentals. For the next semester, my co-lead and I created a detailed onboarding document and beginner-friendly project, while letting experienced students jump straight into hands-on work.`
         ],
         [
           `Balancing speed and code quality`,
-          `This project reinforced the importance of balancing rapid development with maintainable code. Reflecting on my decisions, I realized I could have prioritized differently: instead of strictly following MVVM, I could have written modular code, or used Firebase instead of hosting a personal Flask server on EC2 with Route 53. These changes would have sped up development and better suited the project context.`
+          `This project reinforced the importance of balancing rapid development with maintainable code. Reflecting on my decisions, I realized I could have prioritized differently: instead of strictly following MVVM, I could have written modular code; used Firebase instead of tediously hosting Flask server on EC2 + Route 53. These changes would have sped up development and better suited the project context.`
         ]
       ],
-      links: [['Michigan Hackers Website', 'https://michhackers.com/']],
+      links: [['Michigan Hackers', 'https://michhackers.com/']],
       images: ['blank.jpg', 'Experience/MHackers/1.png', 'Experience/MHackers/2.png', 'Experience/MHackers/3.png', 'Experience/MHackers/4.mp4'],
-      imageCaptions: [
-        'My workstation at the transportation research institute',
-        'County Map visualization, one of the UIs I helped built. Used D3.js and legacy website as reference',
-        'My personal documentation on quality assurance tests and bug fixes'
-      ],
       logo: '/Logo/MHackers.png',
-      tags: ['Swift', 'Flask', 'Scikit-Learn', 'AWS', 'Project Planning']
+      tags: ['Swift', 'Python', 'Flask', 'Scikit-Learn', 'AWS', 'Project Planning']
     },
     {
       title: 'Software Engineer Intern',
@@ -263,29 +192,19 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'May 2023 - Aug 2023',
       type: ['Data / AI'],
       description: [
-        `Automated extraction and cleaning of data from 1,500+ PDFs and web pages using Google's PyTesseract OCR, web scraper, Pandas`,
-
-        `Also researched and developed a chatbot using React.js and Microsoft's Copilot Studio, handling live agent escalations to notify Microsoft Teams`
+        `Automated data extraction from 1,500+ PDFs/web sources via Google Tesseract OCR and web scraping, increasing team productivity by 250%`,
+        `Wrote Express.js REST API, integrated with Microsoft Power Automate, to query user data and notify MS Teams during live agent escalations`
       ],
       challenges: [
         [
           `Handling unstructured data`,
-          `After converting PDF images to text with PyTesseract OCR, the resulting text files had missing letters and were not in a table format suitable for a relational database. I used Pandas and learned regular expressions to detect new entries, using patterns like "Company Name:" to mark the start of a record or truncated columns like "Dat:" for dates. While about 15% of the data still had typos, I discussed it with my manager and agreed on a practical middle ground.`
+          `After converting PDFs to text with OCR, much of the data was messy (missing letters) and not in a tabular format. I used Pandas and Regular Expressions to determine the start of new rows and fix truncated fields. About 15% of the data still had errors, so I discussed a practical middle ground with my manager`
         ],
-        [
-          `Pivoting amid platform limitations`,
-          `I was initially tasked with building a chatbot using Microsoft Power Virtual Agent, but the platform was being deprecated and much of the documentation was outdated. After discussing these constraints with my manager, I proposed a more flexible approach using Power Automate, which allowed us to connect to a Node.js REST API for SQL queries and integrate with Microsoft Teams for agent escalation.`
-        ]
       ],
-      links: [['Opus Asset Management Website', 'https://www.opusasset.com/about-us/']],
+      links: [['Opus Asset Management', 'https://www.opusasset.com/about-us/']],
       images: ['blank.jpg', 'Experience/Opus/1.png', 'Experience/Opus/2.png', 'Experience/Opus/3.png'],
-      imageCaptions: [
-        'My workstation at the transportation research institute',
-        'County Map visualization, one of the UIs I helped built. Used D3.js and legacy website as reference',
-        'My personal documentation on quality assurance tests and bug fixes'
-      ],
       logo: '/Logo/Opus.png',
-      tags: ['Data Extraction','Web Scrape', 'OCR', 'Pandas', 'Chatbot', 'Node.js']
+      tags: ['Python', 'Express.js', 'Data Extraction', 'Web Scrape']
     },
     {
       title: 'Head of Activities',
@@ -294,29 +213,19 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'Apr 2022 - Jun 2023',
       type: ['People Skills'],
       description: [
-        `Led a team in organizing a Homecoming event for 250+ students and alumni, managing event-day logistics and performers recruitment`,
-
-        `Also planned some other events like a 4th July student gathering and charity drives, where my team and I liaised with food trucks, sold second-hand books alongside traditional Malaysian foods, and facilitated events as the emcee`
+        `Led a team to organize a Homecoming event for 250+ students and alumni, securing over RM10,000 in sponsorship and managing event-day logistics and performer recruitment`,
+        `Planned other events, including a 4th of July student gathering and charity drives, coordinating with food trucks, selling second-hand books/traditional Malaysian foods, and serving as the emcee`
       ],
       challenges: [
         [
           `Dealing with unpredictability`,
-          `While planning our Homecoming event, a scheduled band canceled just two weeks before the show. I called an emergency meeting, reached out to our program advisor for alumni performer contacts, and personally cold-messaged past performers. I also delegated tasks for the team to attend campus dance and talent events to recruit alternatives. We adjusted compensation with our advisor to make participation more appealing. In the end, we were able to replace the band and add an additional dance group.`
-        ],
-        [
-          `Valuing everyday interactions`,
-          `While preparing for Homecoming, we were short on hands for decorations and recruiting performers. A band member joined through a friend I had grown close to in music class, and another friend helped with setup. Volunteering as a helper for other groups and attending campus events helped me build these relationships. It reminded me that everyday interactions and small gestures can quietly make a big difference.`
+          `Two weeks before Homecoming, our scheduled band canceled, and I realized how fragile plans can be. I reached out to alumni performers through our advisor, messaged past performers, and coordinated with the team to scout talent at campus events. We also adjusted compensation to encourage participation. In the end, we replaced the band and even added an extra dance group. This was a reminder to always stay calm, resourceful and flexible`
         ]
       ],
-      links: [['AUP Instagram Page', 'https://www.instagram.com/p/ClYf24wv7qv/']],
+      links: [['AUP Instagram', 'https://www.instagram.com/p/ClYf24wv7qv/']],
       images: ['blank.jpg', 'Experience/AUP/1.png', 'Experience/AUP/2.png', 'Experience/AUP/3.png', 'Experience/AUP/4.png', 'Experience/AUP/5.png'],
-      imageCaptions: [
-        'My workstation at the transportation research institute',
-        'County Map visualization, one of the UIs I helped built. Used D3.js and legacy website as reference',
-        'My personal documentation on quality assurance tests and bug fixes'
-      ],
       logo: '/Logo/AUP.jpg',
-      tags: ['Event Planning', 'Collaboration', 'Leadership', 'Community Outreach']
+      tags: ['Event Planning', 'Communication', 'Leadership', 'Community Outreach']
     },
   ];
 
@@ -334,7 +243,19 @@ const ExperiencePage = ({hashLinkId}) => {
     : experiences.filter(exp => exp.type.includes(filter));
       // exp.type === filter);
 
-  const techColors = ['badge-primary', 'badge-secondary', 'badge-accent', 'badge-info', 'badge-success', 'badge-warning', 'badge-neutral', 'badge-error'];
+  const techColors = [ 'badge-accent', 'badge-primary', 'badge-secondary','badge-info', 'badge-success', 'badge-warning', 'badge-neutral', 'badge-error'];
+
+  // Prevent background scolling when modal is opened
+  useEffect(() => {
+  if (selectedExp) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'unset';
+  }
+  return () => {
+    document.body.style.overflow = 'unset';
+  };
+}, [selectedExp]);
 
   return (
     <div id={hashLinkId} className="min-h-screen py-20">
@@ -368,7 +289,7 @@ const ExperiencePage = ({hashLinkId}) => {
             {filteredExperiences.map((exp, index) => (
               <div 
                 key={index}
-                className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer border border-base-300 overflow-hidden group relative h-[420px]"
+                className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer border border-base-content/20 overflow-hidden group relative h-[420px]"
                 onClick={() => setSelectedExp(exp)}
               >
 
@@ -442,337 +363,179 @@ const ExperiencePage = ({hashLinkId}) => {
           </div>
                     
         </div>
-      </div>
-      
+      </div>  
+
       {/* Popup modal section */}
       {selectedExp && (
-        <div 
-          className="modal modal-open"
-          onMouseDown={() => setSelectedExp(null)}
+        <div
+          className="modal modal-open fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-2 sm:p-4 overflow-y-auto"
+          onClick={() => setSelectedExp(null)}
+          onWheel={(e) => e.stopPropagation()}
         >
-          <div 
-            className="modal-box max-w-4xl w-11/12 max-h-[90vh] overflow-y-auto p-0"
-            onMouseDown={(e) => e.stopPropagation()}
+          <div
+            className="w-full max-w-4xl rounded-xl relative bg-base-100 shadow-2xl my-4 sm:my-8"
+            onClick={(e) => e.stopPropagation()}
+            style={{ maxHeight: '92vh', display: 'flex', flexDirection: 'column' }}
           >
             {/* Close button */}
-            <button 
-              className="btn btn-circle btn-sm absolute right-4 top-4 z-30 bg-base-100/80 backdrop-blur-sm"
+            <button
+              className="btn btn-circle btn-sm absolute top-3 right-3 sm:top-4 sm:right-4 bg-base-200/80 hover:bg-base-300 z-10 backdrop-blur-sm"
               onClick={() => setSelectedExp(null)}
             >
-              <X size={20} />
+              <X size={16} />
             </button>
 
-            {/* Document overview content */}
-            <div className="p-8">
-              {/* Header */}
-              <div className="mb-8">
-                <div className="flex items-start gap-6 mb-5">
-                  <div className="avatar">
-                    <div className="w-25 h-15 rounded-lg">
-                      <img src={selectedExp.logo} alt={`${selectedExp.company} logo`} />
+            {/* Scrollable content */}
+            <div 
+              className="overflow-y-auto flex-1 px-4 py-5 sm:p-6"
+              style={{ overscrollBehavior: 'contain' }}
+            >
+              <div className="space-y-3 sm:space-y-4">
+                {/* Header */}
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="avatar flex-shrink-0">
+                    <div className="w-18 h-12 sm:w-20 sm:h-12 rounded-lg bg-base-200 flex items-center justify-center overflow-hidden">
+                      <img 
+                        src={selectedExp.logo} 
+                        alt={`${selectedExp.company} logo`}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
-                  <div className="flex-1">
-                    <h2 className="text-3xl font-light mb-2 leading-tight">{selectedExp.title}</h2>
-                    <p className="text-xl text-base-content/70">{selectedExp.company}</p>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  <div className="badge badge-outline badge-lg gap-2">
-                    <Calendar size={16} />
-                    <span>{selectedExp.period}</span>
-                  </div>
-                  <div className="badge badge-outline badge-lg gap-2">
-                    <MapPin size={16} />
-                    <span>{selectedExp.location}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Description */}
-              <div className="mb-8">
-                <h3 className="text-lg uppercase tracking-wider text-base-content/70 font-light mb-4 flex items-center gap-2">
-                  <div className="h-px w-10 bg-base-content/60"></div>
-                  Overview
-                </h3>
-                <ul className="text-base text-base-content/70 leading-relaxed list-disc pl-6 space-y-2">
-                  {selectedExp.description.map((content, index) => (
-                    <li key={index}>{content}</li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Approaches & Reflections accordion */}
-              <div className="mb-8">
-                <h3 className="text-lg uppercase tracking-wider text-base-content/70 font-light mb-4 flex items-center gap-2">
-                  <div className="h-px w-10 bg-base-content/60"></div>
-                  Approaches & Reflections
-                </h3>
-                <div className="space-y-3">
-                  {selectedExp.challenges.map((challenge, index) => (
-                    <details key={index} className="group border-l-2 border-base-content/20 pl-4">
-                      <summary className="cursor-pointer list-none">
-                        <div className="flex items-start gap-3">
-                          <svg 
-                            className="w-5 h-5 text-base-content/40 transition-transform duration-150 group-open:rotate-90 mt-1 flex-shrink-0" 
-                            fill="none" 
-                            viewBox="0 0 24 24" 
-                            stroke="currentColor"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                          <p className="font-medium text-base text-base-content/90 hover:text-base-content transition-colors">
-                            {challenge[0]}
-                          </p>
-                        </div>
-                      </summary>
-                      <div className="mt-3 ml-8">
-                        <p className="text-sm text-base-content/70 leading-relaxed">
-                          {challenge[1]}
-                        </p>
+                  <div className="flex-1 min-w-0 pt-0.5">
+                    <h2 className="text-lg sm:text-xl font-light leading-tight text-base-content/90">{selectedExp.title}</h2>
+                    <p className="text-xs sm:text-sm text-base-content/60 mt-0.5">{selectedExp.company}</p>
+                    <div className="flex flex-wrap gap-1.5 mt-2">
+                      <div className="badge badge-sm badge-ghost flex items-center gap-1 text-base-content/70">
+                        <Calendar size={11} />
+                        <span className="text-[10px] sm:text-xs">{selectedExp.period}</span>
                       </div>
-                    </details>
-                  ))}
+                      <div className="badge badge-sm badge-ghost flex items-center gap-1 text-base-content/70">
+                        <MapPin size={11} />
+                        <span className="text-[10px] sm:text-xs">{selectedExp.location}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <div className="divider my-6"></div>
-
-              {/* Images with captions - Grid layout */}
-              <div className="mb-8">
-                <h3 className="text-lg uppercase tracking-wider text-base-content/70 font-light mb-4 flex items-center gap-2">
-                  <div className="h-px w-10 bg-base-content/60"></div>
-                  Gallery
-                </h3>
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-                  {selectedExp.images.slice(1).map((img, imgIndex) => {
-                    const isVideo = img.endsWith('.mp4');
-                    
-                    return (
-                      <figure 
-                        key={imgIndex} 
-                        className="group cursor-pointer"
-                        onClick={() => !isVideo && window.open(img, '_blank')}
-                      >
-                        <div className="rounded-lg overflow-hidden border border-base-300 aspect-square bg-base-200 mb-2">
-                          {isVideo ? (
-                            <video 
-                              src={img} 
-                              className="w-full h-full object-cover"
-                              controls
-                              loop
-                              muted
-                              playsInline
-                            />
-                          ) : (
-                            <img 
-                              src={img} 
-                              alt={selectedExp.imageCaptions[imgIndex]}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            />
-                          )}
-                        </div>
-                        <figcaption className="text-xs text-base-content/60 font-light leading-relaxed">
-                          {selectedExp.imageCaptions[imgIndex]}
-                        </figcaption>
-                      </figure>
-                    );
-                  })}
+                {/* Overview */}
+                <div>
+                  <ul className="space-y-1.5 text-xs sm:text-sm text-base-content/75 leading-relaxed">
+                    {selectedExp.description.map((content, idx) => (
+                      <li key={idx} className="flex gap-2">
+                        <span className="text-base-content/40 mt-0.5">•</span>
+                        <span>{content}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
 
-              <div className="divider my-6"></div>
+                {/* Links */}
+                {selectedExp.links?.length > 0 && (
+                  <div>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedExp.links.map((link, idx) => (
+                        <a
+                          key={idx}
+                          href={link[1]}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-2 py-1 border border-base-content/30 rounded-lg text-xs hover:border-base-content/90 hover:bg-base-200/90 transition-all duration-200 group"
+                        >
+                          <ExternalLink size={11} className="text-base-content/70 group-hover:text-base-content/90 flex-shrink-0" />
+                          <span className="text-base-content/70">{link[0]}</span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
-              {/* Tech stack badges */}
-              <div className="mb-8">
-                <h3 className="text-lg uppercase tracking-wider text-base-content/70 font-light mb-4 flex items-center gap-2">
-                  <div className="h-px w-10 bg-base-content/60"></div>
-                  Technologies & Skills
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {selectedExp.tags.map((tag, tagIndex) => (
-                    <div key={tagIndex} className={`badge badge-lg ${techColors[tagIndex % techColors.length]}`}>
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-1.5">
+                  {selectedExp.tags.map((tag, idx) => (
+                    <div key={idx} className={`badge badge-sm ${techColors[idx % techColors.length]} border-0`}>
                       {tag}
                     </div>
                   ))}
                 </div>
-              </div>
 
-              {/* Links */}
-              {selectedExp.links && selectedExp.links.length > 0 && (
-                <>
-                  <div className="divider my-6"></div>
-                  <div>
-                    <h3 className="text-lg uppercase tracking-wider text-base-content/70 font-light mb-4 flex items-center gap-2">
-                      <div className="h-px w-10 bg-base-content/60"></div>
-                      Related Links
-                    </h3>
-                    <div className="flex flex-wrap gap-3">
-                      {selectedExp.links.map((link, linkIndex) => (
-                        <div key={linkIndex} className="tooltip tooltip-top" data-tip={link[1]}>
-                          <a
-                            href={link[1]}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-4 py-2 border border-base-300 rounded-lg hover:border-base-content/40 hover:bg-base-200/50 transition-all duration-200 group"
-                          >
-                            <ExternalLink size={14} className="text-base-content/80 group-hover:text-base-content flex-shrink-0" />
-                            <span className="text-sm text-base-content/80 group-hover:text-base-content font-light">
-                              {link[0]}
-                            </span>
-                          </a>
-                        </div>
-                      ))}
-                    </div>
+                <div className="border-t border-base-content/10 my-3"></div>
+
+                {/* Gallery */}
+                <div>
+                  <h3 className="text-[10px] sm:text-xs uppercase tracking-wider font-bold mb-2 text-base-content/90">
+                    Gallery
+                  </h3>
+                  <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-thin">
+                    {selectedExp.images.slice(1).map((img, idx) => {
+                      const isVideo = img.endsWith(".mp4");
+                      return isVideo ? (
+                        <video
+                          key={idx}
+                          src={img}
+                          className="w-46 h-42 object-contain rounded-lg flex-shrink-0 hover:opacity-80 transition-opacity border border-base-content/10"
+                          controls
+                          loop
+                          muted
+                          playsInline
+                        />
+                      ) : (
+                        <img
+                          key={idx}
+                          src={img}
+                          alt={`Gallery ${idx + 1}`}
+                          className="w-46 h-42 object-cover rounded-lg flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity border border-base-content/10"
+                          onClick={() => window.open(img, "_blank")}
+                        />
+                      );
+                    })}
                   </div>
-                </>
-              )}
-            </div>
+                </div>
 
+                <div className="border-t border-base-content/10 my-3"></div>
+
+                {/* Approaches & Reflections - Accordion */}
+                <div>
+                  <h3 className="text-[10px] sm:text-xs uppercase tracking-wider font-bold mb-2 text-base-content/90">
+                    Approaches & Reflections
+                  </h3>
+                  <div className="space-y-1">
+                    {selectedExp.challenges.map((challenge, idx) => (
+                      <details key={idx} className="group">
+                        <summary className="cursor-pointer list-none py-2 px-3 rounded-lg hover:bg-base-200/50 transition-colors">
+                          <div className="flex items-center gap-2">
+                            <svg
+                              className="w-3 h-3 text-base-content/40 transition-transform duration-200 group-open:rotate-90 flex-shrink-0"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              strokeWidth={2.5}
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                            <span className="text-xs sm:text-sm text-base-content/80 font-normal">
+                              {challenge[0]}
+                            </span>
+                          </div>
+                        </summary>
+                        <div className="pl-8 pr-3 pb-2 pt-1">
+                          <p className="text-xs sm:text-sm text-base-content/60 leading-relaxed">
+                            {challenge[1]}
+                          </p>
+                        </div>
+                      </details>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
+
 
     </div>
   )
 }
 
 export default ExperiencePage;
-
-
-
-      // {/* Old Popup modal section */}
-      // {selectedExp && (
-      //   <div 
-      //     className="modal modal-open"
-      //     onClick={() => setSelectedExp(null)}
-      //   >
-      //     <div 
-      //       className="modal-box max-w-5xl max-h-[90vh] overflow-y-auto p-0"
-      //       onClick={(e) => e.stopPropagation()}
-      //     >
-      //       {/* Close button */}
-      //       <button 
-      //         className="btn btn-circle btn-sm absolute right-4 top-4 z-30"
-      //         onClick={() => setSelectedExp(null)}
-      //       >
-      //         <X size={20} />
-      //       </button>
-
-      //       {/* Document overview content */}
-      //       <div className="p-12">
-      //         {/* Header */}
-      //         <div className="mb-8">
-      //           <div className="flex items-center gap-7 mb-6">
-      //             <div className="avatar">
-      //               <div className="w-30 h-18 rounded-lg">
-      //                 <img src={selectedExp.logo} alt={`${selectedExp.company} logo`} />
-      //               </div>
-      //             </div>
-      //             <div className="flex-1">
-      //               <h2 className="text-4xl font-light mb-2">{selectedExp.title}</h2>
-      //               <p className="text-xl text-base-content/70">{selectedExp.company}</p>
-      //             </div>
-      //           </div>
-
-      //           <div className="flex flex-wrap gap-3">
-      //             <div className="badge badge-outline badge-lg gap-2">
-      //               <Calendar size={16} />
-      //               {selectedExp.period}
-      //             </div>
-      //             <div className="badge badge-outline badge-lg gap-2">
-      //               <MapPin size={16} />
-      //               {selectedExp.location}
-      //             </div>
-      //           </div>
-      //         </div>
-
-      //         {/* Description */}
-      //         <div className="mb-8">
-      //           <h3 className="text-xl uppercase tracking-wider text-base-content/80 font-medium mb-3">Overview</h3>
-      //           <ul className="text-xl text-base-content/70 leading-relaxed list-disc pl-5 space-y-3">
-      //             {selectedExp.description.map((content, index) => (
-      //               <li key={index}>{content}</li>
-      //             ))}
-      //           </ul>
-      //         </div>
-
-      //         {/* Challenges */}
-      //         <div className="mb-8">
-      //           <h3 className="text-xl uppercase tracking-wider text-base-content/80 font-medium mb-3">Lessons & Approaches </h3>
-      //           <ul className=" text-base-content/70 leading-relaxed list-decimal pl-5 space-y-2">
-      //             {selectedExp.challenges.map((challenge, index) => (
-      //               <li key={index} className="pl-1">
-      //                 <span className="font-medium text-xl">{challenge[0]}</span>
-      //                 <p className="mt-1 text-base-content/70 text-md">→ {challenge[1]}</p>
-      //               </li>
-      //             ))}
-      //           </ul>
-      //         </div>
-
-      //         <div className="divider"></div>
-
-      //         {/* Images with captions - All in single row */}
-      //         <div className="mb-5">
-      //           <h3 className="text-xl uppercase tracking-wider text-base-content/80 font-medium mb-6">Gallery</h3>
-      //           <div className="flex gap-4 overflow-x-auto pb-4">
-      //             {selectedExp.images.slice(1).map((img, imgIndex) => (
-      //               <figure key={imgIndex} className="flex-shrink-0 w-70 space-y-3">
-      //                 <div className="rounded-lg overflow-hidden border border-base-300 aspect-video">
-      //                   <img 
-      //                     src={img} 
-      //                     alt={selectedExp.imageCaptions[imgIndex]}
-      //                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-      //                   />
-      //                 </div>
-      //                 <figcaption className="text-center text-lg text-base-content/70 italic">
-      //                   {selectedExp.imageCaptions[imgIndex]}
-      //                 </figcaption>
-      //               </figure>
-      //             ))}
-      //           </div>
-      //         </div>
-
-      //         <div className="divider"></div>
-
-      //         {/* Tech stack badges */}
-      //         <div className="mb-5">
-      //           <h3 className="text-xl uppercase tracking-wider text-base-content/80 font-medium mb-4">Technologies & Skills</h3>
-      //           <div className="flex flex-wrap gap-2">
-      //             {selectedExp.tags.map((tag, tagIndex) => (
-      //               <div key={tagIndex} className={`badge badge-lg ${techColors[tagIndex % techColors.length]}`}>
-      //                 {tag}
-      //               </div>
-      //             ))}
-      //           </div>
-      //         </div>
-
-      //         <div className="divider"></div>
-              
-      //         {/* Links */}
-      //         {selectedExp.links && selectedExp.links.length > 0 && (
-      //           <div className="mb-8">
-      //             <h3 className="text-xl uppercase tracking-wider text-base-content/80 font-medium mb-4">Related Links</h3>
-      //             <div className="flex flex-wrap gap-3">
-      //                 <a
-      //                   href="https://tzeyi.github.io/#experience"
-      //                   target="_blank"
-      //                   rel="noopener noreferrer"
-      //                   className="flex items-center gap-2 px-4 py-2 bg-stone-100 hover:bg-stone-200 border border-stone-300 rounded-sm transition-colors duration-200 group"
-      //                 >
-      //                   <ExternalLink size={16} className="text-stone-600 group-hover:text-stone-800" />
-      //                   <span className="text-base text-stone-700 group-hover:text-stone-900">
-      //                     hi
-      //                   </span>
-      //                 </a>
-                    
-      //             </div>
-      //           </div>
-      //         )}
-      //       </div>
-            
-
-      //     </div>
-      //   </div>
-      // )}

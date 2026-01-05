@@ -189,7 +189,7 @@ const ProjectPage = ({hashLinkId}) => {
         <ProjectCardContent
           contents={[
             {
-              icons: [{src: '/TechStack/react.png', alt: 'React'}, {src: '/TechStack/tailwind.png', alt: 'Tailwind'}],
+              icons: [{src: '/TechStack/React.png', alt: 'React'}, {src: '/TechStack/Tailwind.png', alt: 'Tailwind'}],
               title: "Centralized Dashboard ERP",
               description: "includes a centralized resource dashboard, ticketing system, discussion forum, map view, role-based access (admins and volunteers), and status updates."
             },

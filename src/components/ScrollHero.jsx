@@ -1,11 +1,12 @@
 import { ReactLenis } from 'lenis/react';
 import { HashLink } from 'react-router-hash-link';
+import { Coffee, CloudRain, Sun, Moon } from "lucide-react";
 import EducationSection from './EducationSection'
 
 
 const HeroSection = () => {
   return (
-    <section className="bg-base-200/70 sticky top-0 overflow-hidden">
+    <section className="bg-base-100">
       <div className="w-full h-full flex items-center px-6 py-16">
         <div className="grid md:grid-cols-2 gap-12 items-center w-full max-w-6xl mx-auto">
           
@@ -15,15 +16,12 @@ const HeroSection = () => {
             {/* Rotating Text */}
             <div className="flex items-center gap-3">
               <div className="h-2 w-2 border border-base-content/40 rounded-full" />
-              <span className="text-xs text-base-content/60 tracking-[0.2em] uppercase font-light">
-                New Grad SWE —{" "}
+              <span className="text-sm text-base-content/60 tracking-[0.2em] uppercase font-light">
+                New Grad Dec 25' —{" "}
                 <span className="text-rotate inline-block">
                   <span>
                     <span className="text-yellow-500 font-bold italic">
                       University of Michigan
-                    </span>
-                    <span className="text-cyan-600 font-bold italic">
-                      Class of Dec 2025
                     </span>
                     <span className="text-pink-600 font-bold italic">
                       Seeking Entry-Level Roles
@@ -41,9 +39,9 @@ const HeroSection = () => {
 
             {/* Description */}
             <p className="text-sm md:text-base text-base-content/60 font-light leading-relaxed max-w-lg">
-              With experiences spanning software engineering, sales, research, and leadership,
-              I am seeking entry-level roles in software engineering, research, technical sales,
-              and analytics.
+              With a degree in Computer Science at the University of Michigan, Ann Arbor, I am seeking
+              entry-level roles in software engineering, forward deployed engineer, research, technical sales,
+              and consulting analyst
             </p>
 
             <div className="h-px w-20 bg-base-content/20"></div>
@@ -51,7 +49,7 @@ const HeroSection = () => {
 
           {/* Photo */}
           <div className="relative flex items-center justify-center">
-            <div className="relative w-72 h-72 md:w-80 md:h-80 xl:w-96 xl:h-96">
+            <div className="relative w-74 h-74 md:w-92 md:h-92 xl:w-114 xl:h-114">
               
               <div className="w-full h-full rounded-full overflow-hidden border border-base-content/10 shadow-lg">
                 <img src="me.jpg" alt="Tze Yi" className="w-full h-full object-cover" />
@@ -113,7 +111,7 @@ const PassionSection = () => {
       <div className="grid grid-cols-2 items-start">
         
         {/* Left (Sticky) Text */}
-        <div className="sticky top-0 h-screen flex items-center pl-10 bg-base-100">
+        <div className="sticky top-0 h-screen flex items-center pl-10 md:pl-20 bg-base-100">
           <div className="max-w-lg space-y-8">
             
             <div>
@@ -125,13 +123,13 @@ const PassionSection = () => {
 
             <div className="space-y-5 text-xs md:text-sm lg:text-base text-base-content/70 font-light leading-relaxed">
               <p>
-                Technology intrigues me most when I see how deeply it shapes individual lives. I'm especially drawn to moments where small choices, like tweaking a recommendation system, lead to significant outcomes.
+                Technology excites me most when I see how deeply it shapes individual lives. I'm drawn to moments where small choices, like tweaking a recommendation system, lead to significant outcomes.
               </p>
               <p>
-                I gravitate toward understanding not just what systems do, but how people experience them, which drives my passion for Human Computer Interaction.
+                I gravitate toward understanding not just what systems do, but how people experience them. I enjoy building projects that empower people rather than exploit them, work that requires technical care alongside meaningful human engagement.
               </p>
               <p>
-                I enjoy building projects that empower people rather than exploit them, work that requires technical care alongside meaningful human engagement.
+                Hover over the images on the right to explore projects I’ve worked on.
               </p>
             </div>
 
@@ -146,7 +144,7 @@ const PassionSection = () => {
         </div>
 
         {/* Right (Images) */}
-        <div className="grid gap-6 px-8 pt-20 bg-base-100 z-1">
+        <div className="grid gap-6 px-8 pt-30 md:pt-37 bg-base-100 z-1">
           {images.map((image, index) => (
             <figure
               key={index}
@@ -234,14 +232,14 @@ const InterestSection = () => {
 
             <div className="space-y-4 md:space-y-5 text-sm md:text-base lg:text-lg text-right text-base-content/70 font-light leading-relaxed">
               <p>
-                Hosting potlucks, playing pickup basketball, reading fiction and making coffee
+                Hosting potlucks, Pickup basketball, Reading fiction and Making coffee
               </p>
             </div>
 
             {/* Reach out section */}
             <div className="pt-2 md:pt-4">
               <p className="text-xs md:text-sm text-right text-base-content/50 font-light italic mb-3">
-                Please reach out if you have any latte art tips, or if you are a San Antonio Spurs fan!
+                Please reach out if you have any latte art tips :")
               </p>
 
               <div className="flex justify-end">
@@ -294,45 +292,45 @@ const FunFactSection = () => {
             {/* Paragraphs */}
             <div className="space-y-4 text-sm text-base-content/60 font-light leading-relaxed">
               <p>
-                I get in the zone when it rains, and if you see rain or snow, you'll probably catch me brewing coffee.
+                If you see rain (or snow), you'll probably catch me brewing coffee
               </p>
 
               <p>
-                This website was created while listening to “Rain with Cappuccino” by Yorushika, my favorite artist, during a rainy week in Ann Arbor, coffee in hand.
-                The song is an inspiration for this site, as its lyrics capture the bittersweet, fleeting feeling of a particular time and place,while I reflected on my past two years in Michigan.
+                This website was created while listening to “Rain with Cappuccino” by Yorushika (an amazing artist!), during a rainy week in Ann Arbor, coffee in hand.
+                The song is an inspiration for this site, as its lyrics capture the bittersweet, fleeting feeling of a particular time and place.                 
               </p>
 
+              <p>It especially resonates with me when I reflect on my past 2 years in Michigan.</p>
+
               <p className="text-xs italic text-base-content/50">
-                ☕ Check out the Rainy & Coffee theme below!
+                Check out the Rain & Coffee theme below!
               </p>
 
               {/* Theme Dropdown */}
-              <div className="dropdown dropdown-top">
-                <div tabIndex={0} role="button" className="btn btn-sm btn-ghost gap-2">
-                  Theme
-                  <svg
-                    width="12px"
-                    height="12px"
-                    className="inline-block h-2 w-2 fill-current opacity-60"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 2048 2048">
-                    <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
-                  </svg>
-                </div>
-                <ul tabIndex={0} className="dropdown-content bg-base-300 rounded-box z-[1] w-52 p-2 shadow-2xl">
-                  {['light', 'dark', 'coffee', 'nord'].map(theme => (
-                    <li key={theme}>
-                      <input
-                        type="radio"
-                        name="theme-dropdown"
-                        className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-                        aria-label={theme.charAt(0).toUpperCase() + theme.slice(1)}
-                        value={theme}
-                      />
-                    </li>
-                  ))}
-                </ul>
+              <div className="flex items-center gap-2">
+                {[
+                  { value: "light", icon: Sun, color: "text-orange-400 hover:bg-orange-400/20" },
+                  { value: "dark", icon: Moon, color: "text-base-content/70 hover:bg-base-content/10" },
+                  { value: "caramellatte", icon: Coffee, color: "text-amber-700 hover:bg-amber-500/20" },
+                  { value: "nord", icon: CloudRain, color: "text-sky-400 hover:bg-sky-500/20" },
+                ].map(({ value, icon: Icon, color }) => (
+                  <label key={value} className="cursor-pointer">
+                    <input
+                      type="radio"
+                      name="theme-dropdown"   // 🔑 keeps it synced with other theme controls
+                      value={value}
+                      className="theme-controller hidden"
+                      aria-label={value}
+                    />
+                    <div
+                      className={`btn btn-sm btn-ghost btn-circle transition ${color}`}
+                    >
+                      <Icon size={16} />
+                    </div>
+                  </label>
+                ))}
               </div>
+                            
             </div>
 
             {/* Bottom Line */}

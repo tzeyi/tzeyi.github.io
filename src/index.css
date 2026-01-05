@@ -9,6 +9,7 @@
   name: "light";
   default: true;
   --color-primary: teal;
+  --color-accent: oklch(90% 0.35 280);
 }
 
 
