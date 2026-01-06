@@ -80,7 +80,7 @@ const PassionSection = () => {
         'PUFFIN - a privacy-preserving sensing system to safeguard patient data in Multiple Sclerosis research',
     },
     {
-      src: '/Project/Frodo/3.png',
+      src: '/Project/Frodo/2.png',
       alt: 'Frodo',
       caption:
         'Frodo - a public-facing, shared ERP for NGOs and communities to coordinate resources during crises',
@@ -155,9 +155,9 @@ const PassionSection = () => {
                 className="w-full h-64 lg:h-80 object-cover group-hover:scale-105 transition-transform duration-500"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-base-content/80 via-base-content/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end">
                 <div className="p-6">
-                  <p className="text-base-100 text-xs lg:text-lg font-light tracking-wide">
+                  <p className="text-white text-xs lg:text-lg font-light tracking-wide">
                     {image.caption}
                   </p>
                 </div>
