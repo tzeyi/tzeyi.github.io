@@ -7,51 +7,18 @@ import { Github, Linkedin, MousePointerClick, X, FileText } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
 const ResumeButton = ({ className = "", isDesktop = false }) => {
-  const [showResumeSelector, setShowResumeSelector] = useState(false);
-  const resumeSelectorRef = useRef(null);
-
-  const resumeOptions = [
-    { 
-      label: 'SWE Resume', 
-      path: '/SWEResume/TyTiong_Resume.pdf',
-      description: 'Software Engineering'
-    },
-    { 
-      label: 'Business Resume', 
-      path: '/ConsultingSalesResume/TyTiong_Resume.pdf',
-      description: 'Sales & Consulting'
-    }
-  ];
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (resumeSelectorRef.current && !resumeSelectorRef.current.contains(event.target)) {
-        setShowResumeSelector(false);
-      }
-    };
-
-    if (showResumeSelector) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [showResumeSelector]);
-
-  const handleResumeClick = (path) => {
-    window.open(path, '_blank');
-    setShowResumeSelector(false);
+  const handleResumeClick = () => {
+    window.open('/TyTiong_Resume.pdf', '_blank');
   };
 
   return (
-    <div className={`relative ${className}`} ref={resumeSelectorRef}>
+    <div className={className}>
       {
       // Big / Desktop View
       isDesktop ? (
-       <div 
+        <div 
           className="font-light text-md hover:bg-transparent transition-colors cursor-pointer text-base-content/50 hover:text-base-content/80" 
-          onClick={() => setShowResumeSelector(!showResumeSelector)}
+          onClick={handleResumeClick}
         >
           Resume
         </div>
@@ -59,33 +26,17 @@ const ResumeButton = ({ className = "", isDesktop = false }) => {
       // Small / Mobile View
       : (
         <button
-          onClick={() => setShowResumeSelector(!showResumeSelector)}
+          onClick={handleResumeClick}
           className="btn btn-ghost btn-sm text-xs font-light text-base-content/70 hover:text-base-content gap-1"
         >
           <FileText size={16} strokeWidth={1.5} />
-          <span className="hidden xs:inline">Resume</span>
+          <span className="xs:inline">Resume</span>
         </button>
-      )}
-      {showResumeSelector && (
-        <div className={`absolute ${isDesktop ? 'left-0': 'right-0'} top-full mt-2 w-56 bg-base-100 rounded-lg shadow-xl border border-base-content/10 overflow-hidden z-50`}>
-          {resumeOptions.map((option, index) => (
-            <button
-              key={index}
-              onClick={() => handleResumeClick(option.path)}
-              className="w-full text-left px-4 py-3 hover:bg-base-content/5 transition-colors group flex items-start gap-3 border-b border-base-content/5 last:border-b-0"
-            >
-              <FileText className="w-4 h-4 text-base-content/50 group-hover:text-base-content/80 flex-shrink-0 mt-0.5" strokeWidth={1.5} />
-              <div className="flex-1 min-w-0">
-                <div className="font-medium text-sm text-base-content group-hover:text-base-content truncate">{option.label}</div>
-                <div className="text-xs text-base-content/50 mt-0.5 truncate">{option.description}</div>
-              </div>
-            </button>
-          ))}
-        </div>
       )}
     </div>
   );
 };
+
 
 const Layout = () => {
   const [currentHash, setCurrentHash] = useState('#about');
@@ -174,7 +125,7 @@ const Layout = () => {
                   to={item.path}
                   className={`font-light text-md px-2 lg:px-4 hover:bg-transparent transition-colors ${
                     currentHash === item.hash
-                      ? 'text-base-content relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-base-content/40'
+                      ? 'text-base-content relative after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-full after:h-px after:bg-gradient-to-r after:from-transparent after:via-base-content/70 after:to-transparent'
                       : 'text-base-content/50 hover:text-base-content/80'
                   }`}
                 >
@@ -182,6 +133,7 @@ const Layout = () => {
                 </HashLink>
               </li>
             ))}
+              {/* Desktop Resume Button */}
               <li>
                 <ResumeButton isDesktop/>
               </li>
@@ -192,9 +144,6 @@ const Layout = () => {
         <div className="navbar-end flex items-center gap-3">
           {/* Mobile Resume Button */}
           <ResumeButton className="md:hidden" />
-
-          {/* Desktop Resume Button */}
-          {/* <ResumeButton isDesktop className="hidden md:flex" /> */}
 
           {/* Theme Dropdown */}
           <div className="dropdown dropdown-end">

@@ -17,7 +17,7 @@ const HeroSection = () => {
             <div className="flex items-center gap-3">
               <div className="h-2 w-2 border border-base-content/40 rounded-full" />
               <span className="text-sm text-base-content/60 tracking-[0.2em] uppercase font-light">
-                New Grad Dec 25' —{" "}
+                Fresh Grad Dec 25' —{" "}
                 <span className="text-rotate inline-block">
                   <span>
                     <span className="text-yellow-500 font-bold italic">
@@ -39,9 +39,8 @@ const HeroSection = () => {
 
             {/* Description */}
             <p className="text-sm md:text-base text-base-content/60 font-light leading-relaxed max-w-lg">
-              With a degree in Computer Science at the University of Michigan, Ann Arbor, I am seeking
-              entry-level roles in software engineering, forward deployed engineer, research, technical sales,
-              and consulting analyst
+              With a degree in Computer Science from the University of Michigan, Ann Arbor, and experience bridging technical and business needs,
+              I'm seeking positions in software engineering, forward deployed engineering, research, technical sales, and consulting analyst.
             </p>
 
             <div className="h-px w-20 bg-base-content/20"></div>
@@ -156,7 +155,7 @@ const PassionSection = () => {
                 className="w-full h-64 lg:h-80 object-cover group-hover:scale-105 transition-transform duration-500"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-base-content/80 via-base-content/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end">
+              <div className="absolute inset-0 bg-gradient-to-t from-base-content/80 via-base-content/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end">
                 <div className="p-6">
                   <p className="text-base-100 text-xs lg:text-lg font-light tracking-wide">
                     {image.caption}

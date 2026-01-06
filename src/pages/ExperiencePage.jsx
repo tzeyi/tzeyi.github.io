@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Briefcase, Calendar, MapPin, ExternalLink, X } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, ExternalLink, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 
 const ExperiencePage = ({hashLinkId}) => {
@@ -241,7 +241,9 @@ const ExperiencePage = ({hashLinkId}) => {
   const filteredExperiences = filter === 'all' 
     ? experiences
     : experiences.filter(exp => exp.type.includes(filter));
-      // exp.type === filter);
+      
+  // For images enlarge
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
   const techColors = [ 'badge-accent', 'badge-primary', 'badge-secondary','badge-info', 'badge-success', 'badge-warning', 'badge-neutral', 'badge-error'];
 
@@ -409,10 +411,6 @@ const ExperiencePage = ({hashLinkId}) => {
                         <Calendar size={11} />
                         <span className="text-[10px] sm:text-xs">{selectedExp.period}</span>
                       </div>
-                      {/* <div className="badge badge-sm badge-ghost flex items-center gap-1 text-base-content/70">
-                        <MapPin size={11} />
-                        <span className="text-[10px] sm:text-xs">{selectedExp.location}</span>
-                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -484,12 +482,70 @@ const ExperiencePage = ({hashLinkId}) => {
                           src={img}
                           alt={`Gallery ${idx + 1}`}
                           className="w-46 h-42 object-cover rounded-lg flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity border border-base-content/10"
-                          onClick={() => window.open(img, "_blank")}
+                          onClick={() => setSelectedImageIndex(idx)}
                         />
                       );
                     })}
                   </div>
                 </div>
+
+                {/* Image Modal */}
+                {selectedImageIndex !== null && (
+                  <div 
+                    className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+                    onClick={() => setSelectedImageIndex(null)}
+                  >
+                    {/* Close Button */}
+                    <button
+                      onClick={() => setSelectedImageIndex(null)}
+                      className="absolute top-4 right-4 btn btn-circle btn-ghost text-white hover:bg-white/10"
+                    >
+                      <X size={24} />
+                    </button>
+
+                    {/* Previous Button */}
+                    {selectedExp.images.slice(1).filter(img => !img.endsWith(".mp4")).length > 1 && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const images = selectedExp.images.slice(1).filter(img => !img.endsWith(".mp4"));
+                          setSelectedImageIndex(selectedImageIndex === 0 ? images.length - 1 : selectedImageIndex - 1);
+                        }}
+                        className="absolute left-4 btn btn-circle btn-ghost text-white bg-black/50 hover:bg-white/10"
+                      >
+                        <ChevronLeft size={24} />
+                      </button>
+                    )}
+
+                    {/* Image */}
+                    <img
+                      src={selectedExp.images.slice(1).filter(img => !img.endsWith(".mp4"))[selectedImageIndex]}
+                      alt={`Gallery ${selectedImageIndex + 1}`}
+                      className="max-w-full max-h-[90vh] object-contain rounded-lg"
+                      onClick={(e) => e.stopPropagation()}
+                    />
+
+                    {/* Next Button */}
+                    {selectedExp.images.slice(1).filter(img => !img.endsWith(".mp4")).length > 1 && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const images = selectedExp.images.slice(1).filter(img => !img.endsWith(".mp4"));
+                          setSelectedImageIndex(selectedImageIndex === images.length - 1 ? 0 : selectedImageIndex + 1);
+                        }}
+                        className="absolute right-4 btn btn-circle btn-ghost text-white bg-black/50 hover:bg-white/10"
+                      >
+                        <ChevronRight size={24} />
+                      </button>
+                    )}
+
+                    {/* Image Counter */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm">
+                      {selectedImageIndex + 1} / {selectedExp.images.slice(1).filter(img => !img.endsWith(".mp4")).length}
+                    </div>
+                  </div>
+                )}
+
 
                 <div className="border-t border-base-content/10 my-3"></div>
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { X, ChevronLeft, ChevronRight, Github, ExternalLink, LayoutGrid, AlignLeft } from 'lucide-react';
 
 // Project Bullet Points component
@@ -33,7 +33,7 @@ const ProjectCardContent = ({ contents }) => {
 };
 
 // Project List View component
-const ProjectListView = ({ project }) => {
+const ProjectListView = ({ project, onImageClick }) => {
   return (
     <article 
         className="bg-base-100 border-2 border-base-content/30 rounded-lg overflow-hidden hover:border-base-content/70 hover:shadow-lg transition-all flex flex-col"
@@ -116,7 +116,8 @@ const ProjectListView = ({ project }) => {
                 {project.gallery.map((img, i) => (
                   <div 
                     key={i}
-                    className="flex-shrink-0 w-48 rounded-lg overflow-hidden border-2 border-base-300 hover:border-primary transition-colors"
+                    className="flex-shrink-0 w-48 rounded-lg overflow-hidden border-2 border-base-300 hover:border-primary transition-colors cursor-pointer"
+                    onClick={() => onImageClick?.(i, project.gallery)}
                   >
                     <img 
                       src={img}
@@ -432,7 +433,9 @@ const ProjectPage = ({hashLinkId}) => {
     },
   ];
 
-
+  // For Gallery expanded popup
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [selectedImageGallery, setSelectedImageGallery] = useState([]);
 
   return (
     <div id={hashLinkId} className="min-h-screen py-20">
@@ -538,7 +541,7 @@ const ProjectPage = ({hashLinkId}) => {
             <div className="text-center mt-6">
               <p className="text-md text-base-content/60 flex items-center justify-center gap-2">
                 <ChevronLeft size={16} />
-                Scroll to browse · Click a card for details
+                Scroll horizontally to browse · Click a card for details
                 <ChevronRight size={16} />
               </p>
             </div>
@@ -548,9 +551,8 @@ const ProjectPage = ({hashLinkId}) => {
               <div className="modal modal-open" onClick={() => setSelectedProject(null)}>
                 <div 
                   className="modal-box max-w-xl p-0 bg-base-100 rounded-lg overflow-hidden border-2 border-base-300" 
-                  onClick={() => e.stopPropagation()}
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  {/* Close button */}
                   <button 
                     onClick={() => setSelectedProject(null)}
                     className="absolute top-4 right-4 z-10 btn btn-ghost btn-sm btn-circle bg-base-100/90 backdrop-blur"
@@ -558,8 +560,13 @@ const ProjectPage = ({hashLinkId}) => {
                     <X size={18} />
                   </button>
 
-                  {/* Reuse List View Component */}
-                  <ProjectListView project={projects[selectedProject]}/>
+                  <ProjectListView 
+                    project={projects[selectedProject]}
+                    onImageClick={(index, gallery) => {
+                      setSelectedImageIndex(index);
+                      setSelectedImageGallery(gallery);
+                    }}
+                  />
                 </div>
               </div>
             )}
@@ -568,10 +575,72 @@ const ProjectPage = ({hashLinkId}) => {
           /* List View - Professional Grid Layout */
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl px-14 mx-auto">
             {projects.map((project, index) => (
-              <ProjectListView key={index} project={project} />
+              <ProjectListView 
+                key={index} 
+                project={project} 
+                onImageClick={(index, gallery) => {
+                  setSelectedImageIndex(index);
+                  setSelectedImageGallery(gallery);
+                }}/>
             ))}
           </div>
         )}
+
+        {/* Expanded Image Modal */}
+        {selectedImageIndex !== null && (
+          <div 
+            className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-4"
+            onClick={() => setSelectedImageIndex(null)}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedImageIndex(null)}
+              className="absolute top-4 right-4 btn btn-circle btn-ghost text-white hover:bg-white/10"
+            >
+              <X size={24} />
+            </button>
+
+            {/* Previous Button */}
+            {selectedImageGallery.length > 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedImageIndex(selectedImageIndex === 0 ? selectedImageGallery.length - 1 : selectedImageIndex - 1);
+                }}
+                className="absolute left-4 btn btn-circle btn-ghost text-white bg-black/50 hover:bg-white/10"
+              >
+                <ChevronLeft size={24} />
+              </button>
+            )}
+
+            {/* Image */}
+            <img
+              src={selectedImageGallery[selectedImageIndex]}
+              alt={`Screenshot ${selectedImageIndex + 1}`}
+              className="max-w-full max-h-[90vh] object-contain rounded-lg"
+              onClick={(e) => e.stopPropagation()}
+            />
+
+            {/* Next Button */}
+            {selectedImageGallery.length > 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedImageIndex(selectedImageIndex === selectedImageGallery.length - 1 ? 0 : selectedImageIndex + 1);
+                }}
+                className="absolute right-4 btn btn-circle btn-ghost text-white bg-black/50 hover:bg-white/10"
+              >
+                <ChevronRight size={24} />
+              </button>
+            )}
+
+            {/* Image Counter */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm">
+              {selectedImageIndex + 1} / {selectedImageGallery.length}
+            </div>
+          </div>
+        )}
+        
       </div>
     </div>
   );
