@@ -58,7 +58,7 @@ const ExperiencePage = ({hashLinkId}) => {
       description: [
         `Led deployment of IBM Maximo's AI-powered asset maintenance platform on OpenShift for energy client, delivering PoC demo and workshops addressing client questions on model accuracy and industry standards`,
         `Co-led enablement sessions training 7 business partners on Maximo deployment strategies in OpenShift, creating training materials for technical workshops`,
-        `Resolved critical OpenShift installation failures by debugging system logs and YAML configurations in collaboration with IBM's global engineering team, directly preventing loss of a $95K/year renewal contract`,
+        `Resolved critical OpenShift installation failures by debugging system logs and YAML configurations in collaboration with IBM's global engineering team, directly preventing loss of a $50K/year renewal contract`,
         `Researched and prototyped LangGraph-based RAG chatbot (Python, WatsonX, Elasticsearch) with explicit state management for healthcare client, demonstrating improved multi-turn conversation accuracy over production LangChain system`
       ],
       challenges: [
