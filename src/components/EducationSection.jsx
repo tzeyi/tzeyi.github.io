@@ -6,7 +6,7 @@ const EducationSection = () => {
       logo: "/Education/UMich.webp",
       degree: "Bachelor of Science in Computer Science",
       graduation: "December 2025",
-      gpa: "3.696",
+      gpa: "3.7",
       classes: [
         { name: "Data Structures & Algorithms", tech: "C++, GDB Debugger, Unit/Regression Testing" },
         { name: "Discrete Math", tech: "Mathematical Proofs, Set Theory, Graph Theory, Probabilities" },

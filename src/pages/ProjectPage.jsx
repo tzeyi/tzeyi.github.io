@@ -140,39 +140,7 @@ const ProjectPage = ({hashLinkId}) => {
   // Projects Data
   const projects = [
     {
-      title: 'Network File Server',
-      bulletPoints: [
-        "Built a multithreaded network file server in C++ supporting concurrent client read, write, create, and delete requests using shared pointer to manage mutexes on demand, page table entries",
-        "Implemented a hierarchical file system (e.g., /home/file) with upgradable reader–writer locks and fine-grained (hand-over-hand) locking to ensure atomicity and improve performance",
-      ],
-      gallery: [
-        '/Project/NetworkFileServer/1.png',
-        '/Project/NetworkFileServer/2.png'
-      ],
-      techStack: ['C++', 'Linux', 'Sockets'],
-      github: null,
-      demo: null,
-      cardContent: (
-        <ProjectCardContent
-          contents={[
-            {
-              icons: [{src: '/TechStack/C++.png', alt: 'C++'}],
-              title: "Multithreaded Server",
-              description: "Built a multithreaded network file server in C++ that supports concurrent client read and write requests."
-            },
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
-              title: "File System Lock",
-              description: "Implemented a hierarchical file system (e.g., /class/notes) with fine-grained, upgradable reader–writer locks to ensure atomicity while optimizing disk I/O performance."
-            }
-          ]}
-        />
-      ),
-      cardImage: '/Project/NetworkFileServer.png',
-      cardBorderColor: 'bg-gradient-to-r from-gray-300 to-gray-400'
-    },
-    {
-      title: 'Frodo, Next-Gen ERP',
+      title: 'Frodo: Next-Gen ERP',
       bulletPoints: [
         `Nowadays many ERPs privatize user data. Frodo provides a public, shared ERP for NGOs and small communities, encouraging collaboration and transparency.`,
         `It features a centralized dashboard with ticketing systems, discussion forums, map view, role-based access, and status updates.`,
@@ -191,19 +159,51 @@ const ProjectPage = ({hashLinkId}) => {
           contents={[
             {
               icons: [{src: '/TechStack/React.png', alt: 'React'}, {src: '/TechStack/Tailwind.png', alt: 'Tailwind'}],
-              title: "Centralized Dashboard ERP",
-              description: "includes a centralized resource dashboard, ticketing system, discussion forum, map view, role-based access (admins and volunteers), and status updates."
+              title: "Data Analytics",
+              description: "Centralized resource dashboard, map view, and secure role-based access (admin / volunteers)"
             },
             {
               icons: [{src: '/TechStack/Firebase.png', alt: 'Firebase'}],
-              title: "Real time status updates and secure role based access",
-              description: "includes a centralized resource dashboard, ticketing system, discussion forum, map view, role-based access (admins and volunteers), and status updates"
+              title: "Task Coordination",
+              description: "Ticketing system, open discussion forum, and real-time status updates"
             }
           ]}
         />
       ),
       cardImage: '/Project/Frodo.png',
       cardBorderColor: 'bg-gradient-to-r from-yellow-400 to-yellow-700'
+    },
+    {
+      title: 'Network File Server',
+      bulletPoints: [
+        "Built a multithreaded network file server in C++ supporting concurrent read, write, create, and delete operations using shared pointers for on-demand mutex management",
+        "Implemented a hierarchical file system with upgradeable reader–writer locks and fine-grained (hand-over-hand) locking to ensure atomicity and improve performance"
+      ],
+      gallery: [
+        '/Project/NetworkFileServer/1.png',
+        '/Project/NetworkFileServer/2.png'
+      ],
+      techStack: ['C++', 'Linux', 'Sockets'],
+      github: null,
+      demo: null,
+      cardContent: (
+        <ProjectCardContent
+          contents={[
+            {
+              icons: [{src: '/TechStack/C++.png', alt: 'C++'}],
+              title: "Google Drive's Secret Cousin",
+              description: "Hierarchical client-server file system supporting read, write, create, and delete operations over the network"
+            },
+            {
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/Linux.png', alt: 'Linux' }],
+              title: "Locked In",
+              description: "Upgradable reader-writer locks, and fine-grained locking to optimize concurrent disk I/O performance"
+            }
+          ]}
+        />
+      ),
+      cardImage: '/Project/NetworkFileServer.png',
+      cardBorderColor: 'bg-gradient-to-r from-gray-400/70 to-gray-500'
     },
     {
       title: 'OS Thread & Pager Library',
@@ -222,25 +222,56 @@ const ProjectPage = ({hashLinkId}) => {
         <ProjectCardContent
           contents={[
             {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
-              title: "Thread Library & Scheduler",
-              description: "Implemented a thread library and CPU scheduler with synchronization primitives (mutexes and condition variables) for multiprocess, multithreaded programs."
+              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/Linux.png', alt: 'Linux' }],
+              title: "This Thread Can’t Be Sewn",
+              description: "CPU scheduler, and thread library with synchronization primitives (mutex, condition variable)"
             },
             {
               icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
-              title: "Virtual Memory Pager",
-              description: "Built a demand-paged virtual memory system including page fault handling, TLB management, and an optimized page replacement algorithm."
+              title: "Virtual Memory",
+              description: "Pager managing page tables for virtual address translation"
             }
           ]}
         />
       ),
       cardImage: '/Project/OSKernel.png',
-      cardBorderColor: 'bg-gradient-to-r from-purple-800 to-pink-900'
+      cardBorderColor: 'bg-gradient-to-r from-purple-500/20 to-purple-900/90'
+    },
+    {
+      title: 'GPT2 From Scratch',
+      bulletPoints: [
+        "Implemented GPT-2 transformer architecture from scratch in PyTorch (following Sebastian Raschka's 'Build a Large Language Model' book) with multi-head attention, BPE tokenization and next word prediction; fine-tuned pretrained weights achieving 92% accuracy on spam email classification",
+        "Applied learnings to research work creating embeddings for Mixture of Expert models at ISC Lab and prototyping RAG chatbot deployments at IBM"
+      ],
+      gallery: [
+        '/Project/GPT2/1.png', '/Project/GPT2/2.png', '/Project/GPT2/3.png'
+      ],
+      techStack: ['Python', 'PyTorch'],
+      github: 'https://github.com/tzeyi/GPT-From-Scratch',
+      demo: null,
+      cardContent: (
+        <ProjectCardContent
+          contents={[
+            {
+              icons: [{ src: '/TechStack/Python.png', alt: 'Python' }, { src: '/TechStack/PyTorch.png', alt: 'PyTorch' }],
+              title: "Not a GPT Wrapper...",
+              description: "GPT-2 transformer architecture with multi-head attention, BPE tokenization and next word prediction"
+            },
+            {
+              icons: [{ src: '/TechStack/Python.png', alt: 'Python' }],
+              title: "Spam Email Classification",
+              description: "Fine-tuned pretrained weights to do binary classification on spam emails"
+            }
+          ]}
+        />
+      ),
+      cardImage: '/Project/GPT2.png',
+      cardBorderColor: 'bg-gradient-to-r from-green-600/50 to-green-800'
     },
     {
       title: 'MapReduce Search Engine',
       bulletPoints: [
-        "Built distributed MapReduce framework in Python with TCP, UDP protocols for job distribution and UDP heartbeat monitoring for worker fault tolerance, scoring and ranking 10,000+ Wikipedia documents using TF-IDF",
+        "Built distributed MapReduce framework with TCP, UDP protocols for job distribution and UDP heartbeat monitoring (worker fault tolerance), scoring and ranking 10,000+ Wikipedia documents using TF-IDF",
         "Efficiently processes large datasets by accepting input files and user-defined executable map and reduce programs",
         "Developed React search engine with Flask backend deployed on AWS EC2, implementing load balancing across 3 servers using modulo-based request distribution"
       ],
@@ -254,20 +285,37 @@ const ProjectPage = ({hashLinkId}) => {
         <ProjectCardContent
           contents={[
             {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
-              title: "Distributed MapReduce Framework",
-              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
+              icons: [{ src: '/TechStack/Python.png', alt: 'Python' }],
+              title: "ETL-ish",
+              description: "Distributed, fault-tolerant framework inspired by Hadoop that efficiently processes large datasets"
             },
             {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
-              title: "Search Ranking Algorithms",
-              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
+              icons: [{ src: '/TechStack/React.png', alt: 'React' }, { src: '/TechStack/Python.png', alt: 'Python' }, { src: '/TechStack/AWS.png', alt: 'AWS' }],
+              title: "Big Data is a Buzzword?",
+              description: "Distributed search engine with modulo-based load balancing across three servers"
             }
           ]}
         />
       ),
       cardImage: '/Project/MapReduce.png',
-      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
+      cardBorderColor: 'bg-gradient-to-r from-blue-100 to-blue-400'
+    },
+    {
+      title: 'Doggo Classifier (CNN & ViT)',
+      bulletPoints: [
+        "Addressed limited training data for binary dog breed classification (Golden Retriever vs. Border Collie) using transfer learning from a larger 10-class dog dataset",
+        "Designed and trained CNN and Vision Transformer (ViT) source models from scratch (referenced original ViT paper), and evaluated their transferability to the low-data task",
+        "Achieved 0.8224 AUROC using CNN model by freezing 1st layer to retain universal representations, VGG-style filter expansion, and data augmentation"
+      ],
+      gallery: [
+        '/Project/Doggo/1.png', '/Project/Doggo/2.png'
+      ],
+      techStack: ['Python', 'PyTorch'],
+      github: null,
+      demo: null,
+      cardContent: null,
+      cardImage: null,
+      cardBorderColor: null
     },
     {
       title: 'VSee: VC & Startup Matchmaker',
@@ -281,274 +329,106 @@ const ProjectPage = ({hashLinkId}) => {
       techStack: ['React', 'TailwindCSS', 'Flask', 'Gemini LLM', 'SQLite', 'Prompt Engineering'],
       github: 'https://github.com/tzeyi/Imagine-Hack24',
       demo: '/Project/VSee/VSaw.pdf',
-      cardContent: (
-        <ProjectCardContent
-          contents={[
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
-              title: "Distributed MapReduce Framework",
-              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
-            },
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
-              title: "Search Ranking Algorithms",
-              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
-            }
-          ]}
-        />
-      ),
+      cardContent: null,
       cardImage: null,
-      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
+      cardBorderColor: null
     },
     {
-      title: 'SQL Simulator',
+      title: 'RoboChef: AI Recipe Recommender',
       bulletPoints: [
-        "Developed a SQL simulator in C++ supporting core commands (CREATE, REMOVE, INSERT, SELECT, WHERE, DELETE, JOIN, GENERATE INDEX) that reads queries from a text file and prints query results to the terminal",
-        "Designed the system with clear abstractions, using classes and hash maps to manage databases, structs to represent tables, hash map–based indexes for categorical data, and red-black tree indexes for numerical data",
+        "A web application that analyzes images of grocery carts or fridge leftovers to identify food items and ingredients, then recommends recipes based on overlapping ingredients",
+        "Enables fast meal planning by instantly suggesting multiple recipe options from available ingredients"
       ],
       gallery: [
-        '/Project/MapReduce/1.png'
+        '/Project/RoboChef/1.png'
       ],
-      techStack: ['React', 'TailwindCSS', 'DaisyUI', 'Flask', 'Gemini 1.5 Flash', 'SQLite', 'Prompt Engineering'],
-      github: null,
-      demo: null,
-      cardContent: (
-        <ProjectCardContent
-          contents={[
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
-              title: "Distributed MapReduce Framework",
-              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
-            },
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
-              title: "Search Ranking Algorithms",
-              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
-            }
-          ]}
-        />
-      ),
-      cardImage: '/Project/MapReduce.png',
-      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
-    },
-    {
-      title: 'GPT From Scratch',
-      bulletPoints: [
-        "Built a GPT-2 model from scratch to deepen understanding of transformer architectures, covering multi head attention, BPE tokenization, and next word prediction; fine-tuned pre-trained GPT-2 weights for binary classification on spam emails",
-        "A big motivation for this project is to deepen my knowledge for my research work in creating embeddings for a Mixture of Expert model in the ISC Lab, and also when creating prototypes for a RAG chatbot deployment at IBM"
-      ],
-      gallery: [
-        '/Project/MapReduce/1.png'
-      ],
-      techStack: ['PyTorch'],
-      github: 'https://github.com/tzeyi/GPT-From-Scratch',
-      demo: null,
-      cardContent: (
-        <ProjectCardContent
-          contents={[
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
-              title: "Distributed MapReduce Framework",
-              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
-            },
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
-              title: "Search Ranking Algorithms",
-              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
-            }
-          ]}
-        />
-      ),
-      cardImage: '/Project/MapReduce.png',
-      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
-    },
-    {
-      title: 'RoboChef: Recipe Recommender',
-      bulletPoints: [
-        "A web application that receives an image (as an URL) of any food, then identifies the food and its ingredient, and finally compile a list of recipes that shares the same ingredients as the food in the image given",
-        "Benefits of the Application: Identify any image and provide recipes instantly, provide multiple recipe options, help students decide meals easily, fast & easy"
-      ],
-      gallery: [
-        '/Project/MapReduce/1.png'
-      ],
-      techStack: ['HTML', 'JavaScript', 'CSS', 'Clarifai Computer Vision API', 'Edamam Recipe API'],
+      techStack: ['HTML', 'JavaScript', 'CSS', 'Clarifai CV API', 'Edamam API'],
       github: 'https://github.com/ycpoon/RoboChef',
       demo: null,
-      cardContent: (
-        <ProjectCardContent
-          contents={[
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
-              title: "Distributed MapReduce Framework",
-              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
-            },
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
-              title: "Search Ranking Algorithms",
-              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
-            }
-          ]}
-        />
-      ),
-      cardImage: '/Project/MapReduce.png',
-      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
-    },
-    {
-      title: 'Assembler & Linker',
-      bulletPoints: [
-        "Built an assembler in C that converts LC2K assembly code (e.g., lw, sw, add, jalr) into binary machine code following the LC2K 32-bit instruction format",
-        "Implemented a linker that combines object files and libraries by resolving text, data, symbol table, and relocation sections into a single executable",
-        "Enabled modular program development by supporting separate compilation, allowing reusable libraries to be linked without recompiling or reassembling unchanged code",
-      ],
-      gallery: [
-        '/Project/MapReduce/1.png'
-      ],
-      techStack: ['C'],
-      github: null,
-      demo: null,
-      cardContent: (
-        <ProjectCardContent
-          contents={[
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
-              title: "Distributed MapReduce Framework",
-              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
-            },
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
-              title: "Search Ranking Algorithms",
-              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
-            }
-          ]}
-        />
-      ),
-      cardImage: '/Project/MapReduce.png',
-      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
+      cardContent: null,
+      cardImage: null,
+      cardBorderColor: null
     },
     {
       title: '5-Stage Pipeline Processor & Cache Simulator',
       bulletPoints: [
-        "Implemented an LC2K 5-stage pipeline processor simulator in C, featuring data forwarding to resolve read-after-write (RAW) hazards and branch prediction using a predict-not-taken policy with speculation and squashing to handle control hazards",
-        "Built a configurable cache simulator supporting a write-back policy, user-defined block size, and a parameterized number of sets to determine associativity (direct-mapped, set-associative, and fully associative), with an LRU replacement policy",
+        "Implemented an LC2K 5-stage pipeline processor simulator in C with data forwarding for RAW hazards and speculate & squash (predict-not-taken policy) for control hazards",
+        "Built a configurable cache simulator with write-back policy, LRU replacement, and parameterized block size and associativity (direct-map, set-associative, fully-associative)",
       ],
       gallery: [
-        '/Project/MapReduce/1.png'
+        '/Project/Pipeline/1.png', '/Project/Pipeline/2.png'
       ],
       techStack: ['C'],
       github: null,
       demo: null,
-      cardContent: (
-        <ProjectCardContent
-          contents={[
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
-              title: "Distributed MapReduce Framework",
-              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
-            },
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
-              title: "Search Ranking Algorithms",
-              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
-            }
-          ]}
-        />
-      ),
-      cardImage: '/Project/MapReduce.png',
-      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
+      cardContent: null,
+      cardImage: null,
+      cardBorderColor: null
     },
     {
-      title: 'Doggo Classifier',
+      title: 'Assembler & Linker',
       bulletPoints: [
-        "Addressed limited training data for binary dog breed classification (Golden Retriever vs. Border Collie) by employing transfer learning from a larger 10-class dog breed dataset",
-        "Designed and trained custom CNN and Vision Transformer (ViT) architectures from scratch as source models, referencing the original ViT research paper, then evaluated their transferability to the low-data binary classification task",
-        "Achieved 0.8224 AUROC through CNN-based transfer learning by freezing the first layer to retain universal features, applying VGG-inspired progressive filter expansion, and augmenting data with crops, rotations, and color jitter, outperforming the ViT approach"
+        "Built an assembler in C that translates assembly instructions (e.g., lw, add, jalr) into 32-bit LC2K machine code format",
+        "Implemented a linker that resolves symbols and merges text, data, and relocation sections into an executable",
+        "Supported separate compilation, enabling modular programs and reusable libraries without recompiling unchanged code",
       ],
       gallery: [
-        '/Project/Doggo/1.png', '/Project/Doggo/2.png'
+        '/Project/AssemblerLinker/1.png', '/Project/AssemblerLinker/2.png'
       ],
-      techStack: ['PyTorch'],
+      techStack: ['C'],
       github: null,
       demo: null,
-      cardContent: (
-        <ProjectCardContent
-          contents={[
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
-              title: "Distributed MapReduce Framework",
-              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
-            },
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
-              title: "Search Ranking Algorithms",
-              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
-            }
-          ]}
-        />
-      ),
-      cardImage: '/Project/MapReduce.png',
-      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
-    },
-    {
-      title: 'Fakebook Schema and Queries',
-      bulletPoints: [
-        "Designed a relational database schema for a Facebook-like social network, creating an ER diagram modeling core features (users, messaging, photo albums, events) and implementing full SQL scripts for table creation, data insertion, and cleanup operations",
-        "Developed a Java application with Oracle JDBC integration to execute complex SQL queries for social network analysis, including mutual friend matchmaking and sibling detection using joins, nested subqueries, and aggregate functions with optimized data structure storage"
-      ],
-      gallery: [
-        '/Project/Doggo/1.png', '/Project/Doggo/2.png'
-      ],
-      techStack: ['PyTorch'],
-      github: null,
-      demo: null,
-      cardContent: (
-        <ProjectCardContent
-          contents={[
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
-              title: "Distributed MapReduce Framework",
-              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
-            },
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
-              title: "Search Ranking Algorithms",
-              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
-            }
-          ]}
-        />
-      ),
-      cardImage: '/Project/MapReduce.png',
-      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
+      cardContent: null,
+      cardImage: null,
+      cardBorderColor: null
     },
     {
       title: 'Digital Forensic Simulation',
       bulletPoints: [
-        "Conducted dead analysis on data artifacts from suspect's device by running John the Ripper password cracker, steganalysis to find hidden image data and wireshark to find leads in web activity",
-        "Conducted live analysis by reanacting suspect's webs activity using leads from dead analysis, using web attacks like XSS, SQLi and ShellCode injection to compile a report on whether suspect is guilty"
+        "Performed dead analysis on criminal suspect data artifacts using John the Ripper password cracker, steganalysis, and Wireshark to uncover hidden data and web activity leads",
+        "Conducted live analysis by reanacting suspect web activity and testing XSS, SQL injection, and shellcode attacks to assess culpability"
       ],
       gallery: [
-        '/Project/Forensic/1.pdf', '/Project/Forensic/2.png'
+        '/Project/Forensic/1.png', '/Project/Forensic/2.png'
       ],
-      techStack: ['PyTorch'],
+      techStack: ['Docker', 'Wireshark', 'Ghidra', 'Python', 'JavaScript', 'SQL'],
       github: null,
       demo: null,
-      cardContent: (
-        <ProjectCardContent
-          contents={[
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }, { src: '/TechStack/linux.png', alt: 'Linux' }],
-              title: "Distributed MapReduce Framework",
-              description: "Built a MapReduce framework for distributed text processing and indexing across multiple worker nodes, enabling scalable document analysis."
-            },
-            {
-              icons: [{ src: '/TechStack/C++.png', alt: 'C++' }],
-              title: "Search Ranking Algorithms",
-              description: "Implemented PageRank and TF-IDF scoring algorithms to rank search results by relevance with efficient query-time performance."
-            }
-          ]}
-        />
-      ),
-      cardImage: '/Project/MapReduce.png',
-      cardBorderColor: 'bg-gradient-to-r from-gray-400 to-gray-800'
+      cardContent: null,
+      cardImage: null,
+      cardBorderColor: null
+    },
+    {
+      title: 'Fakebook Schema & Queries',
+      bulletPoints: [
+        "Designed a relational schema for a Facebook-like social network, modeling users, messaging, photos, and events with an ER diagram and full SQL setup scripts",
+        "Built a Java application using Oracle JDBC to run complex analytical SQL queries (e.g., mutual friends, sibling detection, matchmaker) with joins, subqueries, and aggregates"
+      ],
+      gallery: [
+        '/Project/Fakebook/1.png'
+      ],
+      techStack: ['SQL', 'Java'],
+      github: null,
+      demo: null,
+      cardContent: null,
+      cardImage: null,
+      cardBorderColor: null
+    },
+    {
+      title: 'SQL Simulator',
+      bulletPoints: [
+        "Developed a SQL simulator in C++ supporting KEY commands (CREATE, SELECT, JOIN, GENERATE INDEX, etc) that reads queries from a text file",
+        "Designed clear abstractions using classes and hash maps for databases, structs for tables, hash map–based indexes for categorical data, and red-black tree indexes for numerical data"
+      ],
+      gallery: [
+        '/Project/SQLSimulator/1.png', '/Project/SQLSimulator/2.png'
+      ],
+      techStack: ['C++'],
+      github: null,
+      demo: null,
+      cardContent: null,
+      cardImage: null,
+      cardBorderColor: null
     },
   ];
 
@@ -558,15 +438,15 @@ const ProjectPage = ({hashLinkId}) => {
     <div id={hashLinkId} className="min-h-screen py-20">
       <div className="container mx-auto">
         {/* Header */}
-        <div className="text-center mb-10">
+        <div className="text-center mb-6">
           <div className="h-px w-56 bg-gradient-to-r from-transparent via-base-content/30 to-transparent mx-auto mb-6"></div>
-          <h1 className="text-3xl md:text-5xl font-light tracking-tight mb-4">
+          <h1 className="text-3xl md:text-5xl font-light tracking-tight mb-3">
             Projects
           </h1>
-          <p className="text-base-content/60 font-light text-md mb-6">My best and most enjoyable works over the years</p>
+          <p className="text-base-content/60 font-light text-md mb-5">My best and most enjoyable works over the years</p>
           
           {/* Card / List View Toggle Button */}
-          <div className="inline-flex gap-0 border border-base-300 rounded-lg overflow-hidden">
+          <div className="inline-flex gap-0 border border-base-content/10 rounded-lg overflow-hidden">
             <button 
               onClick={() => setViewMode('card')}
               className={`px-4 py-2 text-sm flex items-center gap-2 transition-colors ${
@@ -576,7 +456,7 @@ const ProjectPage = ({hashLinkId}) => {
               }`}
             >
               <LayoutGrid size={14} />
-              Cards
+              Featured
             </button>
 
             <div className="w-px bg-base-300"></div>
@@ -590,63 +470,67 @@ const ProjectPage = ({hashLinkId}) => {
               }`}
             >
               <AlignLeft size={14} />
-              List
+              All
             </button>
           </div>
         </div>
 
         {/* Card / List View Content */}
+        {/* Feature Cards Content */}
         {viewMode === 'card' ? (
           <>
             {/* Carousel with 3D hover cards */}
             <div className="flex justify-center mx-10">
-              <div className="carousel bg-base-300 rounded-box max-w-full space-x-3 p-2">
-                {projects.map((project, index) => (
-                  <div key={index} id={`slide${index + 1}`} className="carousel-item cursor-pointer" onClick={() => setSelectedProject(index)}>
-                    <div className="hover-3d">
-                      <div className={`relative p-2 ${project.cardBorderColor} rounded-xl`}>
-                        <div 
-                          className="card w-70 rounded-2xl"
-                        >
-                          <figure className="text-xl">
-                            <img 
-                              src={project.cardImage}
-                              alt={project.title}
-                              className="rounded-lg w-full h-95 object-cover"
-                            />
-                            <h1
-                              className="font-bold pl-3 py-1 absolute top-0 left-0 text-black"
-                              style={{
-                                textShadow: `
-                                  -1px -1px 0 #fff,
-                                  1px -1px 0 #fff,
-                                  -1px  1px 0 #fff,
-                                  1px  1px 0 #fff
-                                `
-                              }}
-                            >
-                              {project.title}
-                            </h1>
-                          </figure>
+              <div className="carousel bg-base-300 rounded-box max-w-full space-x-3 p-3">
+                {projects.map((project, index) => {
+                  if (project.cardContent) 
 
-                          <div className="absolute bottom-0 card-body m-2 p-2 bg-white/70 rounded-lg">
-                            <div className="text-md leading-tight">{project.cardContent}</div>
+                  return (
+                    <div key={index} id={`slide${index + 1}`} className="carousel-item cursor-pointer" onClick={() => setSelectedProject(index)}>
+                      <div className="hover-3d">
+                        <div className={`relative p-2 ${project.cardBorderColor} rounded-xl`}>
+                          <div 
+                            className="card w-70 rounded-2xl"
+                          >
+                            <figure className="text-xl">
+                              <img 
+                                src={project.cardImage}
+                                alt={project.title}
+                                className="rounded-lg w-full h-95 object-cover"
+                              />
+                              <h1
+                                className="font-bold pl-3 py-1 absolute top-0 left-0 text-black"
+                                style={{
+                                  textShadow: `
+                                    -1px -1px 0 #fff,
+                                    1px -1px 0 #fff,
+                                    -1px  1px 0 #fff,
+                                    1px  1px 0 #fff
+                                  `
+                                }}
+                              >
+                                {project.title}
+                              </h1>
+                            </figure>
+
+                            <div className="absolute bottom-0 card-body m-2 p-2 bg-white/80 rounded-lg">
+                              <div className="text-md leading-tight">{project.cardContent}</div>
+                            </div>
                           </div>
                         </div>
+                        
+                        {/* 8 empty divs needed for the 3D effect */}
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
                       </div>
-                      
-                      {/* 8 empty divs needed for the 3D effect */}
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
                     </div>
-                  </div>
-                ))}
+                  )})}
               </div>
             </div>
 

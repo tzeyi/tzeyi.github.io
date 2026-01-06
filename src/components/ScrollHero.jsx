@@ -52,7 +52,7 @@ const HeroSection = () => {
             <div className="relative w-74 h-74 md:w-92 md:h-92 xl:w-114 xl:h-114">
               
               <div className="w-full h-full rounded-full overflow-hidden border border-base-content/10 shadow-lg">
-                <img src="me2.jpg" alt="Tze Yi" className="w-full h-full object-cover" />
+                <img src="me.jpg" alt="Tze Yi" className="w-full h-full object-cover" />
               </div>
 
               {/* Decorative elements */}
@@ -99,7 +99,7 @@ const PassionSection = () => {
         'BlueHire - an iOS app for practicing active recall with curated LeetCode style questions and personalized recommendations.',
     },
     {
-      src: '/Project/VSee/2.png',
+      src: '/Project/VSee/1.png',
       alt: 'VSee',
       caption:
         'VSee — a VC & startup matchmaking platform using AI chatbot personas to create transparent, detailed previews of both parties',
