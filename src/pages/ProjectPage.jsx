@@ -431,6 +431,22 @@ const ProjectPage = ({hashLinkId}) => {
       cardImage: null,
       cardBorderColor: null
     },
+    {
+      title: 'MCourses',
+      bulletPoints: [
+        "This is an iOS mobile app aimed at providing up-to-date information about courses for UMich students via UM API." ,
+        "Built according to the Model-View-ViewModel (MVVM) architecture, and uses Firebase for NoSQL storage and Google Authentication"
+      ],
+      gallery: [
+        '/Project/MCourses/1.png'
+      ],
+      techStack: ['Swift', 'Firebase', 'UM API'],
+      github: 'https://github.com/michiganhackers/MCourses',
+      demo: 'https://drive.google.com/file/d/1WZfCCkhIQ_r4xbhKkat4yw3kFu7TbFNn/view',
+      cardContent: null,
+      cardImage: null,
+      cardBorderColor: null
+    },
   ];
 
   // For Gallery expanded popup
