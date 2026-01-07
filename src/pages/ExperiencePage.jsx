@@ -168,8 +168,7 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'Jun 2024 - Apr 2025',
       type: ['Fullstack', 'People Skills'],
       description: [
-        `Led development of an interview prep app with a built-in recommendation system by setting up CI/CD workflows, designing Figma wireframes collaboratively, and reviewing merge requests`,
-        `Organized the team into design, frontend, and backend groups, and hosted weekly Hacknights to teach Swift, Git, and REST APIs`
+        `Led team of 8 building iOS interview prep app with recommendation system, organizing cross-functional teams (UI/UX, frontend, backend), managing sprints and code reviews, and hosting weekly Swift/REST API workshops for new members`
       ],
       challenges: [
         [
