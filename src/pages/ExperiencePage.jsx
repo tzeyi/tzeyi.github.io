@@ -120,7 +120,8 @@ const ExperiencePage = ({hashLinkId}) => {
         `Built carbon emissions calculator for portfolio, supporting sales team on technical document that closed investment firm deal`,
         `Developed Python/Pandas data pipeline to fetch and clean data from Bloomberg API, Excel input files and PCAF-accredited datasets, optimized with AWS Lambda and SNS for 50% faster async retrieval`,
         `Designed PostgreSQL schema for 5 asset classes and resolved N+1 query issues, reducing page load by 300ms in production`,
-        `Implemented Django REST API with RabbitMQ task queue for async carbon calculations and QuickSight report generation`
+        `Implemented Django REST API with RabbitMQ task queue for async carbon calculations and QuickSight report generation`,
+        `Engineered DevOps workflows including CI/CD pipelines via GitHub Actions for automated testing, and Infrastructure as Code (IaC) via AWS CloudFormation for cloud resource provisioning`
       ],
       challenges: [
         [
