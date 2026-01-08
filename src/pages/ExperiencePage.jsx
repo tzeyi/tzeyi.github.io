@@ -86,7 +86,7 @@ const ExperiencePage = ({hashLinkId}) => {
       tags: ['Client Delivery', 'OpenShift', 'Python', 'Retrieval Augment Generation (RAG)', 'LLMs']
     },
     {
-      title: 'Software Developer',
+      title: 'Software Engineer',
       company: 'University of Michigan - Transportation Research Institute',
       location: 'Ann Arbor, MI',
       period: 'Dec 2024 - Mar 2025',
