@@ -30,7 +30,7 @@ const ExperiencePage = ({hashLinkId}) => {
         ],
         [
           `Making onset detection robust to noisy lab environments`,
-          `Fans and nearby equipment introduced noise that broke early onset detection. By adding bandpass filtering and subtracting pre-recorded background FFTs, I significantly improved reliability in varying conditions`
+          `Fans and nearby equipment introduced noise that broke early onset detection. By adding bandpass filtering and subtracting pre-recorded background FFTs, this significantly improved reliability in varying conditions`
         ],
         [
           `Rapid prototyping an Audio Spectrogram Transformer model`,
@@ -64,15 +64,15 @@ const ExperiencePage = ({hashLinkId}) => {
       challenges: [
         [
           `Building a customizable demo from scratch when off-the-shelf wasn't enough`,
-          `IBM TechZone's pre-built Maximo environments were outdated and locked down—but our client needed the latest features with full customization. I taught myself OpenShift provisioning and Ansible automation to build a 5-node cluster from the ground up, giving the team complete control over client demos and eliminating dependency on rigid TechZone templates.`
+          `IBM TechZone's pre-built Maximo environments were outdated and completely scripted—but our client needed the latest features with full customization for pro. To accomodate for this, I provisioned an empty OpenShift cluster, and did the manual installation using Maximo CLI (using Docker/Ansible to kickstart the installation)`
         ],
         [
           `Supporting first upgrade journey in the nation`,
-          `Our client's upgrade from Maximo 7.6 (WebSphere) to containerized OpenShift was one of the first in the nation—meaning almost no documentation or playbooks existed. I earned IBM product certification in two weeks, crash-coursed Kubernetes, and spent days debugging dependency conflicts between Kafka, deprecated ZooKeeper, and Red Hat Marketplace. Each fix required deep dives into architecture docs, pods log and versioning compatibility testing in sandboxed environments.`
+          `Our client's upgrade from Maximo 7.6 (WebSphere) to containerized OpenShift was the first in the nation, meaning almost no documentation and business partners were inexperienced. Picking up on kubernetes, IBM product certification and debugging dependency conflicts (eg: Kafka's deprecated ZooKeeper, and deprecated Red Hat Marketplace), I updated the SOP document for a successful deployment after receiving my mentor's approval`
         ],
         [
-          `Debugging a critical issue across three continents`,
-          `2 weeks before a major client presentation, critical pre-built asset health models failed to appear post-installation. I traced the issue through logs to a configuration mismatch between Maximo and IBM Cloud Pak for Data caused by Red Hat Marketplace deprecations. Working across time zones, I coordinated with engineers and sellers in Australia, the US, and India to troubleshoot with product engineers. The biggest challenge was that Malaysia had no local product engineers with access to the codebase, requiring late-night calls across vastly different time zones to implement necessary fixes.`
+          `Debugging a critical issue across 3 continents`,
+          `Pre-built asset health models failed to appear post installation, which was critical for a client presentation. Tracing the issue to a configuration mismatch between Maximo and Cloud Pak for Data due to Red Hat Marketplace deprecation. The biggest challenge was Southeast Asia had no product engineers with access to the codebase. Pursuing and coordinating with engineers/sellers in Australia, US and India, I ultimately managed to fix it with their kind assistance after some late-night calls/messages across different time zones`
         ],
       ],
       links: [
@@ -86,7 +86,7 @@ const ExperiencePage = ({hashLinkId}) => {
       tags: ['Client Delivery', 'OpenShift', 'Python', 'Retrieval Augment Generation (RAG)', 'LLMs']
     },
     {
-      title: 'Front End Developer',
+      title: 'Software Developer',
       company: 'University of Michigan - Transportation Research Institute',
       location: 'Ann Arbor, MI',
       period: 'Dec 2024 - Mar 2025',
@@ -99,7 +99,7 @@ const ExperiencePage = ({hashLinkId}) => {
       challenges: [
         [
           `Understanding the codebase quickly`, 
-          `With a 3-month deadline to deliver to the Michigan Office of Highway Safety, I had to learn the existing codebase (PHP backend, Vue frontend) quickly. Leveraging transferable knowledge of MVC from Express.js and component architecture from React, I got up to speed after an initial 2-week learning phase. Understanding the backend proved useful, enabling me to efficiently trace root cause in API endpoints`
+          `With a 3-month deadline to deliver to the Michigan Office of Highway Safety, having prior knowledge of MVC from Express.js and component architecture from React helped me understand the existing codebase (PHP backend, Vue frontend) quickly. Taking time to understand the PHP backend proved useful, as it helped me to effectively trace certain root cause in the REST API`
         ]
       ],
       links: [
@@ -125,12 +125,13 @@ const ExperiencePage = ({hashLinkId}) => {
       ],
       challenges: [
         [
-          `Fixing the system, not just the symptom`,
-          `When CI/CD tests failed during a pull request, I traced the issue to a Python version mismatch between local, production, and the GitHub Actions runner. Because the runner on AWS Lightsail couldn’t be updated, I documented the trade-offs and proposed migrating to EC2 to regain environment parity. The proposal was later approved and implemented.`
+          `Communicating effectively`,
+          `When CI/CD tests failed during a pull request, my test case were passing locally but not in GitHub. After 2 days of failed debugging, I presented my finding to my senior engineering, where we traced the issue to a Python version mismatch between local, prod and Github Actions runner. Since the runner on AWS couldn't be reconfigured, I presented the cost saving of migrating to EC2 to my manager, which was later approved and implemented`
         ],
         [
           `20/80 rule`,
-          `In a startup, code without business impact doesn’t create a product. I volunteered to help the sales team translate system architecture into clear data specifications, reducing client ambiguity. This experience reinforced the value of pairing technical depth with communication, relationships and industry knowledge`
+          `In a startup, it was very clear an engineer role is beyond just coding. As our sales team was closing in on a deal on the product my team and I worked on, time was ticking and I supported them with the creation of our product's architecture and data specifications for the client. Although I spent more time reviewing the data specfications than building, the fact that these 2 weeks was one of the factor that helped close the deal was pretty eye opening.
+           This experience really reinforced the value of communication, relationship and industry knowledge for me`
         ]
       ],
       links: [
@@ -177,7 +178,7 @@ const ExperiencePage = ({hashLinkId}) => {
         ],
         [
           `Balancing speed and code quality`,
-          `This project reinforced the importance of balancing rapid development with maintainable code. Reflecting on my decisions, I realized I could have prioritized differently: instead of strictly following MVVM, I could have written modular code; used Firebase instead of tediously hosting Flask server on EC2 + Route 53. These changes would have sped up development and better suited the project context.`
+          `This project reinforced the importance of balancing rapid development with maintainable code. Reflecting on my decisions, I could have prioritized differently: instead of strictly following MVVM, I could have written modular code; used Firebase instead of tediously hosting Flask server on EC2 + Route 53. These changes would have sped up development and better suited the project context.`
         ]
       ],
       links: [['Michigan Hackers', 'https://michhackers.com/']],
@@ -219,7 +220,7 @@ const ExperiencePage = ({hashLinkId}) => {
       challenges: [
         [
           `Dealing with unpredictability`,
-          `Two weeks before Homecoming, our scheduled band canceled, and I realized how fragile plans can be. I reached out to alumni performers through our advisor, messaged past performers, and coordinated with the team to scout talent at campus events. We also adjusted compensation to encourage participation. In the end, we replaced the band and even added an extra dance group. This was a reminder to always stay calm, resourceful and flexible`
+          `Two weeks before Homecoming, our scheduled band canceled. I reached out to alumni performers through our advisor, messaged past performers, and coordinated with the team to scout talent at campus events. We also adjusted compensation to encourage participation. In the end, we fortunately replaced the band and even added an extra dance group, giving myself a reminder to always stay calm, resourceful and flexible`
         ]
       ],
       links: [['AUP Instagram', 'https://www.instagram.com/p/ClYf24wv7qv/']],
