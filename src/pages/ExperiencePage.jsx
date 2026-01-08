@@ -14,7 +14,7 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'Aug 2024 - Dec 2025',
       type: ['Fullstack', 'Data / AI'],
       description: [
-        `Fine-tuned an Audio ML model (Hugging Face AST) in PyTorch, achieving 75% activity classification accuracy, as part of a privacy-preserving audio sensing system for autoimmune disease research`,
+        `Fine-tuned Hugging Face AST model in PyTorch using transfer learning, achieving 75% activity classification accuracy as part of privacy-preserving audio sensing system for autoimmune disease research`,
         `Optimized real-time Python audio processing pipeline on Orange Pi hardware, reducing latency by 60% via multiprocessing`,
         `Developed full-stack data annotation app with SwiftUI, Django, and PostgreSQL to label audio data for ML training, implementing Push Notifications, WiFi provisioning and token authentication for multi-device communication`,
         `Building on my mentor Dr. Yasha Iravantchi’s PrivacyMic work, this project aims to use learned representations from inaudible audio as inputs for a multi-modal Mixture-of-Experts model capable of inferencing all 5 senses in a medical setting`
@@ -116,9 +116,9 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'May 2024 - Aug 2024',
       type: ['Fullstack', 'Data / AI', 'Infrastructure'],
       description: [
-        `Built Python data pipeline to fetch data from Bloomberg API, Excel inputs and PCAF datasets, optimized with AWS Lambda and SNS for 50% faster async retrieval (part of a SaaS product used by investment firm client)`,
+        `Built Python data pipeline to fetch, clean and enrich data from Bloomberg API, Excel inputs and PCAF datasets, optimized with AWS Lambda and SNS for 50% faster async retrieval (4 → 2 min), deployed to production for carbon footprint analysis`,
         `Developed REST APIs in Django to generate QuickSight reports asynchronously using RabbitMQ task queue and resolved N+1 query issues, reducing page load time by 300ms in production`,
-        `Designed SQL schema for 5 financial asset classes connecting 5,000 records (user/external) for carbon emission calculations`,
+        `Designed SQL schema for 5 financial asset classes, linking 5,000+ user and third-party records for carbon accounting`,
         `Engineered DevOps workflows including CI/CD pipelines to automate test cases using Github Actions, and Infrastrcture as Code (Iac) to provision cloud resources using AWS CoudFormation`
       ],
       challenges: [
