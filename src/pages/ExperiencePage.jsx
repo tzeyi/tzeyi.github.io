@@ -56,8 +56,8 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'May 2025 - Aug 2025',
       type: ['People Skills', 'Data / AI', 'Infrastructure'],
       description: [
-        `Led deployment of IBM Maximo's AI-powered asset maintenance platform on OpenShift for energy client, delivering PoC demo and workshops addressing client questions on model accuracy and industry standards`,
-        `Co-led enablement sessions training 7 business partners on Maximo deployment strategies in OpenShift, creating training materials for technical workshops`,
+        `Deployed IBM Maximo AI-powered asset maintenance platform on OpenShift for energy client, delivering technical demos, PoC environments, and workshops addressing model accuracy and industry compliance questions`,
+        `Facilitated enablement sessions training 7 business partners on Maximo deployment strategies in OpenShift, creating training materials for technical workshops`,
         `Resolved critical OpenShift installation failures by debugging system logs and YAML configurations in collaboration with IBM's global engineering team, directly preventing loss of a $50K/year renewal contract`,
         `Researched and prototyped LangGraph-based RAG chatbot (Python, WatsonX, Elasticsearch) with explicit state management for healthcare client, demonstrating improved multi-turn conversation accuracy over production LangChain system`
       ],
@@ -117,7 +117,7 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'May 2024 - Aug 2024',
       type: ['Fullstack', 'Data / AI', 'Infrastructure'],
       description: [
-        `Built carbon emissions calculator for portfolio, supporting sales team on technical document that closed investment firm deal`,
+        `Built carbon emission calculator for portfolios, supporting sales team with technical documents to close investment firm deal`,
         `Developed Python/Pandas data pipeline to fetch and clean data from Bloomberg API, Excel input files and PCAF-accredited datasets, optimized with AWS Lambda and SNS for 50% faster async retrieval`,
         `Designed PostgreSQL schema for 5 asset classes and resolved N+1 query issues, reducing page load by 300ms in production`,
         `Implemented Django REST API with RabbitMQ task queue for async carbon calculations and QuickSight report generation`,
