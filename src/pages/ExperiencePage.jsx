@@ -14,10 +14,10 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'Aug 2024 - Dec 2025',
       type: ['Fullstack', 'Data / AI'],
       description: [
-        `Designed privacy-preserving audio sensing system for autoimmune disease (Multiple Sclerosis) research, achieving 75% activity classification accuracy by fine-tuning Hugging Face AST model with PyTorch`,
-        `Built real-time Python/NumPy audio processing pipeline with multiprocessing on Orange Pi hardware for 96kHz streams`,
-        `Developed full-stack annotation app with SwiftUI, Django, and PostgreSQL to label audio data for ML training, leveraging WiFi provisioning and token authentication for multi-sensor device pairing`,
-        `Building on my mentor Dr. Yasha Iravantchi’s PrivacyMic work, this project aims to use learned representations from inaudible audio as inputs for a privacy-preserving, multi-modal Mixture-of-Experts model spanning all 5 senses in hospital setting`
+        `Fine-tuned an Audio ML model (Hugging Face AST) in PyTorch, achieving 75% activity classification accuracy, as part of a privacy-preserving audio sensing system for autoimmune disease research`,
+        `Optimized real-time Python audio processing pipeline on Orange Pi hardware, reducing latency by 60% via multiprocessing`,
+        `Developed full-stack data annotation app with SwiftUI, Django, and PostgreSQL to label audio data for ML training, implementing Push Notifications, WiFi provisioning and token authentication for multi-device communication`,
+        `Building on my mentor Dr. Yasha Iravantchi’s PrivacyMic work, this project aims to use learned representations from inaudible audio as inputs for a multi-modal Mixture-of-Experts model capable of inferencing all 5 senses in a medical setting`
       ],
       challenges: [
         [
@@ -26,7 +26,7 @@ const ExperiencePage = ({hashLinkId}) => {
         ],
         [
           `Designing for HIPAA-compliant storage, while saving cost`,
-          `To balance cost and compliance, I containerized the Django backend on a university HIPAA-compliant server, storing patient metadata securely on-prem while using university Dropbox as blob storage for detected audio segments`
+          `To balance cost and compliance, I containerized the Django backend on a university HIPAA-compliant server, storing user data securely on-prem while using university Dropbox as blob storage for detected audio segments`
         ],
         [
           `Making onset detection robust to noisy lab environments`,
@@ -50,21 +50,21 @@ const ExperiencePage = ({hashLinkId}) => {
       tags: ['Python', 'Django', 'Machine Learning', 'PostgreSQL', 'Docker']
     },
     {
-      title: 'Solutions Architect Intern',
+      title: 'Solutions Architect Intern (Platform Engineering)',
       company: 'IBM',
       location: 'Selangor, Malaysia',
       period: 'May 2025 - Aug 2025',
       type: ['People Skills', 'Data / AI', 'Infrastructure'],
       description: [
-        `Deployed IBM Maximo AI-powered asset maintenance platform on OpenShift for energy client, delivering technical demos, PoC environments, and workshops addressing model accuracy and industry compliance questions`,
-        `Facilitated enablement sessions training 7 business partners on Maximo deployment strategies in OpenShift, creating training materials for technical workshops`,
         `Resolved critical OpenShift installation failures by debugging system logs and YAML configurations in collaboration with IBM's global engineering team, protecting a $50K/year renewal contract`,
-        `Researched and prototyped LangGraph-based RAG chatbot (Python, WatsonX, Elasticsearch) with explicit state management for healthcare client, demonstrating improved multi-turn conversation accuracy over production LangChain system`
+        `Prototyped LangGraph-based RAG chatbot (Python, WatsonX, Elasticsearch) with explicit state management for healthcare client, demonstrating improved multi-turn conversation accuracy over production LangChain system`,
+        `Deployed IBM Maximo AI-powered asset maintenance platform on OpenShift for energy client, delivering demos, PoC environments and workshops addressing predictive model accuracy and industry compliance questions`,
+        `Facilitated enablement sessions training 7 business partners on Maximo deployment strategies in OpenShift, creating training materials and conducting technical workshops`,
       ],
       challenges: [
         [
           `Building a customizable demo from scratch when off-the-shelf wasn't enough`,
-          `IBM TechZone's pre-built Maximo environments were outdated and completely scripted—but our client needed the latest features with full customization for pro. To accomodate for this, I provisioned an empty OpenShift cluster, and did the manual installation using Maximo CLI (using Docker/Ansible to kickstart the installation)`
+          `IBM TechZone's pre-built Maximo environments were outdated and completely scripted, but our client needed the latest features with full customization. To accomodate for this, I provisioned an empty OpenShift cluster, and did the manual installation using Maximo CLI (configures Docker/Ansible scripts to kickstart the installation)`
         ],
         [
           `Supporting first upgrade journey in the nation`,
@@ -72,12 +72,12 @@ const ExperiencePage = ({hashLinkId}) => {
         ],
         [
           `Debugging a critical issue across 3 continents`,
-          `Pre-built asset health models failed to appear post installation, which was critical for a client presentation. Tracing the issue to a configuration mismatch between Maximo and Cloud Pak for Data due to Red Hat Marketplace deprecation. The biggest challenge was Southeast Asia had no product engineers with access to the codebase. Pursuing and coordinating with engineers/sellers in Australia, US and India, I ultimately managed to fix it with their kind assistance after some late-night calls/messages across different time zones`
+          `Pre-built asset health models failed to appear post installation, which was critical for a client presentation. Tracing the issue to a configuration mismatch between Maximo and Cloud Pak for Data due to Red Hat Marketplace deprecation, the biggest challenge was Southeast Asia had no product engineers with access to the codebase to directly fix it. Pursuing and coordinating with engineers/sellers in Australia, US and India, I ultimately managed to fix it with their kind assistance after some late-night calls/messages across different time zones`
         ],
       ],
       links: [
         ['Maximo CLI installation', 'https://ibm-mas.github.io/cli/guides/install/'],
-        ['Electrical Distribution Models (What I fixed)', 'https://www.ibm.com/docs/en/mhmpmh-and-p-u/cd?topic=models-maximo-health-default-notebooks-asset-class-notebooks'],
+        ['Electrical Distribution Models (What I resolved)', 'https://www.ibm.com/docs/en/mhmpmh-and-p-u/cd?topic=models-maximo-health-default-notebooks-asset-class-notebooks'],
         ['Watsonx stack for RAG', 'https://dataplatform.cloud.ibm.com/docs/content/wsj/analyze-data/fm-rag.html?context=wx'],
         ['Kafka Deprecation', 'https://www.ibm.com/mysupport/s/defect/aCIgJ0000000pddWAA/dt439002?language=en_US']
       ],
@@ -92,14 +92,13 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'Dec 2024 - Mar 2025',
       type: 'Fullstack',
       description: [
-        `Migrated legacy jQuery query tool to modern Vue.js/Vuetify architecture, improving UI design and code maintainability`,
-        `Built interactive dashboards using Chart.js and Google Maps API to visualize 500K+ crash records for Michigan highway
-        safety researchers, integrating legacy PHP backend services`
+        `Migrated legacy query tool frontend from jQuery to Vue.js/Vuetify architecture, improving design and code maintainability`,
+        `Built interactive dashboards using Chart.js and Google Maps API to visualize 500K+ crash records for Michigan highway safety researchers, integrating legacy PHP backend services`
       ],
       challenges: [
         [
           `Understanding the codebase quickly`, 
-          `With a 3-month deadline to deliver to the Michigan Office of Highway Safety, having prior knowledge of MVC from Express.js and component architecture from React helped me understand the existing codebase (PHP backend, Vue frontend) quickly. Taking time to understand the PHP backend proved useful, as it helped me to effectively trace certain root cause in the REST API`
+          `With a 3-month deadline to deliver to the Michigan Office of Highway Safety, having prior knowledge of MVC from Express.js and component architecture from React was crucial in helping me understand the existing codebase (PHP backend, Vue frontend) quickly. Taking time to understand the PHP backend proved useful, as it helped me to effectively trace certain root causes to be in the REST API`
         ]
       ],
       links: [
@@ -117,21 +116,19 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'May 2024 - Aug 2024',
       type: ['Fullstack', 'Data / AI', 'Infrastructure'],
       description: [
-        `Built carbon emission calculator for portfolios, supporting sales team with technical documents to close investment firm deal`,
-        `Developed Python/Pandas data pipeline to fetch and clean data from Bloomberg API, Excel input files and PCAF-accredited datasets, optimized with AWS Lambda and SNS for 50% faster async retrieval`,
-        `Designed PostgreSQL schema for 5 asset classes and resolved N+1 query issues, reducing page load by 300ms in production`,
-        `Implemented Django REST API with RabbitMQ task queue for async carbon calculations and QuickSight report generation`,
-        `Engineered DevOps workflows including CI/CD pipelines via GitHub Actions for automated testing, and Infrastructure as Code (IaC) via AWS CloudFormation for cloud resource provisioning`
+        `Built Python data pipeline to fetch data from Bloomberg API, Excel inputs and PCAF datasets, optimized with AWS Lambda and SNS for 50% faster async retrieval (part of a SaaS product used by investment firm client)`,
+        `Developed REST APIs in Django to generate QuickSight reports asynchronously using RabbitMQ task queue and resolved N+1 query issues, reducing page load time by 300ms in production`,
+        `Designed SQL schema for 5 financial asset classes connecting 5,000 records (user/external) for carbon emission calculations`,
+        `Engineered DevOps workflows including CI/CD pipelines to automate test cases using Github Actions, and Infrastrcture as Code (Iac) to provision cloud resources using AWS CoudFormation`
       ],
       challenges: [
         [
           `Communicating effectively`,
-          `When CI/CD tests failed during a pull request, my test case were passing locally but not in GitHub. After 2 days of failed debugging, I presented my finding to my senior engineering, where we traced the issue to a Python version mismatch between local, prod and Github Actions runner. Since the runner on AWS couldn't be reconfigured, I presented the cost saving of migrating to EC2 to my manager, which was later approved and implemented`
+          `When CI/CD tests failed during a pull request, my test case were passing locally but not in GitHub. After 2 days of failed debugging, I presented my finding to my senior engineering, where we traced the issue to a Python version mismatch between local, prod and Github Actions runner. Since the runner on AWS LightSail couldn't be reconfigured, I presented the cost saving of migrating to AWS EC2 to my manager, which was later approved and implemented`
         ],
         [
           `20/80 rule`,
-          `In a startup, it was very clear an engineer role is beyond just coding. As our sales team was closing in on a deal on the product my team and I worked on, time was ticking and I supported them with the creation of our product's architecture and data specifications for the client. Although I spent more time reviewing the data specfications than building, the fact that these 2 weeks was one of the factor that helped close the deal was pretty eye opening.
-           This experience really reinforced the value of communication, relationship and industry knowledge for me`
+          `In a startup, it was very clear an engineer role goes beyond just coding. As our sales team was closing in on a deal on the product my team and I worked on, time was ticking and I assisted them in creating the product's architecture diagram and data specifications for the client. Although I spent more time reviewing the data specfications than building, those 2 weeks were the most impactful things that I did (without those documents we worked day and night to create, the product wouldn't be bought). This experience really reinforced the value of communication, relationship and industry knowledge to me`
         ]
       ],
       links: [

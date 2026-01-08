@@ -40,7 +40,7 @@ const HeroSection = () => {
             {/* Description */}
             <p className="text-sm md:text-base text-base-content/60 font-light leading-relaxed max-w-lg">
               With a degree in Computer Science from the University of Michigan, Ann Arbor, and experience bridging technical and business needs,
-              I'm seeking positions in software engineering, forward deployed engineering, research, technical sales, and consulting analyst.
+              I'm seeking positions in software engineering, forward deployed engineering and analyst.
             </p>
 
             <div className="h-px w-20 bg-base-content/20"></div>
