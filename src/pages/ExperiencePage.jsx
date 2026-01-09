@@ -166,7 +166,8 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'Jun 2024 - Apr 2025',
       type: ['Fullstack', 'People Skills'],
       description: [
-        `Led team of 8 building iOS interview prep app with recommendation system, organizing cross-functional teams (UI/UX, frontend, backend), managing sprints and code reviews, and hosting weekly Swift/REST API workshops for new members`
+        `Led team of 8 building an iOS interview prep app with a recommendation system to curate LeetCode-style questions, organizing cross-functional teams across UI/UX, frontend, and backend`,
+        `Managed sprints and code reviews, and hosted weekly workshops to teach Swift/REST API for new members`
       ],
       challenges: [
         [
@@ -178,7 +179,7 @@ const ExperiencePage = ({hashLinkId}) => {
           `This project reinforced the importance of balancing rapid development with maintainable code. Reflecting on my decisions, I could have prioritized differently: instead of strictly following MVVM, I could have written modular code; used Firebase instead of tediously hosting Flask server on EC2 + Route 53. These changes would have sped up development and better suited the project context.`
         ]
       ],
-      links: [['Michigan Hackers', 'https://michhackers.com/']],
+      links: [['BlueHire (Our Project)', 'https://github.com/michiganhackers/bluehire-frontend'], ['Michigan Hackers', 'https://michhackers.com/']],
       images: ['blank.jpg', 'Experience/MHackers/1.png', 'Experience/MHackers/2.png', 'Experience/MHackers/3.png', 'Experience/MHackers/4.mp4'],
       logo: '/Logo/MHackers.png',
       tags: ['Swift', 'Python', 'Flask', 'Scikit-Learn', 'AWS', 'Project Planning']
@@ -190,8 +191,9 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'May 2023 - Aug 2023',
       type: ['Data / AI'],
       description: [
-        `Automated data extraction from 1,500+ PDFs/web sources via Google Tesseract OCR and web scraping, increasing team productivity by 250%`,
-        `Wrote Express.js REST API, integrated with Microsoft Power Automate, to query user data and notify MS Teams during live agent escalations`
+        `Automated data extraction from 1,500+ PDFs/web sources using Tesseract OCR and Selenium web scraper, reducing manual processing time from 2 hrs to 5 mins`,
+        `Transformed ~11,000 unstructured market data records into clean, structured format using Pandas and Regular Expressions, storing results in MySQL database for business intelligence queries`,
+        `Developed Express.js REST API integrated with Microsoft Power Automate to query MySQL user data and trigger Microsoft Teams notifications during live agent escalations`
       ],
       challenges: [
         [
@@ -211,8 +213,8 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'Apr 2022 - Jun 2023',
       type: ['People Skills'],
       description: [
-        `Led a team to organize a Homecoming event for 250+ students and alumni, securing over RM10,000 in sponsorship and managing event-day logistics and performer recruitment`,
-        `Planned other events, including a 4th of July student gathering and charity drives, coordinating with food trucks, selling second-hand books/traditional Malaysian foods, and serving as the emcee`
+        `Led a team to organize a Homecoming event for 250+ students and alumni, securing over RM10,000 in sponsorship and managing logistics, performer recruitment and event day activities`,
+        `Organized multiple campus events including a 4th of July student gathering, fundraisers and charity drives (managing food truck vendor partnerships, coordinating sales of second-hand books and traditional Malaysian foods, and serving as event emcee)`
       ],
       challenges: [
         [
