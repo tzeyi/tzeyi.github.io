@@ -56,7 +56,7 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'May 2025 - Aug 2025',
       type: ['People Skills', 'Data / AI', 'Infrastructure'],
       description: [
-        `Resolved critical OpenShift installation failures by debugging system logs and YAML configurations in collaboration with IBM's global engineering team, protecting a $50K/year renewal contract`,
+        `Resolved critical OpenShift (Kubernetes) installation failures by debugging system logs and YAML configurations in collaboration with IBM's global engineering team, protecting a $50K/year renewal contract`,
         `Prototyped LangGraph-based RAG chatbot (Python, WatsonX, Elasticsearch) with explicit state management for healthcare client, demonstrating improved multi-turn conversation accuracy over production LangChain system`,
         `Deployed IBM Maximo AI-powered asset maintenance platform on OpenShift for energy client, delivering demos, PoC environments and workshops addressing predictive model accuracy and industry compliance questions`,
         `Facilitated enablement sessions training 7 business partners on Maximo deployment strategies in OpenShift, creating training materials and conducting technical workshops`,
