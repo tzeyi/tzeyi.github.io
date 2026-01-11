@@ -124,7 +124,7 @@ const ExperiencePage = ({hashLinkId}) => {
       challenges: [
         [
           `Communicating effectively`,
-          `When CI/CD tests failed during a pull request, my test case were passing locally but not in GitHub. After 2 days of failed debugging, I presented my finding to my senior engineering, where we traced the issue to a Python version mismatch between local, prod and Github Actions runner. Since the runner on AWS LightSail couldn't be reconfigured, I presented the cost saving of migrating to AWS EC2 to my manager, which was later approved and implemented`
+          `When my test cases were passing locally but not in GitHub CI/CD, I was stuck in a loop. After 2 days of failed debugging, I presented my findings to my senior, and we traced the issue to a Python version mismatch between local, prod, and the GitHub Actions runner. I made the mistake of not asking earlier (being tunnel-visioned). Despite this, I presented the cost savings of migrating to a new GitHub Actions environment to my manager, which was approved and implemented. Reflecting on this mistake, there's so much room for improvement—such as more accurately estimating my tasks during standups. I definitely could have presented documentation and reasoning early on to avoid delaying progress, and I was fortunate to have an incredibly supportive team.`
         ],
         [
           `20/80 rule`,
