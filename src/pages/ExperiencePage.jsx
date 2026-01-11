@@ -116,7 +116,7 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'May 2024 - Aug 2024',
       type: ['Fullstack', 'Data / AI', 'Infrastructure'],
       description: [
-        `Built Python data pipeline to fetch, clean and enrich data from Bloomberg API, Excel inputs and PCAF datasets, optimized with AWS Lambda and SNS for 50% faster async retrieval (4 → 2 min), deployed to production for carbon footprint analysis`,
+        `Built Python data pipeline to fetch, clean and enrich data from Bloomberg API, Excel inputs and PCAF datasets, optimized with AWS Lambda and SNS to reduce retrieval time (4 → 2 min), deployed to production for client carbon footprint analysis`,
         `Developed REST APIs in Django to generate QuickSight reports asynchronously using RabbitMQ task queue and resolved N+1 query issues, reducing page load time by 300ms in production`,
         `Designed SQL schema for 5 financial asset classes, linking 5,000+ user and third-party records for carbon accounting`,
         `Engineered DevOps workflows including CI/CD pipelines to automate test cases using Github Actions, and Infrastrcture as Code (Iac) to provision cloud resources using AWS CoudFormation`
