@@ -23,7 +23,7 @@ const EducationSection = () => {
       ]
     },
     {
-      name: "INTI International College Subang",
+      name: "INTI International College",
       logo: "/Education/INTI.png",
       degree: "American Degree Transfer Program",
       graduation: "August 2023",
