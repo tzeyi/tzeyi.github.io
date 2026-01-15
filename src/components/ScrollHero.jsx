@@ -51,7 +51,7 @@ const HeroSection = () => {
             <div className="relative w-74 h-74 md:w-92 md:h-92 xl:w-114 xl:h-114">
               
               <div className="w-full h-full rounded-full overflow-hidden border border-base-content/10 shadow-lg">
-                <img src="me.jpg" alt="Tze Yi" className="w-full h-full object-cover" />
+                <img src="me2.jpeg" alt="Tze Yi" className="w-full h-full object-cover" />
               </div>
 
               {/* Decorative elements */}
@@ -141,7 +141,7 @@ const PassionSection = () => {
             </HashLink>
           </div>
         </div>
-
+``
         {/* Right (Images) */}
         <div className="grid gap-6 px-8 pt-30 md:pt-37 bg-base-100 z-1">
           {images.map((image, index) => (
