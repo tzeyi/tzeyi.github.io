@@ -141,7 +141,7 @@ const PassionSection = () => {
             </HashLink>
           </div>
         </div>
-``
+
         {/* Right (Images) */}
         <div className="grid gap-6 px-8 pt-30 md:pt-37 bg-base-100 z-1">
           {images.map((image, index) => (
