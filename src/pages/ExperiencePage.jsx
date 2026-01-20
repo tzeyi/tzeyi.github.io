@@ -25,10 +25,6 @@ const ExperiencePage = ({hashLinkId}) => {
           `Early testing revealed silent failures on legacy system caused by OS sleep, timer drift, and sampling jitter. I rebuilt the pipeline on a 4-core Orange Pi, pinning processes to dedicated cores and tuning priorities and microphone parameters until 96 kHz proved consistently stable`
         ],
         [
-          `Designing for HIPAA-compliant storage, while saving cost`,
-          `To balance cost and compliance, I containerized the Django backend on a university HIPAA-compliant server, storing user data securely on-prem while using university Dropbox as blob storage for detected audio segments`
-        ],
-        [
           `Making onset detection robust to noisy lab environments`,
           `Fans and nearby equipment introduced noise that broke early onset detection. By adding bandpass filtering and subtracting pre-recorded background FFTs, this significantly improved reliability in varying conditions`
         ],
