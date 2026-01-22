@@ -46,7 +46,7 @@ const ExperiencePage = ({hashLinkId}) => {
       tags: ['Python', 'Django', 'Machine Learning', 'PostgreSQL', 'Docker']
     },
     {
-      title: 'Solutions Architect Intern (Platform Engineering)',
+      title: 'Solutions Architect Intern (Data, Cloud & AI)',
       company: 'IBM',
       location: 'Selangor, Malaysia',
       period: 'May 2025 - Aug 2025',
