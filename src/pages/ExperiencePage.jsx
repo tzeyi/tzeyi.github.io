@@ -114,7 +114,7 @@ const ExperiencePage = ({hashLinkId}) => {
       description: [
         `Built Python data pipeline to fetch, clean and enrich data from Excel inputs, Bloomberg API and PCAF datasets, using AWS Lambda / SNS to reduce retrieval time (4 → 2 min), deployed to production for an investment firm`,
         `Developed Django backend to generate financial reports asynchronously using RabbitMQ task queue, and resolved N+1 database query issues, reducing page load time by 300ms in production`,
-        `Implemented SQL schema for 5 financial asset classes linking 5,000+ users and third-party records for a multi-billion dollar company, utilizing AWS S3 Glacier and CloudFormation for disaster recovery`,
+        `Implemented SQL schema for 5 financial asset classes linking 5,000+ users and third-party records to track the carbon footprint of a multi-billion dollar company, utilizing AWS S3 Glacier and CloudFormation for disaster recovery`
         `Supported business development team in creating data specifications and architectural diagrams to ensure security and PCAF compliance for client needs`
       ],
       challenges: [
