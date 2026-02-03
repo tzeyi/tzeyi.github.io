@@ -8,15 +8,15 @@ const ExperiencePage = ({hashLinkId}) => {
 
   const experiences = [
     {
-      title: 'Software Engineer (Research)',
+      title: 'HCI Research Assistant',
       company: 'Interactive Sensing & Computing Lab',
       location: 'Ann Arbor, MI',
       period: 'Aug 2024 - Dec 2025',
       type: ['Fullstack', 'Data / AI'],
       description: [
+        `Developed full-stack data annotation app with SwiftUI, Django and PostgreSQL to label audio for ML training, using push notifications, token authentication and WiFi provisioning to streamline sensor pairing from 5 to 2 steps`,
+        `Built real-time Python audio processing pipeline to detect and extract events via multiprocessing, ensuring 0 data loss`,
         `Fine-tuned Hugging Face AST model in PyTorch using transfer learning, achieving 75% activity classification accuracy as part of privacy-preserving audio sensing system for autoimmune disease research`,
-        `Optimized real-time Python audio processing pipeline on Orange Pi hardware, reducing latency by 60% via multiprocessing`,
-        `Developed full-stack data annotation app with SwiftUI, Django, and PostgreSQL to label audio data for ML training, implementing Push Notifications, WiFi provisioning and token authentication for multi-device communication`,
         `Building on my mentor Dr. Yasha Iravantchi’s PrivacyMic work, this project aims to use learned representations from inaudible audio as inputs for a multi-modal Mixture-of-Experts model capable of inferencing all 5 senses in a medical setting`
       ],
       challenges: [
@@ -52,10 +52,10 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'May 2025 - Aug 2025',
       type: ['People Skills', 'Data / AI', 'Infrastructure'],
       description: [
-        `Resolved critical OpenShift (Kubernetes) installation failures by debugging system logs and YAML configurations in collaboration with IBM's global engineering team, protecting a $50K/year renewal contract`,
-        `Prototyped LangGraph-based RAG chatbot (Python, WatsonX, Elasticsearch) with explicit state management for healthcare client, demonstrating improved multi-turn conversation accuracy over production LangChain system`,
-        `Deployed IBM Maximo AI-powered asset maintenance platform on OpenShift for energy client, delivering demos, PoC environments and workshops addressing predictive model accuracy and industry compliance questions`,
-        `Facilitated enablement sessions training 7 business partners on Maximo deployment strategies in OpenShift, creating training materials and conducting technical workshops`,
+        `Developed RAG chatbot (LangGraph, Llama LLM, Elasticsearch) to improve context retention across multi-turn conversations, providing validation for a production migration from LangChain`,
+        `Debugged OpenShift (Kubernetes) installation failure for IBM’s global product team by analyzing logs and YAML files to resolve Kafka and Tekton CI/CD dependency issues, unblocking demos for 3 sales team worldwide`,
+        `Built Python ML model with Scikit-Learn and deployed IBM Maximo on distributed AWS environment to forecast asset lifecycle for energy client, delivering proof-of-concept that drove workshops for a $50K/year renewal`,
+        `Facilitated enablement sessions training 7 business partners on Maximo deployment strategies in OpenShift, creating training materials and conducting technical workshops`
       ],
       challenges: [
         [
@@ -88,8 +88,8 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'Dec 2024 - Mar 2025',
       type: 'Fullstack',
       description: [
-        `Migrated legacy query tool frontend from jQuery to Vue.js/Vuetify architecture, improving design and code maintainability`,
-        `Built interactive dashboards using Chart.js and Google Maps API to visualize 500K+ crash records for Michigan highway safety researchers, integrating legacy PHP backend services`
+        `Migrated legacy frontend from jQuery to Vue.js, building reusable components that cut code duplication by 100+ lines`,
+        `Visualized 500K+ vehicle crash records by developing interactive dashboards with Chart.js and Google Maps API for Michigan highway safety researchers, integrating data via PHP REST APIs`
       ],
       challenges: [
         [
@@ -112,10 +112,10 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'May 2024 - Aug 2024',
       type: ['Fullstack', 'Data / AI', 'Infrastructure'],
       description: [
-        `Built Python data pipeline to fetch, clean and enrich data from Bloomberg API, Excel inputs and PCAF datasets, optimized with AWS Lambda and SNS to reduce retrieval time (4 → 2 min), deployed to production for client carbon footprint analysis`,
-        `Developed REST APIs in Django to generate QuickSight reports asynchronously using RabbitMQ task queue and resolved N+1 query issues, reducing page load time by 300ms in production`,
-        `Designed SQL schema for 5 financial asset classes, linking 5,000+ user and third-party records for carbon accounting`,
-        `Engineered DevOps workflows including CI/CD pipelines to automate test cases using Github Actions, and Infrastrcture as Code (Iac) to provision cloud resources using AWS CoudFormation`
+        `Built Python data pipeline to fetch, clean and enrich data from Excel inputs, Bloomberg API and PCAF datasets, using AWS Lambda / SNS to reduce retrieval time (4 → 2 min), deployed to production for an investment firm`,
+        `Developed Django backend to generate financial reports asynchronously using RabbitMQ task queue, and resolved N+1 database query issues, reducing page load time by 300ms in production`,
+        `Implemented SQL schema for 5 financial asset classes linking 5,000+ users and third-party records for a multi-billion dollar company, utilizing AWS S3 Glacier and CloudFormation for disaster recovery`,
+        `Supported business development team in creating data specifications and architectural diagrams to ensure security and PCAF compliance for client needs`
       ],
       challenges: [
         [
@@ -147,7 +147,7 @@ const ExperiencePage = ({hashLinkId}) => {
       challenges: [
         [
           `Customer service stems from making the customer feel heard`,
-          `Working with faculty, from deans, professors to librarians, taught me that effective support isn’t just about technical fixes. Whether the solution is simple or complex, taking time to listen, engage, and reassure makes all the difference. Contrary to popular belief, small talk matters!`
+          `Working with faculty, from deans, professors to librarians, taught me that effective support isn’t just about technical fixes. Whether the solution is simple or complex, taking time to listen, engage, and reassure makes all the difference. Contrary to popular belief, small talk matters.`
         ]
       ],
       links: [['TeamDynamix (Ticketing Tool I Used)', 'https://its.umich.edu/enterprise/crm-ticketing/teamdynamix']],
@@ -162,8 +162,8 @@ const ExperiencePage = ({hashLinkId}) => {
       period: 'Jun 2024 - Apr 2025',
       type: ['Fullstack', 'People Skills'],
       description: [
-        `Led team of 8 building an iOS interview prep app with a recommendation system to curate LeetCode-style questions, organizing cross-functional teams across UI/UX, frontend, and backend`,
-        `Managed sprints and code reviews, and hosted weekly workshops to teach Swift/REST API for new members`
+        `Led team of 8 building an iOS interview prep app with a recommendation system to curate LeetCode-style questions using SwiftUI, Flask and Scikit-Learn, organizing cross functional teams across UI/UX, frontend, and backend`,
+        `Managed sprints and code reviews, and hosted weekly workshops to teach Swift (MVVM, Syntax, Xcode), Git and REST APIs for new members`
       ],
       challenges: [
         [
