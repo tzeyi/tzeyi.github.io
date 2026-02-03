@@ -53,7 +53,7 @@ const ExperiencePage = ({hashLinkId}) => {
       type: ['People Skills', 'Data / AI', 'Infrastructure'],
       description: [
         `Developed RAG chatbot (LangGraph, Llama LLM, Elasticsearch) to improve context retention across multi-turn conversations, providing validation for a production migration from LangChain`,
-        `Debugged OpenShift (Kubernetes) installation failure for IBM’s global product team by analyzing logs and YAML files to resolve Kafka and Tekton CI/CD dependency issues, unblocking demos for 3 sales team worldwide`,
+        `Debugged OpenShift (Kubernetes) installation failure by analyzing logs and YAML configuration, pinpointing Kafka and Tekton CI/CD dependency issues for IBM’s global engineering team, unblocking demos for 3 sales teams worldwide`,
         `Built Python ML model with Scikit-Learn and deployed IBM Maximo on distributed AWS environment to forecast asset lifecycle for energy client, delivering proof-of-concept that drove workshops for a $50K/year renewal`,
         `Facilitated enablement sessions training 7 business partners on Maximo deployment strategies in OpenShift, creating training materials and conducting technical workshops`
       ],
