@@ -141,7 +141,7 @@ const ProjectPage = ({hashLinkId}) => {
   // Projects Data
   const projects = [
     {
-      title: 'Frodo: Next-Gen ERP',
+      title: 'Frodo: Crisis Response ERP',
       bulletPoints: [
         `Nowadays many ERPs privatize user data. Frodo provides a public, shared ERP for NGOs and small communities, encouraging collaboration and transparency.`,
         `It features a centralized dashboard with ticketing systems, discussion forums, map view, role-based access, and status updates.`,
